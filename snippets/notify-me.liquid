@@ -1,0 +1,73 @@
+<style>
+  .notify-me-wrap{
+    margin-top: 18px;
+  }
+  .notify-form input#ContactFormEmail {
+    margin-top: 12px;
+    width: 100%;
+    border: 1px solid var(--fade-border);
+    box-shadow: unset;
+}
+  .notify-form input#ContactFormEmail::placeholder {
+    color: black;
+    font-weight: 400;
+}
+  .notify-form button {
+    width: 100%;
+    margin-top: 16px;
+}
+</style>
+
+<div class="notify-me-wrap">
+  <div class="base strong">
+    Notify me when available
+  </div>
+  <div class="notify-form">
+              {% form 'contact', id: formId, class: "outline-none" %}
+            {% if form.posted_successfully? %}
+              <p class="form-success">
+                 We'll get back to you as soon as this product available.
+              </p>
+            {% else %}
+            {{ form.errors | default_errors }}
+   
+                <!-- <input type="text"
+                  class="{{ input_classes }}"
+                  name="contact[name]"
+                  id="ContactFormName"
+                  required
+                  placeholder="Name*"
+                  aria-required="true"> -->
+
+                <input type="email"
+                  name="contact[email]"
+                  id="ContactFormEmail"
+                  class="{{ input_classes }} {% if form.errors contains 'email' %}border-theme-color{% endif %}"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  spellcheck="false"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  placeholder="Your email address"
+                  required
+                  aria-required="true">
+      
+                <textarea rows="10"
+                  class="hidden"
+                  name="contact[body]"
+                  id="ContactFormMessage"
+                  required
+                  aria-required="true"
+                  placeholder="Message"
+                  class="{{ input_classes }}">Please notify me when this ({{ product.title }}) product is available.</textarea>
+            
+                <div class="push-btn w-full">
+                  <button type="submit" class="push-btn">
+                    <span class="push-btn-surface w-full">
+                      Notify me
+                    </span>
+                  </button>
+                </div>
+          {% endif %}
+          {% endform %}
+  </div>
+</div>

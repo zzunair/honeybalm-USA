@@ -1,0 +1,133 @@
+{% liquid
+  assign image_class = 'w-full'
+  unless loading
+    assign loading = 'lazy'
+  endunless
+  if style == 'inset'
+    assign image_class = image_class | append: ' media-style'
+  endif
+
+  if heading_size == 'heading-feature'
+    assign content_max_width = 'max-w-xl'
+  else
+    assign content_max_width = 'max-w-lg'
+  endif
+
+  if display_content_below_image_on_mobile
+    assign content_class = 'lg:grid lg:absolute lg:inset-0 lg:w-full lg:h-full'
+    assign content_inset_class = 'max-w-site lg:py-5 lg:px-section mx-auto'
+    assign card_container_class = 'lg:card-container'
+    assign card_content_class = 'lg:card py-5 lg:py-10 lg:px-section'
+    assign card_border_class = 'lg:card-border'
+  else
+    assign content_class = 'grid absolute inset-0 w-full h-full'
+    assign content_inset_class = 'max-w-site py-5 px-section mx-auto'
+    assign card_container_class = 'card-container'
+    assign card_content_class = 'card py-5 py-10 px-section'
+    assign card_border_class = 'card-border'
+  endif
+%}
+
+<div class="relative z-10 lg:bg-transparent h-full">
+  {%- if cta_url != blank and cta_text == blank -%}
+    <a href="{{ cta_url }}" class="absolute inset-0 z-20"></a>
+  {%- endif -%}
+
+  <div class="{% if crop contains 'slideshow' %}lg:h-full{% endif %} {% if style == 'inset' %}max-w-site px-5 lg:px-10 py-5 mx-auto{% endif %}">
+    <div class="{{ crop }}{% if style == 'inset' %} media-style-container{% endif %}">
+      {% if image != blank %}
+        {% capture image_tag_output %}{{
+          image
+          | image_url: width: 2000
+          | image_tag: sizes: '100vw', class: image_class, loading: loading
+        }}{% endcapture %}
+        {%- if image_mobile != blank -%}
+          <div class="hidden lg:block">{{ image_tag_output }}</div>
+        {%- else -%}
+          {{ image_tag_output }}
+        {%- endif -%}
+        {%- if image_mobile != blank -%}
+          <div class="lg:hidden">
+            {{
+              image_mobile
+              | image_url: width: 1200
+              | image_tag: sizes: '100vw', class: image_class, loading: loading
+            }}
+          </div>
+        {%- endif -%}
+      {% else %}
+        <div class="w-full {% unless slideshow_height == 'natural' %}absolute inset-0{% endunless %}">
+          {{
+            'lifestyle-1'
+            | placeholder_svg_tag: 'block text-scheme-placeholder-foreground fill-current bg-neutral-100'
+          }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div
+    class="px-section py-section-vertical-spacing {{ content_class }} z-10  text-scheme-text {{ place_content }} {{ text_align }} {% if style == 'inset' %}max-w-site mx-auto{% endif %}"
+  >
+    {%- capture content %}
+    {% if title != blank %}
+      <h2 class="font-heading img-txt-heading strong {{ heading_size }} heading-style {{ settings.heading_drop_shadow_style }}">
+        {{ title }}
+      </h2>
+    {% endif %}
+    {% if richtext != blank %}
+      <div class="rte text-theme-basic mt-5">
+        {{ richtext }}
+      </div>
+    {% endif %}
+
+    {% if cta_url != blank and cta_text != blank %}
+      <div class="relative z-10 mt-5">
+        <a class="inline-block push-btn" href="{{ cta_url }}">
+          <span class="push-btn-surface btn-arrow">
+            {{ cta_text }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+              <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    {% endif %}
+  {%- endcapture -%}
+
+    <div class="{% if style == 'inset' %}{{ content_inset_class }}{% endif %}">
+      {%- unless text_overlay_color != 'same_as_section'
+        and display_content_below_image_on_mobile == false
+      -%}
+        <div class="{% unless text_overlay_color == 'same_as_section' %}lg:hidden{% endunless %} {% if display_on_card == true %}{{ card_container_class }}{% endif %} {{ content_max_width }}">
+          {% if section.settings.rtxt != blank %}
+            <div class="breview-lp base">
+              <svg xmlns="http://www.w3.org/2000/svg" width="115" height="18" viewBox="0 0 115 18" fill="none">
+                <path d="M8.09375 1.5625C8.46875 0.8125 9.53125 0.84375 9.875 1.5625L11.9375 5.71875L16.5 6.375C17.3125 6.5 17.625 7.5 17.0312 8.09375L13.75 11.3125L14.5312 15.8438C14.6562 16.6562 13.7812 17.2812 13.0625 16.9062L9 14.75L4.90625 16.9062C4.1875 17.2812 3.3125 16.6562 3.4375 15.8438L4.21875 11.3125L0.9375 8.09375C0.34375 7.5 0.65625 6.5 1.46875 6.375L6.0625 5.71875L8.09375 1.5625ZM32.3438 1.5625C32.7188 0.8125 33.7812 0.84375 34.125 1.5625L36.1875 5.71875L40.75 6.375C41.5625 6.5 41.875 7.5 41.2812 8.09375L38 11.3125L38.7812 15.8438C38.9062 16.6562 38.0312 17.2812 37.3125 16.9062L33.25 14.75L29.1562 16.9062C28.4375 17.2812 27.5625 16.6562 27.6875 15.8438L28.4688 11.3125L25.1875 8.09375C24.5938 7.5 24.9062 6.5 25.7188 6.375L30.3125 5.71875L32.3438 1.5625ZM56.5938 1.5625C56.9688 0.8125 58.0312 0.84375 58.375 1.5625L60.4375 5.71875L65 6.375C65.8125 6.5 66.125 7.5 65.5312 8.09375L62.25 11.3125L63.0312 15.8438C63.1562 16.6562 62.2812 17.2812 61.5625 16.9062L57.5 14.75L53.4062 16.9062C52.6875 17.2812 51.8125 16.6562 51.9375 15.8438L52.7188 11.3125L49.4375 8.09375C48.8438 7.5 49.1562 6.5 49.9688 6.375L54.5625 5.71875L56.5938 1.5625ZM80.8438 1.5625C81.2188 0.8125 82.2812 0.84375 82.625 1.5625L84.6875 5.71875L89.25 6.375C90.0625 6.5 90.375 7.5 89.7812 8.09375L86.5 11.3125L87.2812 15.8438C87.4062 16.6562 86.5312 17.2812 85.8125 16.9062L81.75 14.75L77.6562 16.9062C76.9375 17.2812 76.0625 16.6562 76.1875 15.8438L76.9688 11.3125L73.6875 8.09375C73.0938 7.5 73.4062 6.5 74.2188 6.375L78.8125 5.71875L80.8438 1.5625ZM105.094 1.5625C105.469 0.8125 106.531 0.84375 106.875 1.5625L108.938 5.71875L113.5 6.375C114.312 6.5 114.625 7.5 114.031 8.09375L110.75 11.3125L111.531 15.8438C111.656 16.6562 110.781 17.2812 110.062 16.9062L106 14.75L101.906 16.9062C101.188 17.2812 100.312 16.6562 100.438 15.8438L101.219 11.3125L97.9375 8.09375C97.3438 7.5 97.6562 6.5 98.4688 6.375L103.062 5.71875L105.094 1.5625Z" fill="black"/>
+              </svg>
+              {{ section.settings.rtxt }}</div>
+          {% endif %}
+          <div class="break-words {% if display_on_card == true %}{{ card_content_class }}{% endif %} ">
+            {{ content }}
+          </div>
+          {% if display_on_card and settings.card_show_border_on_shadow -%}
+            <div class="{{ card_border_class }}"></div>
+          {%- endif %}
+        </div>
+      {%- endunless -%}
+
+      {% unless text_overlay_color == 'same_as_section' %}
+        <div
+          class="{% unless text_overlay_color != 'same_as_section' and display_content_below_image_on_mobile == false %}hidden lg:block{% endunless %} {% if display_on_card == true %}{{ card_container_class }} {% endif %}  {{ content_max_width }} text-scheme-text"
+          data-color-scheme="{{ text_overlay_color }}"
+        >
+          <div class="break-words {% if display_on_card == true %}{{ card_content_class }}{% endif %}">
+            {{ content }}
+          </div>
+          {% if display_on_card and settings.card_show_border_on_shadow -%}
+            <div class="{{ card_border_class }}"></div>
+          {%- endif %}
+        </div>
+      {% endunless %}
+    </div>
+  </div>
+</div>

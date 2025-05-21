@@ -1,0 +1,520 @@
+<style>
+{% if template contains 'page' and page.handle == 'tracking-genie' %}
+  h1.text-center.font-heading.heading-feature.heading-style.full_shadow{
+    font-size: var(--heading2-font-size);
+    line-height: var(--heading2-line-height);
+    text-transform: none;
+  }
+  form#tg-form {
+    text-align: center;
+}
+  span.tg-label-input{
+    color: var(--color-dark);
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    text-transform: none;
+    font-family: 'sofia-pro';
+    text-align: left;
+    max-width: 400px;
+    margin: auto;
+  }
+  input#tg-input-order, input#tg-input-email {
+    border: 1px solid var(--fade-border);
+    box-shadow: unset;
+    outline: none !important;
+    font-weight: var(--normal);
+    font-family: var(--base-font-size);
+    line-height: var(--base-line-height);
+    height: 40px;
+    padding: 6px 16px 10px;
+    border-radius: 50px;
+    font-family: 'sofia-pro' !important;
+}
+  button#tg-send-button {
+    background: var(--color-light) !important;
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    padding: 6px 24px 10px;
+    gap: 12px;
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    font-weight: var(--strong);
+    border: 1px solid var(--fade-border) !important;
+    font-family: 'sofia-pro';
+    border-radius: 50px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    max-width: 300px;
+    margin: auto;
+}
+  button#tg-send-button:hover {
+    background: var(--color-dark) !important;
+    color: var(--color-light) !important;
+  }
+{% endif %}
+{% if template == 'index' %}
+  section#AnnouncementBar{
+    background-color: var(--salted-caramel-light) !important;
+    /* background-color: #FD685F !important; */
+    /* background-color: #478F65 !important; */
+    /* color: #fff !important; */
+  }
+{% endif %}
+section#AnnouncementBar{
+  background-color: #E8FDEC;
+}
+{% if template.suffix == 'bundlebuilder' or page.handle == 'privacy-policy' or page.handle == 'terms-and-conditions' or page.handle == 'shipping-and-delivery' or page.handle == 'returns-and-exchanges' %}
+  section#AnnouncementBar{
+    background-color: var(--honey-medium);
+  }
+{% endif %}
+{% unless template contains 'index' or template.suffix == 'strawberry' or template.suffix == 'strawberry-spf' or template.suffix == 'bundles' %}
+  footer[data-color-scheme]{
+      background-color: var(--honey-light);
+  }
+  section.newz-letter{
+    background-color: var(--honey-medium);
+  }
+{% endunless %}
+{% if template contains 'product' and template.suffix == 'strawberry' or template.suffix == 'strawberry-spf' or template.suffix == 'strawberry-applicators' or template.suffix == 'strawberry-ls' %}
+  section#AnnouncementBar{
+    background-color: var(--strawberry-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--strawberry-light);
+  }
+  section.newz-letter{
+    background-color: var(--strawberry-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'honey' or template.suffix == 'classic' or template.suffix == 'all_flavour' or template.suffix == 'honey-spf' or template.suffix == 'honey-applicators' or template.suffix == 'totebag'  or template.suffix == 'honey-ls' or template.suffix == 'caramelized-pear' %}
+  section#AnnouncementBar{
+    background-color: var(--honey-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'chocolate' %}
+  section#AnnouncementBar{
+    background-color: var(--chocolate-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--chocolate-light);
+  }
+  section.newz-letter{
+    background-color: var(--chocolate-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'cherry' or template.suffix == 'cherry-spf' or template.suffix == 'cherry-applicators' %}
+  section#AnnouncementBar{
+    background-color: var(--cherry-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--cherry-light);
+  }
+  section.newz-letter{
+    background-color: var(--cherry-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'coconut' or template.suffix == 'coconut-spf' or template.suffix == 'coconut-applicators' %}
+  section#AnnouncementBar{
+    background-color: var(--coconut-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--coconut-light);
+  }
+  section.newz-letter{
+    background-color: var(--coconut-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'applicator-set' %}
+  section#AnnouncementBar{
+    background-color: var(--coconut-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--coconut-light);
+  }
+  section.newz-letter{
+    background-color: var(--coconut-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'vanilla' or template.suffix == 'vanilla-applicators' %}
+  section#AnnouncementBar{
+    background-color: var(--vanilla-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--vanilla-light);
+  }
+  section.newz-letter{
+    background-color: var(--vanilla-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'mint' or template.suffix == 'mint-applicators' or template.suffix == 'spf_all_flavours' %}
+  footer[data-color-scheme]{
+      background-color: var(--mint-light);
+  }
+  section.newz-letter{
+    background-color: var(--mint-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'watermelon' %}
+  section#AnnouncementBar{
+    background-color: var(--watermelon-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--watermelon-light);
+  }
+  section.newz-letter{
+    background-color: var(--watermelon-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'pumpkin' %}
+  section#AnnouncementBar{
+    background-color: var(--pumpkin-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--pumpkin-light);
+  }
+  section.newz-letter{
+    background-color: var(--pumpkin-medium);
+  }
+{% endif %}
+{% if template.suffix == 'mystery' or template.suffix == 'mystery-balm' %}
+  section#AnnouncementBar{
+    background-color: var(--mystery-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--mystery-light);
+  }
+  section.newz-letter{
+    background-color: var(--mystery-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'candy-cane' %}
+  section#AnnouncementBar{
+    background-color: var(--candy-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--candy-light);
+  }
+  section.newz-letter{
+    background-color: var(--candy-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'caramelized-pear' %}
+  section#AnnouncementBar{
+    background-color: var(--caramelized-pear-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--caramelized-pear-light);
+  }
+  section.newz-letter{
+    background-color: var(--caramelized-pear-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'blueberry' %}
+  section#AnnouncementBar{
+    background-color: var(--blueberry-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--blueberry-light);
+  }
+  section.newz-letter{
+    background-color: var(--blueberry-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'red-pepper' %}
+  section#AnnouncementBar{
+    background-color: var(--red-pepper-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--red-pepper-light);
+  }
+  section.newz-letter{
+    background-color: var(--red-pepper-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'pineapple' %}
+  section#AnnouncementBar{
+    background-color: var(--pineapple-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--pineapple-light);
+  }
+  section.newz-letter{
+    background-color: var(--pineapple-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'rose-cardamom' %}
+  section#AnnouncementBar{
+    background-color: var(--rose-cardamom-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--rose-cardamom-light);
+  }
+  section.newz-letter{
+    background-color: var(--rose-cardamom-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'lavender-chamomille' %}
+  section#AnnouncementBar{
+    background-color: var(--lavender-chamomille-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--lavender-chamomille-light);
+  }
+  section.newz-letter{
+    background-color: var(--lavender-chamomille-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'hibiscus-citrus' %}
+  section#AnnouncementBar{
+    background-color: var(--hibiscus-citrus-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--hibiscus-citrus-light);
+  }
+  section.newz-letter{
+    background-color: var(--hibiscus-citrus-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'lemon-cheesecake' %}
+  section#AnnouncementBar{
+    background-color: var(--lemon-cheesecake-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--lemon-cheesecake-light);
+  }
+  section.newz-letter{
+    background-color: var(--lemon-cheesecake-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'salted-caramel' %}
+  section#AnnouncementBar{
+    background-color: var(--salted-caramel-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--salted-caramel-light);
+  }
+  section.newz-letter{
+    background-color: var(--salted-caramel-medium);
+  }
+{% endif %}
+</style>
+
+{% if  page.handle == 'privacy-policy' or page.handle == 'terms-and-conditions' or page.handle == 'shipping-and-delivery' or page.handle == 'returns-and-exchanges' %}
+<style>
+  h1{
+    font-size: var(--heading2-font-size) !important;
+    line-height: var(--heading2-line-height) !important;
+    text-align: left !important;
+    text-transform: none !important;
+  }
+  h1 span{
+    font-family: var(--font-family2)  !important;
+    font-style: italic  !important;
+    font-weight: 500  !important;
+  }
+  .section-content.py-section-vertical-spacing.px-section.max-w-3xl.mx-auto {
+    max-width: 900px;
+  }
+  @media only screen and (max-width: 990px) {
+    .card.p-5.lg\:p-10 {
+      padding: 0;
+    }
+  }
+</style>
+{% endif %}
+<style>
+{% if template contains 'product' and template.suffix == 'sorbet' %}
+  section#AnnouncementBar{
+    background-color: var(--sorbet-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--sorbet-light);
+  }
+  section.newz-letter{
+    background-color: var(--sorbet-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'exotic' %}
+  section#AnnouncementBar{
+    background-color: var(--exotic-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--exotic-light);
+  }
+  section.newz-letter{
+    background-color: var(--exotic-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'valentine_pack' %}
+  section#AnnouncementBar{
+    background-color: var(--valentine-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--valentine-light);
+  }
+  section.newz-letter{
+    background-color: var(--valentine-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'mother-day' %}
+  section#AnnouncementBar{
+    background-color: var(--strawberry-medium);
+  }
+  footer[data-color-scheme]{
+      background-color: var(--strawberry-light);
+  }
+  section.newz-letter{
+    background-color: var(--strawberry-medium);
+  }
+{% endif %}
+{% if template contains 'product' and template.suffix == 'sorbet' or template.suffix == 'exotic' or template.suffix == 'all_flavour' or template.suffix == 'classic' or template.suffix == 'mothers-day' or template.suffix == 'spf_all_flavours' or template.suffix == 'mother-day' or template.suffix == 'valentine_pack' %}
+  .ing-tab-wrap{
+    display: none;
+  }
+{% endif %}
+</style>
+
+{% if template contains 'product' and product.handle == 'applicator-replacement-set' or product.handle == 'hb-mystery-balm' or product.handle == 'hb-red-pepper' or product.handle == 'hb-lavender-chamomille' 
+   or product.handle == 'hb-strawberry-spf' or product.handle == 'spf-try-out-box' or product.handle == 'hb-lemon-cheesecake' %}
+<style>
+  .pdp-off.base.normal {
+    display: block !important;
+  }
+  .product-media {
+    opacity: 0.5;
+  }
+  
+  .container .grid .sold_out.base.normal{
+  background: var(--alert-red);
+  color: var(--color-light);
+  border-radius: 4px;
+  z-index: 9;
+  padding: 0 10px 3px;
+  margin-top: 3rem;
+  margin-left: 4rem;
+  position: absolute;
+  flex: 0 0 auto;
+}
+</style>
+{% endif %}
+
+<style>
+a.mystery.mystery-balm,
+a.red-pepper.red-pepper,
+a.lavender-chamomille.lavender-chamomille,
+a.coconut.spf-try-out-box,
+a.lemon-cheesecake.lemon-cheesecake{
+    opacity: 0.5;
+}
+
+{% if product.handle contains '-spf' %}
+a.strawberry.strawberry {
+    opacity: 0.5;
+}
+{% endif %}
+
+.custom-select .pdp-off.base.normal.out_of_stock {
+    margin: 0;
+    /* margin-left: auto; */
+    margin-right: 10px;
+    line-height: 6px;
+    padding: 9px 10px 12px;
+}
+.menu-img-wrap.mystery.balm, .menu-img-wrap.mystery.balm ~ div,
+.menu-img-wrap.red.pepper, .menu-img-wrap.red.pepper ~ div,
+.menu-img-wrap.lavender.chamomille, .menu-img-wrap.lavender.chamomille ~ div,
+.menu-img-wrap.strawberry.spf, .menu-img-wrap.strawberry.spf ~ div,
+.menu-img-wrap.spf.try-out.box, .menu-img-wrap.spf.try-out.box ~ div,
+.menu-img-wrap.lemon.cheesecake, .menu-img-wrap.lemon.cheesecake ~ div{
+    opacity: 0.5;
+}
+</style>
+
+
+{% if page.handle == 'tracking-genie' %}
+  <style>
+    div#tg-table-container {
+      margin-top: 2rem;
+    }
+    table.tg-table-items th {
+        font-family: 'sofia-pro' !important;
+        font-weight: bold !important;
+        background: var(--honey-light) !important;
+        border-radius: 8px;
+    }
+    table.tg-table-items {
+      width: 100%;
+    }
+
+    table.tg-table-items td, table.tg-table-items th {
+      border-color: white !important;
+    }
+    table.tg-table-items tbody tr td{
+      background: var(--natural-bg);
+      border-radius: 8px;
+      font-family: 'sofia-pro';
+    }
+    #tg-table-schema .container-chart {
+      border: 0;
+      /* background: var(--natural-bg) !important; */
+      /* padding: 2rem; */
+      padding-top: 1rem;
+    }
+    div#tg-table-schema h2 {
+      font-family: 'sofia-pro';
+      text-transform: none;
+    }
+    .progress-bar-container {
+      border: 0px !important;
+    }
+    .container-chart > div > div {
+      margin-top: 1rem;
+    }
+    .container-chart > div > span {
+      color: black !important;
+      font-weight: 600 !important;
+      font-size: var(--heading2-font-size) !important;
+      letter-spacing: 0 !important;
+    }
+  .container-chart > div > span * {
+    color: black !important;
+  }
+  .container-chart > div > span:nth-child(2) {
+    font-family: var(--font-family2);
+    font-weight: 500 !important;
+    font-style: italic;
+  }
+  div#tg-table-schema h2 > * {
+    line-height: 22px;
+  }
+  .container-chart .progress-bar-container {
+    border: 0px !important;
+    background: var(--natural-bg) !important;
+    border-radius: 8px !important;
+  }
+  .progress-bar.processed {
+    border-radius: 8px !important;
+  }
+  .container-chart .tg-state-1 date{
+    font-family: var(--font-family2) !important;
+    font-style: italic;
+  }
+  table.tg-table-items {
+    border-collapse: separate;
+    border: 0;
+  }
+  </style>
+{% endif %}
+{% if product.handle contains 'scrub' %}
+  <style>
+  .spf-switch-outerwrap {
+    display: none !important;
+  }
+  .choose-text.base.strong {
+    display: none !important;
+  }
+  </style>
+{% endif %}

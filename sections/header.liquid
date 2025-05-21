@@ -1,0 +1,1347 @@
+{% comment %}theme-check-disable TemplateLength{% endcomment %}
+{%- liquid
+  assign color_scheme = section.settings.color_scheme | default: 'primary'
+  assign layout = section.settings.header_layout
+  assign uppercase = settings.header_uppercase
+  assign base_font_class = settings.header_font
+  assign dropdown_bg = section.settings.dropdown_bg
+  assign crop = section.settings.crop
+  assign predictive_search_enabled = true
+  assign counter = 0
+  assign show_icons = section.settings.show_icons
+
+  if section.settings.transparent_when_overlaid_and_stuck
+    assign change_color_scheme_when_overlaid_and_stuck = false
+  else
+    assign change_color_scheme_when_overlaid_and_stuck = true
+  endif
+
+  if section.settings.enable_overlay_on_homepage and template == 'index'
+    assign enable_overlay = true
+  endif
+  if section.settings.enable_overlay_on_collection_pages and template contains 'collection' and template != 'list-collections'
+    assign enable_overlay = true
+  endif
+  if section.settings.enable_overlay_on_product_pages and template contains 'product'
+    assign enable_overlay = true
+  endif
+  if section.settings.overlay_text_color != 'same_as_section' and enable_overlay
+  assign color_scheme = section.settings.overlay_text_color
+
+  if change_color_scheme_when_overlaid_and_stuck
+    assign stuck_color_scheme = section.settings.color_scheme
+  endif
+
+  endif
+  assign has_feature_desktop_button = false
+  if section.blocks.size == 1
+    assign has_feature_desktop_button = true
+  endif
+  case dropdown_bg
+    when 'card'
+      assign dropdown_background = 'bg-scheme-card'
+      assign dropdown_text = 'text-scheme-text'
+    when 'text'
+      assign dropdown_background = 'bg-scheme-text'
+      assign dropdown_text = 'text-scheme-background'
+    when 'accent-1'
+      assign dropdown_background = 'bg-scheme-accent-1'
+      assign dropdown_text = 'text-scheme-accent-1-overlay'
+    when 'accent-1'
+      assign dropdown_background = 'bg-scheme-accent-1'
+      assign dropdown_text = 'text-scheme-accent-1-overlay'
+  endcase
+  assign predictive_search_enabled = settings.predictive_search_enabled
+-%}
+{%- capture logo -%}
+  {%- assign class = 'font-heading text-xl lg:text-3xl py-2.5' -%}
+  {%- if template == 'index' -%}
+    <h1 class="h1 font-heading {{ class }}">
+  {%- else -%}
+    <div class="h1 font-heading {{ class }}">
+  {%- endif -%}
+    {% if section.settings.logo != blank %}
+      {% liquid
+        if section.settings.overlay_logo != blank and enable_overlay
+          assign logo = section.settings.overlay_logo
+          if change_color_scheme_when_overlaid_and_stuck
+            assign switch_between_both_logos = true
+          endif
+        else
+          assign logo = section.settings.logo
+        endif
+
+        assign image_size = section.settings.logo_max_width
+        assign image_size_2x = section.settings.logo_max_width | times: 2
+        assign image_size_3x = section.settings.logo_max_width | times: 3
+      %}
+      <a href="{{ routes.root_url }}" class="site-header__logo-link inline w-full">
+        <div {% if switch_between_both_logos %} class="relative" {% endif %} style="max-width: {{ section.settings.logo_max_width }}px;">
+          <div class="dsk-log" style="width: {{ section.settings.logo_max_width }}px;">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 769.04 157.57">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: #000;
+                    stroke-width: 0px;
+                  }
+                </style>
+              </defs>
+              <g id="Laag_1" data-name="Laag 1">
+                <g>
+                  <path class="cls-1" d="M232.71,41.52v25.52c.66-.77,1.44-1.55,2.32-2.32.89-.77,1.99-1.55,3.1-2.21,1.22-.66,2.54-1.22,4.2-1.66,1.55-.44,3.43-.66,5.42-.66,2.21,0,4.54.44,6.97,1.22,2.32.77,4.54,2.1,6.42,3.76,1.88,1.66,3.54,3.76,4.76,6.3,1.22,2.54,1.88,5.41,1.88,8.84v37.12h-13.72v-31.04c0-1.77-.11-3.43-.33-4.97-.22-1.55-.66-2.87-1.44-4.09-.66-1.22-1.77-2.1-3.21-2.87-1.44-.66-3.21-.99-5.53-.99s-4.31.33-5.75.99c-1.44.66-2.54,1.66-3.32,2.87-.77,1.22-1.33,2.54-1.55,4.09-.22,1.55-.33,3.2-.33,4.97l.22,31.04h-13.83V41.52h13.72Z"/>
+                  <path class="cls-1" d="M277.96,88.92c0-3.87.33-7.29,1.11-10.27.77-2.98,1.77-5.41,2.99-7.62,1.22-2.1,2.66-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.87-2.1,8.41-3.2,13.39-3.43,4.98.11,9.4,1.22,13.28,3.43,1.66.88,3.32,2.1,4.87,3.53,1.55,1.44,2.99,3.2,4.31,5.3,1.22,2.1,2.21,4.64,2.99,7.62.77,2.98,1.22,6.3,1.22,10.27s-.44,7.29-1.22,10.27c-.77,2.87-1.77,5.41-2.99,7.51-1.22,2.1-2.66,3.87-4.31,5.19-1.66,1.44-3.21,2.54-4.87,3.43-3.87,1.99-8.3,3.09-13.28,3.2-4.98,0-9.51-1.1-13.39-3.2-1.66-.88-3.32-1.99-4.87-3.43-1.66-1.44-2.99-3.09-4.31-5.19-1.22-2.1-2.21-4.64-2.99-7.51-.77-2.98-1.11-6.3-1.11-10.27ZM304.62,72.13c-2.77,0-4.98.55-6.75,1.66-1.66,1.1-2.99,2.54-3.87,4.2-.89,1.66-1.55,3.53-1.77,5.41-.22,1.88-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.77,5.41.89,1.66,2.21,3.09,3.87,4.2,1.66,1.1,3.87,1.66,6.75,1.66s4.98-.55,6.75-1.66c1.66-1.1,2.99-2.54,3.87-4.2.89-1.66,1.55-3.54,1.77-5.41.33-1.99.44-3.76.44-5.41s-.11-3.42-.44-5.41c-.33-1.99-.89-3.76-1.77-5.41-.89-1.66-2.21-3.09-3.87-4.2-1.66-1.1-3.87-1.66-6.75-1.66Z"/>
+                  <path class="cls-1" d="M366.57,58.87h2.43c1.44,0,2.99.44,4.87.99,1.88.55,3.87,1.44,5.97,2.65,2.1,1.22,4.09,2.87,5.86,5.19,1.77,2.21,3.32,5.08,4.43,8.51,1.11,3.43,1.77,7.62,1.77,12.59v28.39h-13.72v-28.39c0-1.66-.11-3.31-.44-5.08-.33-1.77-.89-3.31-1.66-4.75-.77-1.44-1.99-2.65-3.54-3.53-1.55-.88-3.54-1.44-5.97-1.44s-4.43.44-5.97,1.44c-1.55.99-2.66,2.1-3.54,3.53-.77,1.44-1.44,2.98-1.66,4.75-.33,1.77-.44,3.43-.44,5.08v28.39h-13.72v-28.39c0-4.97.55-9.28,1.77-12.59,1.22-3.42,2.66-6.19,4.42-8.51,1.77-2.21,3.76-3.98,5.86-5.19,2.1-1.22,4.09-2.1,5.97-2.65,1.88-.55,3.54-.88,4.87-.99h2.43Z"/>
+                  <path class="cls-1" d="M455.07,81.63c.11,1.1.33,2.32.44,3.53,0,1.22.22,2.43.22,3.87v1.99h-39.38c.11,1.33.33,2.54.55,3.87.22,1.33.55,2.65,1.11,3.87.77,1.99,2.1,3.65,3.87,5.19,1.77,1.55,4.09,2.21,7.19,2.21s5.53-.77,7.19-2.21c1.66-1.44,2.98-3.2,3.87-5.19h14.6c-.56,2.65-1.44,4.86-2.55,6.85-1.11,1.99-2.32,3.65-3.65,5.08-1.33,1.44-2.77,2.65-4.21,3.54-1.44.88-2.98,1.66-4.42,2.32-3.43,1.33-7.08,1.99-10.95,1.99-4.98,0-9.51-1.1-13.39-3.2-1.66-.88-3.32-1.99-4.87-3.43-1.66-1.44-2.99-3.09-4.31-5.19-1.22-2.1-2.21-4.64-2.99-7.51-.77-2.98-1.11-6.3-1.11-10.27s.33-7.29,1.11-10.27c.77-2.98,1.77-5.41,2.99-7.62,1.22-2.1,2.66-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.87-2.1,8.41-3.2,13.39-3.43,4.09.11,7.96.99,11.62,2.54,1.55.66,2.98,1.55,4.54,2.65,1.55,1.1,2.98,2.43,4.31,4.09,1.33,1.66,2.43,3.54,3.54,5.74.99,2.21,1.77,4.75,2.22,7.73l-.11.11ZM440.91,81.63c-.33-1.22-.89-2.43-1.44-3.65-.55-1.22-1.33-2.32-2.32-3.2-.99-.88-2.1-1.77-3.54-2.32-1.33-.55-2.88-.88-4.76-.88s-3.43.33-4.76.88c-1.33.55-2.54,1.33-3.54,2.32-1,.99-1.77,2.1-2.32,3.2-.55,1.1-1.11,2.43-1.33,3.65h24.01Z"/>
+                  <path class="cls-1" d="M499.43,125.16c-.77,2.65-2.1,4.64-3.76,6.19-1.66,1.44-3.32,2.54-5.09,3.31-1.99.88-4.09,1.44-6.3,1.66h-17.81v-13.15h11.51c2.21,0,3.65-.33,4.53-.88.78-.55,1.33-1.22,1.55-1.99.22-.77.11-1.77-.22-2.87l-18.37-56.9h13.83l13.28,44.08,13.27-44.08h13.83l-20.36,64.74.11-.11Z"/>
+                  <path class="cls-1" d="M540.92,71.57c1.33-3.2,2.88-5.52,4.87-7.29,1.99-1.77,3.87-2.98,5.75-3.76,2.21-.88,4.42-1.44,6.75-1.66,4.64.11,8.74,1.22,12.39,3.42,1.55.88,3.09,2.1,4.53,3.54,1.44,1.44,2.77,3.2,3.98,5.3,1.11,2.1,2.1,4.64,2.77,7.62.66,2.87,1.1,6.3,1.1,10.27s-.44,7.29-1.22,10.27c-.77,2.87-1.77,5.41-2.98,7.51-1.22,2.1-2.65,3.87-4.31,5.19-1.66,1.44-3.21,2.54-4.87,3.42-3.87,1.99-8.29,3.09-13.27,3.2-4.98,0-9.29-1.1-13.16-3.2-1.66-.88-3.32-1.99-4.87-3.42-1.55-1.44-2.99-3.09-4.21-5.3-1.22-2.21-2.21-4.64-2.98-7.62-.78-2.87-1.11-6.3-1.11-10.27v-47.28h13.39v26.85l-2.43,3.2h-.11ZM556.41,105.71c2.76,0,4.98-.55,6.75-1.66,1.66-1.1,2.99-2.54,3.87-4.2.89-1.66,1.55-3.54,1.77-5.41.33-1.99.44-3.76.44-5.41s-.11-3.42-.44-5.41c-.33-1.99-.89-3.76-1.77-5.41-.88-1.66-2.21-3.09-3.87-4.2-1.66-1.1-3.87-1.66-6.75-1.66s-4.98.55-6.75,1.66c-1.66,1.1-2.99,2.54-3.98,4.2-.89,1.66-1.55,3.54-1.88,5.41-.33,1.99-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.88,5.41.89,1.66,2.21,3.09,3.98,4.2,1.77,1.1,3.87,1.66,6.75,1.66Z"/>
+                  <path class="cls-1" d="M646.35,117.42h-13.39v-7.84l2.43-3.31c-1.33,3.2-2.88,5.52-4.87,7.18-1.99,1.66-3.87,2.87-5.75,3.65-2.22.77-4.43,1.33-6.75,1.44-4.64,0-8.74-1.1-12.39-3.2-1.55-.88-3.1-1.99-4.54-3.43-1.44-1.44-2.77-3.09-3.98-5.19-1.1-2.1-2.1-4.64-2.76-7.51-.66-2.98-1.11-6.3-1.11-10.27s.33-7.29,1.11-10.27c.77-2.98,1.77-5.41,2.98-7.62,1.22-2.1,2.65-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.88-2.1,8.41-3.2,13.39-3.43,4.76,0,8.74.66,12.06,2.1,3.32,1.44,5.97,3.43,8.19,5.97,2.1,2.54,3.65,5.74,4.64,9.39.99,3.76,1.44,7.95,1.44,12.59v28.28l.11.33ZM620.02,72.13c-2.77,0-4.98.55-6.75,1.66-1.66,1.1-2.99,2.54-3.88,4.2-.88,1.66-1.55,3.53-1.77,5.41-.33,1.99-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.77,5.41.89,1.66,2.22,3.09,3.88,4.2,1.66,1.1,3.87,1.66,6.75,1.66s4.98-.55,6.75-1.66c1.77-1.1,2.98-2.54,3.98-4.2.88-1.66,1.55-3.54,1.88-5.41.33-1.99.44-3.76.44-5.41,0-1.99-.11-3.98-.44-5.97-.33-1.99-.77-3.76-1.66-5.41-.89-1.66-2.1-2.87-3.88-3.87-1.77-.99-4.09-1.44-6.97-1.44h-.11Z"/>
+                  <path class="cls-1" d="M670.8,41.52v75.9h-13.72V41.52h13.72Z"/>
+                  <path class="cls-1" d="M718.48,88.92c0-1.66,0-3.31-.33-5.08-.22-1.77-.66-3.31-1.44-4.75-.77-1.44-1.88-2.65-3.43-3.53-1.55-.88-3.65-1.44-6.53-1.44s-4.98.44-6.53,1.44c-1.55.99-2.65,2.1-3.43,3.53-.77,1.44-1.22,2.98-1.44,4.75-.22,1.77-.33,3.43-.33,5.08v28.39h-13.72v-28.39c0-3.87.33-7.29,1.1-10.27.77-2.98,1.66-5.41,2.88-7.62,1.22-2.1,2.55-3.87,4.09-5.3,1.55-1.44,2.99-2.54,4.65-3.53,3.65-2.1,7.96-3.2,12.72-3.43,4.76.11,8.96,1.22,12.61,3.43,1.55.88,3.09,2.1,4.64,3.53,1.55,1.44,2.88,3.2,4.09,5.3,1.11,2.1,2.1,4.64,2.88,7.62.77,2.87,1.11,6.3,1.11,10.27v28.39h-13.72v-28.39h.11ZM755.43,88.92c0-1.66,0-3.31-.33-5.08-.22-1.77-.66-3.31-1.44-4.75-.77-1.44-1.88-2.65-3.43-3.53-1.55-.88-3.65-1.44-6.53-1.44s-4.98.44-6.53,1.44c-1.55.99-2.65,2.1-3.43,3.53-.78,1.44-1.22,2.98-1.44,4.75-.22,1.77-.33,3.43-.33,5.08v28.39h-13.72v-28.39c0-3.87.33-7.29,1.11-10.27.77-2.98,1.66-5.41,2.88-7.62,1.22-2.1,2.54-3.87,4.09-5.3,1.55-1.44,2.98-2.54,4.64-3.53,3.65-2.1,7.96-3.2,12.72-3.43,4.76.11,8.96,1.22,12.61,3.43,1.55.88,3.1,2.1,4.64,3.53,1.55,1.44,2.88,3.2,4.09,5.3,1.11,2.1,2.1,4.64,2.88,7.62.78,2.98,1.11,6.3,1.11,10.27v28.39h-13.72v-28.39h.11Z"/>
+                  <path class="cls-1" d="M145.38,47.22h-20.04c-1.59-10.79-7.43-20.18-15.75-26.31l12.94-13.25c1.7-1.74,1.7-4.62,0-6.36-1.7-1.74-4.51-1.74-6.21,0l-14.72,15.07c-4.55-1.89-9.5-2.99-14.72-2.99s-10.17,1.06-14.72,2.99L57.43,1.31c-1.7-1.74-4.51-1.74-6.21,0-1.7,1.74-1.7,4.62,0,6.36l12.94,13.25c-8.32,6.13-14.13,15.52-15.75,26.31h-20.04c-15.64,0-28.37,13.02-28.37,29.03s12.72,29.03,28.37,29.03h20.04c.78,5.22,2.51,10.11,5.07,14.46.15.38.37.68.59,1.02,6.18,9.84,16.46,16.73,28.33,18.13v14.16c0,2.5,1.96,4.5,4.4,4.5s4.4-2.01,4.4-4.5v-14.16c11.91-1.36,22.19-8.29,28.33-18.13.22-.3.44-.64.59-1.02,2.55-4.35,4.33-9.24,5.07-14.46h20.04c15.64,0,28.36-13.02,28.36-29.03s-12.72-29.03-28.36-29.03h.15ZM86.87,130.12c-7.51,0-14.39-2.84-19.64-7.53h39.31c-5.29,4.66-12.13,7.53-19.64,7.53h-.04ZM117.01,56.19v6.93h-60.24v-6.93h60.24ZM56.77,72.13h60.24v7.34h-60.24v-7.34ZM60.24,113.62c-1.33-2.57-2.33-5.38-2.88-8.33h59.1c-.55,2.95-1.55,5.75-2.88,8.33h-53.33ZM56.77,96.28v-7.8h60.24v7.8h-60.24ZM86.87,22.35c14.61,0,26.81,10.71,29.55,24.87h-59.1c2.74-14.16,14.94-24.87,29.55-24.87ZM8.84,76.26c0-11.05,8.76-20.02,19.56-20.02h19.56v40.05h-19.56c-10.8,0-19.56-8.97-19.56-20.02ZM145.38,96.28h-19.56v-40.05h19.56c10.8,0,19.56,8.97,19.56,20.02s-8.76,20.02-19.56,20.02Z"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <!-- <img
+            src="{{ logo | image_url: width: image_size }}"
+            srcset="
+              {{- logo | image_url: width: image_size | append: ' 1x,' -}}
+              {{- logo | image_url: width: image_size_2x | append: ' 2x,' -}}
+              {{- logo | image_url: width: image_size_3x | append: ' 3x' -}}
+            "
+            alt="{{ shop.name }}"
+            width="{{ logo.width }}"
+            height="{{ logo.height }}"
+            loading="eager"
+            {% if switch_between_both_logos %}
+              class="transition-opacity text-transparent"
+              :class="{ 'opacity-100' : !isStuck, 'opacity-0' : isStuck }"
+            {% else %}
+              class="text-transparent"
+            {% endif %}
+          > -->
+          {% if switch_between_both_logos %}
+            {% assign non_overlay_logo = section.settings.logo %}
+            <img
+              src="{{ non_overlay_logo | image_url: width: image_size_2x }}"
+              srcset="
+              {{- non_overlay_logo | image_url: width: image_size | append: ' 1x,' -}}
+              {{- non_overlay_logo | image_url: width: image_size_2x | append: ' 2x,' -}}
+              {{- non_overlay_logo | image_url: width: image_size_3x | append: ' 3x' -}}
+              "
+              alt="{{ shop.name }}"
+              width="{{ non_overlay_logo.width }}"
+              height="{{ non_overlay_logo.height }}"
+              class="absolute inset-0 w-full h-full text-transparent transition-opacity"
+              :class="{ 'opacity-0' : !isStuck, 'opacity-100' : isStuck }"
+              loading="eager"
+              x-cloak
+            >
+          {% endif %}
+        </div>
+      </a>
+    {% else %}
+      <a href="{{ routes.root_url }}" class="block max-w-[12rem] sm:max-w-md lg:max-w-2xl xl:max-w-none break-words mx-auto">{{ shop.name }}</a>
+    {% endif %}
+  {%- if template == 'index' -%}
+    </h1>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+
+{%- if has_feature_desktop_button %}
+  {%- capture feature_desktop_link -%}
+    {%- for block in section.blocks -%}
+    {%- liquid
+      assign feature_desktop_link_position = block.settings.position
+      assign hide_button_shadow = false
+      if block.settings.hide_button_shadow
+        assign hide_button_shadow = true
+      endif
+    -%}
+    <a href="{{ block.settings.button_link }}" class="push-btn push-btn--pop inline-block {% if block.settings.hide_button_shadow %}push-btn--no-shadow{% endif %}">
+      <span class="push-btn-surface">{{ block.settings.button_label }}</span>
+    </a>
+    {%- endfor -%}
+  {%- endcapture -%}
+{% endif %}
+
+{%- liquid
+  assign link_all = section.settings.show_all_navigation_links
+  assign link_classes = base_font_class | append: ' px-2.5 py-5 flex items-center transition'
+  assign secondary_link_classes = 'inline-block font-body px-5 py-1'
+  assign tertiary_link_classes = 'inline-block font-body px-5 py-1 max-w-full break-words'
+  if uppercase
+    assign base_font_class = base_font_class | append: ' uppercase'
+    assign link_classes = link_classes | append: ' uppercase'
+    assign secondary_link_classes = secondary_link_classes | append: ' uppercase'
+    assign tertiary_link_classes = tertiary_link_classes | append: ' uppercase'
+  else
+    assign base_font_class = base_font_class | append: ' normal-case'
+    assign link_classes = link_classes | append: ' normal-case'
+    assign tertiary_link_classes = tertiary_link_classes | append: ' normal-case'
+  endif
+  if show_icons
+    assign icon_link_classes = base_font_class | append: ' px-2.5 py-1 h-full flex items-center'
+  endif
+  assign show_collection_images = section.settings.show_collection_images
+  assign showcase_second_level_links = section.settings.showcase_second_level_links
+  assign showcase_first_level_collections = section.settings.showcase_first_level_collections
+-%}
+{% capture navigation %}
+  <nav role="navigation cheader">
+    <ul  x-ref="navigation" class="flex flex-wrap -mx-2.5 {% if layout contains 'navigation_left' %}justify-start{% else %}justify-center{% endif %} items-center text-base {% if uppercase %}uppercase{% endif %} ">
+      {%- if has_feature_desktop_button and feature_desktop_link_position == 'first_item_in_navigation' %}
+      <li class="inline-block no-js-focus-wrapper h-full flex items-center relative z-10 px-2.5">
+        <div class="{% unless hide_button_shadow %}{% if settings.button_shadow_direction contains 'top' %}pt-button-shadow{% else %}pb-button-shadow{% endif %}{% endunless %}">
+          {{ feature_desktop_link }}
+        </div>
+      </li>
+      {%- endif -%}
+      {% for link in linklists[section.settings.main_linklist].links %}
+        <li class="inline-block no-js-focus-wrapper h-full csm-li">
+          {%- liquid
+            assign is_feature_collection_link = false
+            if link.links == blank and showcase_first_level_collections and link.type == 'collection_link'
+              assign is_feature_collection_link = true
+            endif
+          -%}
+          {% if link.links != blank or is_feature_collection_link %}
+            <button class="items-stretch h-full relative {{ link_classes }}"
+              :class="{'{{ dropdown_text }}': menuOpen.menu{{ counter }} }"
+              @click="openMenu({{ counter }})"
+              x-bind:aria-expanded="menuOpen.menu{{ counter }}? true: 'false'"
+              aria-controls="menu{{ counter }}">
+              <span x-cloak :class="{'opacity-100': menuOpen.menu{{ counter }}, 'opacity-0': !menuOpen.menu{{ counter }}, 'h-screen  -translate-y-1/2': !navWrapped }" class="{{ dropdown_background }} absolute inset-0 z-0 pointer-events-none" ></span>
+              <span class="flex h-full items-center relative {% if layout contains 'navigation_center' %}text-center{% else %}text-left{% endif %}">
+                <span class="inline-block pr-1">{{ link.title }}</span>
+                <span class="inline-block w-2 h-2 align-middle svg-scale mr-1 transform origin-center rotate transition-transform duration-150 ml-1" :class="{'rotate-180': menuOpen.menu{{ counter }}}">
+                  <!-- { % render 'icon-chevron-down' %} -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9" viewBox="0 0 14 9" fill="none">
+                    <path d="M13.7812 0.882843C13.9375 1.00784 13.9375 1.25784 13.7812 1.41409L7.25 7.94534C7.09375 8.10159 6.875 8.10159 6.71875 7.94534L0.1875 1.41409C0.03125 1.25784 0.03125 1.00784 0.1875 0.882843L0.78125 0.257843C0.9375 0.101593 1.1875 0.101593 1.3125 0.257843L7 5.91409L12.6562 0.257843C12.7812 0.101593 13.0312 0.101593 13.1875 0.257843L13.7812 0.882843Z" fill="black"/>
+                  </svg>
+                </span>
+              </span>
+            </button>
+            <div class="mega-outer-wrap">
+            <div class=" csm-mega-wrap no-js-focus-container absolute left-0 bottom-0 w-full transform translate-y-[calc(100%-var(--drop-down-offset))] z-100 {% if layout contains 'navigation_center' %}text-center{% elsif layout contains 'navigation_right'%}text-right{% endif %} max-h-three-quarters-screen-height overflow-hidden overflow-y-auto {{ dropdown_background }} {{ dropdown_text }}"
+                  id="menu{{ counter }}"
+                  x-cloak
+                  x-show="menuOpen.menu{{ counter }}"
+                  x-transition:enter="transition ease duration-200"
+                  x-transition:enter-start="opacity-0"
+                  x-transition:enter-end="opacity-100"
+                  x-transition:leave="transition ease duration-00"
+                  x-transition:leave-start="opacity-100"
+                  x-transition:leave-end="opacity-0"
+                  data-header-dropdown
+                  @focusout="focusOut($event, 'menu{{ counter }}')"
+                  @click.away.prevent="menuOpen.menu{{ counter }} = false">
+
+              {%- liquid
+                assign counter = counter | plus: 1
+                assign have_feature_links = false
+                assign all_feature_links = false
+                assign feature_link_count = 0
+                assign single_level_links = link.links | where: "levels", 0
+                assign product_links = single_level_links | where: "type", "product_link"
+                assign collection_links = single_level_links | where: "type", "collection_link"
+                assign feature_link_count = product_links.size | plus: collection_links.size
+                if feature_link_count > 0
+                  assign have_feature_links = true
+                endif
+                if feature_link_count == link.links.size
+                  assign all_feature_links = true
+                endif
+                assign list_class = 'flex items-top justify-start -mx-5'
+                assign col_class = 'px-5'
+                assign use_grid = false
+                if link.levels > 1
+                  assign use_grid = true
+                endif
+                if feature_link_count > 0 and showcase_second_level_links == true
+                  assign use_grid = true
+                endif
+                if collection_links.size > 0 and show_collection_images
+                  assign use_grid = true
+                endif
+                if use_grid
+                  assign list_class = 'grid grid-cols-1 lg:grid-cols-12 lg:gap-10 grid-flow-row-dense'
+                  assign col_class = 'lg:col-span-2'
+                endif
+              %}
+              <div class="container flex">
+              {%- unless is_feature_collection_link %}
+              <ul class="{{ list_class }} csm-mg-ul {% if layout contains 'navigation_center' %}text-center{% else %}text-left{% endif %}">
+                <li class="{{ col_class }}  mega-heading">
+                  <a class="base-lg strong" href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+                {% comment %}theme-check-enable LiquidTag{% endcomment %}
+                {% for child_link in link.links %}
+                  {% liquid
+                    assign is_feature_link = false
+                    if child_link.type == 'product_link' or child_link.type == 'collection_link' and child_link.levels == 0
+                      assign is_feature_link = true
+                    endif
+                  %}
+                  {%- unless is_feature_link and showcase_second_level_links -%}
+                    <li class="{{ col_class }} ">
+                      {% if child_link.links != blank %}
+                        {%- if child_link.type == 'collection_link' and show_collection_images -%}
+                          <div class="-mt-2">
+                            {%- assign object = child_link.object -%}
+                            {% render 'showcase-tile' with object: object, crop: crop %}
+                          </div>
+                        {%- endif -%}
+                        <h2 class="py-1 mb-2 child-mega {% if forloop.index == 1 %}active{% endif %}" handle="{{ child_link.title | handle }}">
+                          <span>
+                            {% if link_all %}<a {% if child_link.active %}aria-current="page"{% endif %} class="inline-block py-1" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>{% endif %}
+                            {{ child_link.title }}
+                            {% if link_all %}</a>{% endif %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="5" height="10" viewBox="0 0 5 10" fill="none">
+                              <path d="M0.46875 1.01172C0.566406 0.914062 0.703125 0.914062 0.800781 1.01172L4.90234 5.09375C4.98047 5.19141 4.98047 5.32812 4.90234 5.42578L0.800781 9.50781C0.703125 9.60547 0.566406 9.60547 0.46875 9.50781L0.078125 9.13672C0 9.03906 0 8.88281 0.078125 8.80469L3.61328 5.25L0.078125 1.71484C0 1.63672 0 1.48047 0.078125 1.38281L0.46875 1.01172Z" fill="black"/>
+                            </svg>
+                          </span>
+                        </h2>
+                        <!-- <ul class="-mx-5 font-body text-base ">
+                          { % for grandchild_link in child_link.links %}
+                            <li>
+                              <a { % if grandchild_link.active %}aria-current="page"{ % endif %} href="{{ grandchild_link.url }}" class="{{ tertiary_link_classes }}">
+                                { { grandchild_link.title }}
+                              </a>
+                            </li>
+                          { % endfor %}
+                        </ul> -->
+                      {% else %}
+                        {%- if child_link.type == 'collection_link' and show_collection_images -%}
+                          {%- assign object = child_link.object -%}
+                          {% render 'showcase-tile' with object: object, crop: crop %}
+                        {%- else -%}
+                          <a {% if child_link.active %}aria-current="page"{% endif %} href="{{ child_link.url }}" class="base normal text-base {{ secondary_link_classes }} {{ child_link.title | handle }}">
+                            {{ child_link.title }} 
+                          </a>
+                        {%- endif -%}
+                      {% endif %}
+                    </li>
+                  {%- endunless -%}
+                {% endfor %}
+
+                {% comment %}theme-check-disable LiquidTag{% endcomment %}
+                {%- if have_feature_links and showcase_second_level_links -%}
+                  {% assign features_mod = feature_link_count | modulo: 2 %}
+                  {% for child_link in link.links %}
+                      {%- if child_link.type == 'product_link' or child_link.type == 'collection_link' and child_link.levels == 0 -%}
+                        {% if features_mod == 0 %}
+                          {% capture cycle_class %}{% cycle "lg:col-end-11", "lg:col-end-13" %}{% endcapture %}
+                        {% else %}
+                          {% capture cycle_class %}{% cycle "lg:col-end-13", "lg:col-end-11" %}{% endcapture %}
+                        {% endif %}
+                        <li class="lg:col-span-2 {% unless all_feature_links %}{{ cycle_class }}{% endunless %} -mt-2">
+                          {%- assign object = child_link.object -%}
+                          {% render 'showcase-tile' with object: object, crop: crop %}
+                        </li>
+                      {%- endif -%}
+                  {% endfor %}
+                {%- endif -%}
+                {% comment %}theme-check-enable LiquidTag{% endcomment %}
+              </ul>
+              {% else %}
+                {%- render 'desktop-nav-featured-collection-links', link: link, crop: crop -%}
+              {% endunless %}
+                {% if link.title == 'Explore' %}
+                  <div class="explore">
+                    <div class="get">
+                      <div class="get-title heading4 strong">
+                        Get rewards and enjoy Honeybalm even more!
+                      </div>
+                      <div class="get-txt base normal">
+                        See the rewards for yourself
+                      </div>
+                      <a class="exp-shop" href="/pages/rewards">
+                        <span class="push-btn-surface w-full outline-btn">Start now 
+                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                          <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="build">
+                      <div class="get-title heading4 strong">
+                        Build your own bundle
+                      </div>
+                      <div class="get-txt base normal">
+                        Get up to 52% discount!
+                      </div>
+                      <a class="exp-shop" href="/pages/bundle-builder">
+                        <span class="push-btn-surface w-full outline-btn">Shop now 
+                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                          <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+                {% if link.title == 'Shop' %}
+                  {% for child_link in link.links %}
+
+
+                    {% if child_link.title == 'Accessories' %}
+                      {% if child_link.links != blank %}
+                        <ul class="{{ child_link.title | handle }} mega-p {% if forloop.index == 1 %} active {% endif %}">
+                          {% for pro in collections['applicators'].products %}
+                            <li>
+                              <a {% if grandchild_link.active %}aria-current="page"{% endif %} href="{{ pro.url }}" class="{{ tertiary_link_classes }}">
+                                <!-- { % assign pro_handle = grandchild_link.url | split: '/products/' | last %}
+                                { % assign pro = all_products[pro_handle] %} -->
+                                <div class="menu-img-wrap {{ pro.title | downcase }}">
+                                    <img src="{{ pro.images[0].src | img_url: '300x' }}"/>
+                                </div>
+                                <div class="mega-title heading4 strong">
+                                  {{ pro.title }}
+                                </div>
+                                    <div class="mega-text base normal"></div>
+                                <!-- <div class="mega-text base normal">Lip balm</div> -->
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                       {% endif %}
+                      {% continue %}
+                    {% endif %}
+
+                    
+                    {% if child_link.links != blank %}
+                    <ul class="{{ child_link.title | handle }} mega-p {% if forloop.index == 1 %} active {% endif %}">
+                      {% for grandchild_link in child_link.links %}
+                        <li>
+                          <a {% if grandchild_link.active %}aria-current="page"{% endif %} href="{{ grandchild_link.url }}" class="{{ tertiary_link_classes }}">
+                            {% assign pro_handle = grandchild_link.url | split: '/products/' | last %}
+                            <!-- { % assign pro = all_products[pro_handle] %} -->
+                            {% assign pro = grandchild_link.object %}
+                            <div class="menu-img-wrap {{ grandchild_link.title | downcase }}">
+                              {% if grandchild_link.title == "SPF Try-out box" or grandchild_link.title == "Mystery Balm" or grandchild_link.title == "Salted Caramel" or grandchild_link.title == "Red Pepper" 
+                                 or grandchild_link.title == "Hibiscus Citrus" or grandchild_link.title == "Lemon Cheesecake" or grandchild_link.title == "Candy Cane" or grandchild_link.title == "Honey lip scrub" 
+                                 or grandchild_link.title == "Blueberry" or grandchild_link.title == "Pineapple" or grandchild_link.title == "Rose Cardamom" %} 
+                                <img src="{{ pro.images[1].src | img_url: '300x' }}"/>
+                              {% elsif grandchild_link.title == "Try-out box" or grandchild_link.title contains "Valentine" or grandchild_link.title == "Classic Pack" or grandchild_link.title == "Favourites Pack" 
+                                or grandchild_link.title == "Lavender Chamomille" %} 
+                                <img src="{{ pro.images[0].src | img_url: '300x' }}"/>
+                              {% elsif child_link.title == 'Packs' %}
+                                <img src="{{ pro.images[0].src | img_url: '300x' }}"/>                              
+                              {% elsif grandchild_link.title == "Watermelon" or grandchild_link.title == "Strawberry lip scrub" %}
+                                <img src="{{ pro.images[3].src | img_url: '300x' }}"/>
+                              {% else %}
+                                <img src="{{ pro.images[6].src | img_url: '300x' }}"/>
+                              {% endif %}
+                              {% if grandchild_link.title == "Strawberry lip scrub" or grandchild_link.title == "Rose Cardamom" or grandchild_link.title == "Salted Caramel"
+                                 or grandchild_link.title == "Hibiscus Citrus" %}
+                                <div class="menu-tag base-sm strong  new">New</div>
+                              {% elsif grandchild_link.title == "Honey SPF" or grandchild_link.title == "Coconut SPF" or grandchild_link.title == "Watermelon" or grandchild_link.title == "Mint" or grandchild_link.title == "Try-out box" or grandchild_link.title == "Blueberry" %}
+                                <div class="menu-tag base-sm strong best-seller">Best seller</div>
+                              {% endif %}
+                              {% if grandchild_link.title == "Mystery Balm" or grandchild_link.title == "Red Pepper" or grandchild_link.title == "SPF Try-out box" or grandchild_link.title == "Strawberry SPF" 
+                                 or grandchild_link.title == "Lavender Chamomille" or grandchild_link.title == "Lemon Cheesecake" %}
+                                <div class="menu-tag base-sm strong  new">Sold out</div>
+                                {% comment %}
+                              {% elsif grandchild_link.title == "Honey lip scrub" %}
+                                  <div class="menu-tag base-sm strong  new">Temporarily unavailable</div>
+                                {% endcomment %}
+                              {% endif %}
+                            </div>
+                            <div class="mega-title heading4 strong">
+                              {{ grandchild_link.title }}
+                            </div>            
+                            <div class="mega-text base normal">{% if grandchild_link.title contains "scrub" %}Lip scrub{% else %}Lip balm{% endif %}</div>
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                   {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+            <a {% if link.active %}aria-current="page"{% endif %} href="{{ link.url }}" class="{{ link_classes }} base {% if link.title == 'Bundle Builder' %}nav-bundle{% endif %}">
+              {{ link.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+                                {% comment %}
+      <li class="inline-block no-js-focus-wrapper h-full csm-li">
+          <a href="https://us.calendar-honeybalm.com/" class="font-main px-2.5 py-5 flex items-center transition normal-case base" target="_blank">
+            Advent Calendar
+          </a>
+      </li>
+                                {% endcomment %}
+    </ul>
+  </nav>
+{% endcapture %}
+{%- liquid
+  assign search_resources = ''
+  if settings.search_products
+    assign search_resources = ' product'
+  endif
+  if settings.search_collections
+    assign search_resources = search_resources | append: ' collection'
+  endif
+  if settings.search_articles
+    assign search_resources = search_resources | append: ' article'
+  endif
+  if settings.search_pages
+    assign search_resources = search_resources | append: ' page'
+  endif
+  if settings.search_suggestions
+    assign search_resources = search_resources | append: ' query'
+  endif
+  assign search_resources = search_resources | strip | split: ' ' | join: ','
+-%}
+{% assign close_text = 'general.accessibility.close_modal' %}
+{% if layout contains 'search' %}
+  {% assign close_text = 'general.search.clear' %}
+{% endif %}
+{%- capture search_form -%}
+  <form x-ref="searchForm" action="{{ routes.search_url }}" method="get" role="search" {% if predictive_search_enabled %} @submit="onFormSubmit"{% endif %} @click.away.prevent="searchOpen = false">
+    <div x-ref="searchFieldComponent" class="relative py-2" {% unless predictive_search_enabled %}@focusout="searchFocusOut"{% endunless %}>
+      <input
+        id="header-search"
+        type="search"
+        name="q"
+        value=""
+        class="header-search-input pl-9 py-2 placeholder:text-scheme-text font-secondary w-full border-0 shadow-none bg-transparent"
+          placeholder="{{ 'Søk på smak…' | t }}"
+        {%- if predictive_search_enabled -%}
+          aria-expanded="false"
+          aria-owns="predictive-search-results-list"
+          aria-controls="predictive-search-results-list"
+          aria-autocomplete="list"
+          autocorrect="off"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          x-ref="input"
+          x-model="rawQuery"
+          @input.debounce.300="onChange"
+          @focus="onFocus"
+        {%- endif -%}
+      >
+      <label class="visually-hidden" for="header-search">{{ 'general.search.placeholder' | t }}</label>
+      <input type="hidden" name="options[prefix]" value="last">
+      {%- if predictive_search_enabled == false and settings.search_products or settings.search_articles or settings.search_pages -%}
+        <input type="hidden" name="type" value="{% if settings.search_products %}product{% endif %}{% if settings.search_articles %},article{% endif %}{% if settings.search_pages %},page{% endif %}">
+      {%- endif -%}
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 p-1" aria-label="{{ 'general.search.submit' | t }}">
+        <span class="inline-block w-6 h-6">{% render 'icon-search' %}</span>
+      </button>
+      <button x-cloak {% if predictive_search_enabled %}@click="close()"{% else %}@click="closeSearch()"{% endif %} class="block p-1 absolute right-0 top-1/2 transform -translate-y-1/2" type="button">
+        <span class="visually-hidden">{{ close_text | t }}</span>
+        <span class="inline-block w-6 h-6">{% render 'icon-close' %}</span>
+      </button>
+    </div>
+    {%- if predictive_search_enabled -%}
+    <div id="predictiveSearchResults" :class="{ 'opacity-0 bg-scheme-text/0': ! resultsOpen, 'bg-scheme-text/75' : resultsOpen }" tabindex="-1" x-cloak class="text-scheme-text absolute left-0 right-0 h-screen transition-colors ease-out duration-300 z-50">
+      <template x-if="loading && !results">
+        <div class="bg-scheme-background">
+          <div class="w-6 h-6 pt-12 pb-12 mx-auto" data-predictive-loading>
+            <div class="loading"></div>
+          </div>
+        </div>
+      </template>
+      <template x-if="resultsOpen">
+        <div x-show="resultsOpen" class="max-h-three-quarters-screen-height overflow-hidden overflow-y-auto bg-scheme-background pb-5 lg:pb-10 px-section scroll-pb-5 lg:scroll-pb-10" x-ref="results" @click.away.prevent="searchOpen = false">
+        </div>
+      </template>
+    </div>
+    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+    {%- endif -%}
+  </form>
+{%- endcapture -%}
+{% comment %}
+  Mobile menu icon.
+  This is mandatory on mobile. On desktop only appears if menu icon layout is selected.
+  {% endcomment %}
+{%- capture menu_icon -%}
+<div class="nav-open-wrap" x-bind:aria-expanded="$store.modals.leftDrawer.contents === 'nav'">
+  <button
+    class="{{ base_font_class }} js-enabled inline-block -m-1 p-1 {% unless layout contains 'menu_icon' %}lg:hidden{% endunless %} nav-open"
+    type="button"
+    
+    @click="$store.modals.open('nav')"
+    data-menu-drawer-toggle>
+  
+    <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.navigation.menu' | t }}</span>
+    {%- if show_icons -%}
+    <span class="block icon">
+      <span class="w-6 h-6 inline-block align-middle">{% render 'icon-menu' %}</span>
+    </span>
+    {%- endif -%}
+  </button>
+  <button @click.prevent="$store.modals.close('nav')" class="block top-0 nav-close">
+    <span class="sr-only">{{ 'general.accessibility.close_modal' | t }}</span>
+    <span class="inline-block w-5 h-5">{% render 'icon-close' %}</span>
+  </button>
+  <span class="menu-name">{{ 'layout.navigation.menu' | t }}</span>
+</div>
+<noscript>
+  <div class="no-js-focus-wrapper">
+    <button
+      class="inline-block -m-1 p-1 {% unless layout contains 'menu_icon' %}lg:hidden{% endunless %}"
+      type="button"
+      data-menu-drawer-toggle>
+      <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.navigation.menu' | t }}</span>
+      {%- if show_icons -%}
+      <span class="block icon">
+        <span class="w-6 h-6 inline-block align-middle">{% render 'icon-menu' %}</span>
+      </span>
+      {%- endif -%}
+    </button>
+    <div class="hidden no-js-focus-container absolute left-0 bottom-0 w-11/12 md:w-7/12 lg:w-5/12 py-section-vertical-spacing px-section transform translate-y-[calc(100%-var(--section-border-thickness))] z-100 {% if layout contains 'navigation_center' %}text-center{% elsif layout contains 'navigation_right'%}text-right{% endif %} max-h-three-quarters-screen-height overflow-hidden overflow-y-auto {{ dropdown_background }}  {{ dropdown_text }}">
+      {%- render 'no-js-sidebar-nav' %}
+    </div>
+  </div>
+</noscript>
+<div x-data>
+  <div>
+    {% render 'sidebar-nav', section: section, base_font_class: 'font-main' %}
+  </div>
+</div>
+{%- endcapture -%}
+
+{%- capture cart_icon %}
+  {%- if show_icons -%}
+    <div class="relative my-auto align-middle">
+      <span class="inline-block w-6 h-6 fill-current align-top">
+        {%- if settings.cart_icon == 'cart' -%}
+          {%- render 'icon-cart' -%}
+        {%- else -%}
+          {%- render 'icon-bag' -%}
+        {%- endif -%}
+        <span class="visually-hidden">{{ 'layout.cart.title' | t }} </span>
+      </span>
+      {% comment %}
+      {%- if cart != empty -%}
+      <span x-show="$store.cart_count.count > 0" class="c-count tracking-normal absolute -bottom-1.5 -right-1.5 w-5 h-5 bg-scheme-text text-scheme-background rounded-full text-[0.625rem] flex items-center justify-center" x-text="$store.cart_count.count">{{ cart.item_count }}</span>
+      {%- endif -%}
+      {% endcomment %}
+      <!-- { %- if cart != empty -%} -->
+        <a href="/cart" id="cart-icon-bubble">
+          <div class="cart-count-bubble">
+            <span class="c-count tracking-normal absolute -bottom-1.5 -right-1.5 w-5 h-5 bg-scheme-text text-scheme-background rounded-full text-[0.625rem] flex items-center justify-center">{{ cart.item_count }}</span>
+          </div>
+        </a>
+      <!-- { %- endif -%} -->
+      <span class="visually-hidden">
+        {%- if cart.item_count == 1 -%}
+          {{- 'layout.cart.items_count.one' | t -}}
+        {%- else -%}
+          {{- 'layout.cart.items_count.other' | t -}}
+        {%- endif -%}
+      </span>
+    </div>
+  {%- else -%}
+    {{ 'layout.cart.title' | t }} (<span  x-text="$store.cart_count.count">{{ cart.item_count }}</span>)
+    <span class="visually-hidden">
+      {%- if cart.item_count == 1 -%}
+        {{- 'layout.cart.items_count.one' | t -}}
+      {%- else -%}
+        {{- 'layout.cart.items_count.other' | t -}}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture cart_button -%}
+  {% if settings.cart_type == 'modal' and template != 'cart' %}
+    <button
+      class="csm-icon js-enabled whitespace-nowrap {% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}"
+      type="button"
+      id="CartButton"
+      @click.prevent="$store.modals.open('cart')"
+      >
+      {{ cart_icon }}
+      
+      <span class="icon-text">Bag</span>
+    </button>
+    {% comment %}
+    <noscript>
+      <a
+        class="whitespace-nowrap {{ link_classes }}"
+        href="{{ routes.cart_url }}"
+      >
+        {{ cart_icon }}
+      </a>
+    </noscript>
+    {% endcomment %}
+  {% else %}
+    <a
+      class="whitespace-nowrap {{ link_classes }}"
+      href="{{ routes.cart_url }}"
+    >
+      {{ cart_icon }}
+    </a>
+  {% endif %}
+{%- endcapture -%}
+
+{% comment %}
+  Accounts
+{% endcomment %}
+{%- capture accounts -%}
+  {% if shop.customer_accounts_enabled %}
+    {% if customer %}
+      <a class="csm-icon {% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="{{ routes.account_url }}">
+        <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.customer.account' | t }}</span>
+        {%- if show_icons -%}
+        <span class="inline-block w-6 h-6 align-middle">{%- render 'icon-account' -%}</span>
+      {%- endif -%}
+      <span class="icon-text">Account</span>
+      </a>
+    {% else %}
+      <div class="ligin-wrap">
+        <a class="csm-icon csm-login {% if show_icons %}{{ icon_link_classes }}{% else %}{{ link_classes }}{% endif %}" href="{{ routes.account_login_url }}">
+          <span class="{% if show_icons %}visually-hidden{% endif %}">{{ 'layout.customer.log_in' | t }}</span>
+          {%- if show_icons -%}
+          <span class="inline-block w-6 h-6 align-middle">{%- render 'icon-account' -%}</span>
+          {%- endif -%}
+          <span class="icon-text">Account</span>
+        </a>
+        {% render 'login-popup' %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endcapture %}
+
+{% unless request.design_mode %}
+  <script src="{{ 'header.js' | asset_url }}" type="module"></script>
+{% endunless %}
+
+<header
+  class="
+    site-header w-full text-scheme-text
+    {% if enable_overlay %}
+      absolute top-0 left-0 right-0 z-20 border-b-section bg-transparent
+      {% unless section.settings.overlay_show_separator_border %}
+        border-transparent
+      {% else %}
+        border-border
+      {% endunless %}
+    {% else %}
+      relative bg-scheme-background text-scheme-text border-b-section border-border
+    {% endif %}
+    transition-[background-color,border-color] ease-in-out duration-200
+    {% if layout contains 'navigation_center' %}
+      lg:w-auto
+    {% endif %}"
+  role="banner"
+  data-section-type="header"
+  data-section-id="{{ section.id }}"
+  x-data="ThemeSection_header({{ counter }})"
+  x-init="mounted()"
+  data-color-scheme="{{ color_scheme }}"
+  {% if enable_overlay and change_color_scheme_when_overlaid_and_stuck %}
+    :data-color-scheme="isStuck ? '{{ stuck_color_scheme }}' : '{{ color_scheme }}'"
+  {% endif %}
+  {% if section.settings.sticky_header %}
+    data-sticky-header
+    {% if enable_overlay and change_color_scheme_when_overlaid_and_stuck %}
+      data-transparent-when-overlay-enabled-and-stuck
+      :class="
+      {
+        'header-is-active' : menuIsActive,
+        'bg-scheme-background': isStuck,
+        'bg-transparent': !isStuck,
+      }"
+    {% else %}
+    :class="
+      {
+        'header-is-active' : menuIsActive,
+      }"
+    {% endif %}
+  {% else %}
+    :class="{ 'header-is-active' : menuIsActive }"
+  {% endif %}
+>
+  <div id="headerBorderWrap" class="headerBorderWrap">
+    <div id="headerContainer"
+          class="z-10">
+      <div
+        class="py-2 lg:py-1 px-section overflow-hidden container">
+        <div class="flex justify-between items-center">
+          {% comment %} Left {% endcomment %}
+          <div class="hidden lg:block flex flex-grow {% unless layout contains 'search' %}w-1/3{% endunless %} {% if layout == 'logo_left_navigation_left' %}lg:w-2/3{% endif %} justify-start items-stretch">
+
+            {% if layout contains 'logo_center' %}
+              <div class="flex items-center z-10">{{ menu_icon }}</div>
+            {% endif %}
+
+            {% if layout contains 'logo_left' %}
+              <div class="lg:flex-grow-1 {% if layout == 'logo_left_navigation_left' %}mr-5 lg:mr-10{% endif %}">
+                {{ logo }}
+              </div>
+            {% endif %}
+            {% if layout contains 'navigation_left' %}
+              <div class="hidden lg:block">
+                {{ navigation }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% comment %} Center {% endcomment %}
+          {% unless layout contains 'search' %}
+            <div class="hidden lg:flex flex justify-center text-center {% if layout contains 'logo_center' %}flex-grow lg:flex-grow-0 lg:w-auto{% else %}w-0 flex-grow-0{% endif %} {% if layout contains 'navigation_center' %}lg:flex-grow {% unless has_feature_desktop_button and feature_desktop_link_position == 'right_of_cart' %}lg:w-3/4 xl:4/5{% else %}lg:w-1/3{% endunless %}{% endif %}">
+              {% if layout contains 'logo_center' %}
+                {{ logo }}
+              {% endif %}
+              {% if layout contains 'navigation_center' %}
+                <div class="hidden lg:block">
+                  {{ navigation }}
+                </div>
+              {% endif %}
+            </div>
+          {% endunless %}
+
+          {% comment %} Right {% endcomment %}
+          <div class="flex flex-grow w-1/3 items-center justify-end mbl-header">
+            {% if layout contains 'logo_left' %}
+              <div class="lg:hidden mr-5">
+                {{ menu_icon }}
+              </div>
+            {% endif %}
+
+            <a href="/" class="mbl-logo lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 550.04 94.79">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill: #000;
+                      stroke-width: 0px;
+                    }
+                  </style>
+                </defs>
+                <g id="Laag_1" data-name="Laag 1">
+                  <g>
+                    <path class="cls-1" d="M13.72,0v25.52c.66-.77,1.44-1.55,2.32-2.32.89-.77,1.99-1.55,3.1-2.21,1.22-.66,2.54-1.22,4.2-1.66,1.55-.44,3.43-.66,5.42-.66,2.21,0,4.54.44,6.97,1.22,2.32.77,4.54,2.1,6.42,3.76,1.88,1.66,3.54,3.76,4.76,6.3,1.22,2.54,1.88,5.41,1.88,8.84v37.12h-13.72v-31.04c0-1.77-.11-3.43-.33-4.97-.22-1.55-.66-2.87-1.44-4.09-.66-1.22-1.77-2.1-3.21-2.87-1.44-.66-3.21-.99-5.53-.99s-4.31.33-5.75.99c-1.44.66-2.54,1.66-3.32,2.87-.77,1.22-1.33,2.54-1.55,4.09-.22,1.55-.33,3.2-.33,4.97l.22,31.04H0V0h13.72Z"/>
+                    <path class="cls-1" d="M58.97,47.39c0-3.87.33-7.29,1.11-10.27.77-2.98,1.77-5.41,2.99-7.62,1.22-2.1,2.66-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.87-2.1,8.41-3.2,13.39-3.43,4.98.11,9.4,1.22,13.28,3.43,1.66.88,3.32,2.1,4.87,3.53,1.55,1.44,2.99,3.2,4.31,5.3,1.22,2.1,2.21,4.64,2.99,7.62.77,2.98,1.22,6.3,1.22,10.27s-.44,7.29-1.22,10.27c-.77,2.87-1.77,5.41-2.99,7.51-1.22,2.1-2.66,3.87-4.31,5.19-1.66,1.44-3.21,2.54-4.87,3.43-3.87,1.99-8.3,3.09-13.28,3.2-4.98,0-9.51-1.1-13.39-3.2-1.66-.88-3.32-1.99-4.87-3.43-1.66-1.44-2.99-3.09-4.31-5.19-1.22-2.1-2.21-4.64-2.99-7.51-.77-2.98-1.11-6.3-1.11-10.27ZM85.63,30.6c-2.77,0-4.98.55-6.75,1.66-1.66,1.1-2.99,2.54-3.87,4.2-.89,1.66-1.55,3.53-1.77,5.41-.22,1.88-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.77,5.41.89,1.66,2.21,3.09,3.87,4.2,1.66,1.1,3.87,1.66,6.75,1.66s4.98-.55,6.75-1.66c1.66-1.1,2.99-2.54,3.87-4.2.89-1.66,1.55-3.54,1.77-5.41.33-1.99.44-3.76.44-5.41s-.11-3.42-.44-5.41c-.33-1.99-.89-3.76-1.77-5.41-.89-1.66-2.21-3.09-3.87-4.2-1.66-1.1-3.87-1.66-6.75-1.66Z"/>
+                    <path class="cls-1" d="M147.58,17.35h2.43c1.44,0,2.99.44,4.87.99,1.88.55,3.87,1.44,5.97,2.65,2.1,1.22,4.09,2.87,5.86,5.19,1.77,2.21,3.32,5.08,4.43,8.51,1.11,3.43,1.77,7.62,1.77,12.59v28.39h-13.72v-28.39c0-1.66-.11-3.31-.44-5.08-.33-1.77-.89-3.31-1.66-4.75-.77-1.44-1.99-2.65-3.54-3.53-1.55-.88-3.54-1.44-5.97-1.44s-4.43.44-5.97,1.44c-1.55.99-2.66,2.1-3.54,3.53-.77,1.44-1.44,2.98-1.66,4.75-.33,1.77-.44,3.43-.44,5.08v28.39h-13.72v-28.39c0-4.97.55-9.28,1.77-12.59,1.22-3.42,2.66-6.19,4.42-8.51,1.77-2.21,3.76-3.98,5.86-5.19,2.1-1.22,4.09-2.1,5.97-2.65,1.88-.55,3.54-.88,4.87-.99h2.43Z"/>
+                    <path class="cls-1" d="M236.08,40.1c.11,1.1.33,2.32.44,3.53,0,1.22.22,2.43.22,3.87v1.99h-39.38c.11,1.33.33,2.54.55,3.87.22,1.33.55,2.65,1.11,3.87.77,1.99,2.1,3.65,3.87,5.19,1.77,1.55,4.09,2.21,7.19,2.21s5.53-.77,7.19-2.21c1.66-1.44,2.98-3.2,3.87-5.19h14.6c-.56,2.65-1.44,4.86-2.55,6.85-1.11,1.99-2.32,3.65-3.65,5.08-1.33,1.44-2.77,2.65-4.21,3.54-1.44.88-2.98,1.66-4.42,2.32-3.43,1.33-7.08,1.99-10.95,1.99-4.98,0-9.51-1.1-13.39-3.2-1.66-.88-3.32-1.99-4.87-3.43-1.66-1.44-2.99-3.09-4.31-5.19-1.22-2.1-2.21-4.64-2.99-7.51-.77-2.98-1.11-6.3-1.11-10.27s.33-7.29,1.11-10.27c.77-2.98,1.77-5.41,2.99-7.62,1.22-2.1,2.66-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.87-2.1,8.41-3.2,13.39-3.43,4.09.11,7.96.99,11.62,2.54,1.55.66,2.98,1.55,4.54,2.65,1.55,1.1,2.98,2.43,4.31,4.09,1.33,1.66,2.43,3.54,3.54,5.74.99,2.21,1.77,4.75,2.22,7.73l-.11.11ZM221.92,40.1c-.33-1.22-.89-2.43-1.44-3.65-.55-1.22-1.33-2.32-2.32-3.2-.99-.88-2.1-1.77-3.54-2.32-1.33-.55-2.88-.88-4.76-.88s-3.43.33-4.76.88c-1.33.55-2.54,1.33-3.54,2.32-1,.99-1.77,2.1-2.32,3.2-.55,1.1-1.11,2.43-1.33,3.65h24.01Z"/>
+                    <path class="cls-1" d="M280.44,83.63c-.77,2.65-2.1,4.64-3.76,6.19-1.66,1.44-3.32,2.54-5.09,3.31-1.99.88-4.09,1.44-6.3,1.66h-17.81v-13.15h11.51c2.21,0,3.65-.33,4.53-.88.78-.55,1.33-1.22,1.55-1.99.22-.77.11-1.77-.22-2.87l-18.37-56.9h13.83l13.28,44.08,13.27-44.08h13.83l-20.36,64.74.11-.11Z"/>
+                    <path class="cls-1" d="M321.93,30.05c1.33-3.2,2.88-5.52,4.87-7.29,1.99-1.77,3.87-2.98,5.75-3.76,2.21-.88,4.42-1.44,6.75-1.66,4.64.11,8.74,1.22,12.39,3.42,1.55.88,3.09,2.1,4.53,3.54,1.44,1.44,2.77,3.2,3.98,5.3,1.11,2.1,2.1,4.64,2.77,7.62.66,2.87,1.1,6.3,1.1,10.27s-.44,7.29-1.22,10.27c-.77,2.87-1.77,5.41-2.98,7.51-1.22,2.1-2.65,3.87-4.31,5.19-1.66,1.44-3.21,2.54-4.87,3.42-3.87,1.99-8.29,3.09-13.27,3.2-4.98,0-9.29-1.1-13.16-3.2-1.66-.88-3.32-1.99-4.87-3.42-1.55-1.44-2.99-3.09-4.21-5.3-1.22-2.21-2.21-4.64-2.98-7.62-.78-2.87-1.11-6.3-1.11-10.27V0h13.39v26.85l-2.43,3.2h-.11ZM337.42,64.19c2.76,0,4.98-.55,6.75-1.66,1.66-1.1,2.99-2.54,3.87-4.2.89-1.66,1.55-3.54,1.77-5.41.33-1.99.44-3.76.44-5.41s-.11-3.42-.44-5.41c-.33-1.99-.89-3.76-1.77-5.41-.88-1.66-2.21-3.09-3.87-4.2-1.66-1.1-3.87-1.66-6.75-1.66s-4.98.55-6.75,1.66c-1.66,1.1-2.99,2.54-3.98,4.2-.89,1.66-1.55,3.54-1.88,5.41-.33,1.99-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.88,5.41.89,1.66,2.21,3.09,3.98,4.2,1.77,1.1,3.87,1.66,6.75,1.66Z"/>
+                    <path class="cls-1" d="M427.36,75.9h-13.39v-7.84l2.43-3.31c-1.33,3.2-2.88,5.52-4.87,7.18-1.99,1.66-3.87,2.87-5.75,3.65-2.22.77-4.43,1.33-6.75,1.44-4.64,0-8.74-1.1-12.39-3.2-1.55-.88-3.1-1.99-4.54-3.43-1.44-1.44-2.77-3.09-3.98-5.19-1.1-2.1-2.1-4.64-2.76-7.51-.66-2.98-1.11-6.3-1.11-10.27s.33-7.29,1.11-10.27c.77-2.98,1.77-5.41,2.98-7.62,1.22-2.1,2.65-3.87,4.31-5.3,1.66-1.44,3.21-2.54,4.87-3.53,3.88-2.1,8.41-3.2,13.39-3.43,4.76,0,8.74.66,12.06,2.1,3.32,1.44,5.97,3.43,8.19,5.97,2.1,2.54,3.65,5.74,4.64,9.39.99,3.76,1.44,7.95,1.44,12.59v28.28l.11.33ZM401.03,30.6c-2.77,0-4.98.55-6.75,1.66-1.66,1.1-2.99,2.54-3.88,4.2-.88,1.66-1.55,3.53-1.77,5.41-.33,1.99-.44,3.76-.44,5.41s.11,3.43.44,5.41c.33,1.99.89,3.76,1.77,5.41.89,1.66,2.22,3.09,3.88,4.2,1.66,1.1,3.87,1.66,6.75,1.66s4.98-.55,6.75-1.66c1.77-1.1,2.98-2.54,3.98-4.2.88-1.66,1.55-3.54,1.88-5.41.33-1.99.44-3.76.44-5.41,0-1.99-.11-3.98-.44-5.97-.33-1.99-.77-3.76-1.66-5.41-.89-1.66-2.1-2.87-3.88-3.87-1.77-.99-4.09-1.44-6.97-1.44h-.11Z"/>
+                    <path class="cls-1" d="M451.81,0v75.9h-13.72V0h13.72Z"/>
+                    <path class="cls-1" d="M499.49,47.39c0-1.66,0-3.31-.33-5.08-.22-1.77-.66-3.31-1.44-4.75-.77-1.44-1.88-2.65-3.43-3.53-1.55-.88-3.65-1.44-6.53-1.44s-4.98.44-6.53,1.44c-1.55.99-2.65,2.1-3.43,3.53-.77,1.44-1.22,2.98-1.44,4.75-.22,1.77-.33,3.43-.33,5.08v28.39h-13.72v-28.39c0-3.87.33-7.29,1.1-10.27.77-2.98,1.66-5.41,2.88-7.62,1.22-2.1,2.55-3.87,4.09-5.3,1.55-1.44,2.99-2.54,4.65-3.53,3.65-2.1,7.96-3.2,12.72-3.43,4.76.11,8.96,1.22,12.61,3.43,1.55.88,3.09,2.1,4.64,3.53,1.55,1.44,2.88,3.2,4.09,5.3,1.11,2.1,2.1,4.64,2.88,7.62.77,2.87,1.11,6.3,1.11,10.27v28.39h-13.72v-28.39h.11ZM536.44,47.39c0-1.66,0-3.31-.33-5.08-.22-1.77-.66-3.31-1.44-4.75-.77-1.44-1.88-2.65-3.43-3.53-1.55-.88-3.65-1.44-6.53-1.44s-4.98.44-6.53,1.44c-1.55.99-2.65,2.1-3.43,3.53-.78,1.44-1.22,2.98-1.44,4.75-.22,1.77-.33,3.43-.33,5.08v28.39h-13.72v-28.39c0-3.87.33-7.29,1.11-10.27.77-2.98,1.66-5.41,2.88-7.62,1.22-2.1,2.54-3.87,4.09-5.3,1.55-1.44,2.98-2.54,4.64-3.53,3.65-2.1,7.96-3.2,12.72-3.43,4.76.11,8.96,1.22,12.61,3.43,1.55.88,3.1,2.1,4.64,3.53,1.55,1.44,2.88,3.2,4.09,5.3,1.11,2.1,2.1,4.64,2.88,7.62.78,2.98,1.11,6.3,1.11,10.27v28.39h-13.72v-28.39h.11Z"/>
+                  </g>
+                </g>
+              </svg>
+              <!-- <img src="{{ section.settings.mbllogo | img_url: '400x' }}" /> -->
+            </a>
+            
+            {% if layout contains 'navigation_right' %}
+              <div class="hidden lg:block ml-5 mr-10">
+                {{ navigation }}
+              </div>
+            {% endif %}
+
+            {% if section.settings.enable_social_icons_header %}
+              <div class="mr-10 hidden lg:block  ">
+                {% render 'social-icons', position: 'header' %}
+              </div>
+            {% endif %}
+            
+            <div class="header-search">
+              {% render 'header-search' %}
+            </div>
+
+            <div class="hidden lg:block h-full">
+              {{ accounts }}
+            </div>
+
+            {% unless section.settings.header_show_search == false %}
+              <a data-open-search x-ref="search" @click.prevent="openSearch()" @keydown.space="openSearch()" href="{{ routes.search_url }}" class="{% if show_icons %}{{ icon_link_classes }}{% else %}hidden lg:block {{ link_classes }}{% endif %}">
+                {% if show_icons %}<span class="inline-block w-6 h-6 fill-current align-middle">{%- render 'icon-search' -%}</span>{% endif %}
+                <span class="visually-hidden">{{ 'general.search.title' | t }}</span>{% unless show_icons %}<span>{{ 'general.search.submit' | t }}</span>{% endunless %}
+              </a>
+              <div
+                class="absolute top-0 left-0 right-0 bottom-0 w-full flex items-center bg-scheme-background text-scheme-text z-20 px-section"
+                x-cloak
+                x-show="searchOpen"
+                x-transition:enter="transition ease duration-200"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease duration-00"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                @click.away.prevent="searchOpen = false"
+                data-header-search
+                >
+                <div class="w-full" {% if predictive_search_enabled %}x-data='ThemeComponent_PredictiveSearch({{ search_resources | json }})' x-init="mounted()" @focusOut="onFocusOut" @keyup="onKeyup" @keydown="onKeydown" {% endif %}>
+                  {{ search_form }}
+                </div>
+              </div>
+            {% endunless %}
+
+            <div class="flex items-center justify-end {% unless has_feature_desktop_button and feature_desktop_link_position == 'right_of_cart' %} -mr-2.5 {% endunless %} h-full">
+              {{ cart_button }}
+            </div>
+
+            {% if has_feature_desktop_button and feature_desktop_link_position == 'right_of_cart' %}
+            <div class="items-center relative z-10 hidden lg:flex py-2.5 ml-5">
+              <div class="{% unless hide_button_shadow %}{% if settings.button_shadow_direction contains 'top' %}pt-button-shadow{% else %}pb-button-shadow{% endif %}{% endunless %}">
+                {{ feature_desktop_link }}
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<noscript>
+  <style>
+    .no-js-focus-wrapper:focus-within > .no-js-focus-container {
+      display: block !important;
+    }
+  </style>
+</noscript>
+{% if section.settings.sticky_header %}
+  {% style %}
+    #shopify-section-{{ section.id }} {
+      position: sticky;
+      top: 40px;
+      z-index: 40;
+    }
+    @media only screen and (max-width: 990px) {
+      #shopify-section-{{ section.id }} {
+        top: 32px;
+      }
+    }
+  {% endstyle %}
+{% endif %}
+{% if section.settings.logo != blank %}
+  <style>
+    .logo-image {
+      display: block;
+      max-width: {{ section.settings.logo_max_width }}px;
+    }
+  </style>
+{% endif %}
+{%- if enable_overlay -%}
+  <script>
+    document
+      .getElementById('shopify-section-{{ section.id }}')
+      .classList.add('has-no-height');
+  </script>
+  <style>
+    #MainContent .shopify-section:first-child > section:not(.full-bleed-section) {
+      padding-top: {{ section.settings.overlay_first_section_padding_top_mobile }}rem;
+    }
+
+    @media (min-width: 990px) {
+      #MainContent .shopify-section:first-child > section:not(.full-bleed-section) {
+        padding-top: {{ section.settings.overlay_first_section_padding_top_desktop }}rem;
+      }
+    }
+  </style>
+{%- endif -%}
+{%- if predictive_search_enabled and request.design_mode == false -%}
+  <script src="{{ 'modules-predictive-search.bundle.min.js' | asset_url }}" type="module"></script>
+{%- endif -%}
+
+{% comment %}theme-check-enable TemplateLength{% endcomment %}
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append: 'x' %}
+    "logo": {{ section.settings.logo | image_url: width: image_size | prepend: "https:" | json }},
+  {% endif %}
+  "sameAs": [
+    {{ settings.social_facebook_url | json }},
+    {{ settings.social_instagram_url | json }},
+    {{ settings.social_twitter_url | json }},
+    {{ settings.social_patreon_url | json }},
+    {{ settings.social_pinterest_url | json }},
+    {{ settings.social_soundcloud_url | json }},
+    {{ settings.social_spotify_url | json }},
+    {{ settings.social_bandcamp_url | json }},
+    {{ settings.social_flickr_url | json }},
+    {{ settings.social_vimeo_url | json }},
+    {{ settings.social_apple_url | json }},
+    {{ settings.social_lastfm_url | json }},
+    {{ settings.social_youtube_url | json }},
+    {{ settings.social_google_url | json }},
+    {{ settings.social_tumblr_url | json }},
+    {{ settings.social_triplej_url | json }},
+    {{ settings.social_mixcloud_url | json }}
+  ],
+  "url": {{ shop.url | append: page.url | json }}
+}
+</script>
+
+{% if request.page_type == 'index' %}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{% endif %}
+
+<script>
+  var childs = document.querySelectorAll('.child-mega');
+  for(var i=0; i<childs.length; i++){
+    childs[i].addEventListener('click', function(){
+      document.querySelector('.child-mega.active').classList.remove('active');
+      this.classList.add('active');
+      var handle = this.getAttribute('handle');
+      document.querySelector('.mega-p.active').classList.remove('active');
+      document.querySelector('.mega-p.'+handle).classList.add('active');
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-site-header relative z-40",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header_logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:common.settings.logo.label",
+      "info": "t:common.settings.logo.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "mbllogo",
+      "label": "Mobile Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 20,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.header.settings.logo_max_width.label",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header_menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "t:sections.header.settings.main_linklist.label",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_navigation_links",
+      "label": "t:sections.header.settings.show_all_navigation_links.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "showcase_second_level_links",
+      "label": "t:sections.header.settings.showcase_second_level_links.label",
+      "info": "t:sections.header.settings.showcase_second_level_links.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "showcase_first_level_collections",
+      "label": "t:sections.header.settings.showcase_first_level_collections.label",
+      "info": "t:sections.header.settings.showcase_first_level_collections.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_images",
+      "label": "t:sections.header.settings.show_collection_images.label",
+      "info": "t:sections.header.settings.show_collection_images.info"
+    },
+    {
+      "type": "select",
+      "id": "crop",
+      "label": "t:sections.header.settings.crop.label",
+      "options": [
+        {
+          "value": "",
+          "label": "t:common.options.no_crop.label"
+        },
+        {
+          "value": "aspect-w-4 aspect-h-3",
+          "label": "t:common.options.landscape.label"
+        },
+        {
+          "value": "aspect-w-1 aspect-h-1",
+          "label": "t:common.options.square.label"
+        },
+        {
+          "value": "aspect-w-3 aspect-h-4",
+          "label": "t:common.options.portrait.label"
+        }
+      ],
+      "default": "aspect-w-1 aspect-h-1"
+    },
+    {
+      "type": "header",
+      "content": "t:common.settings.header_layout"
+    },
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "t:sections.header.settings.header_layout.label",
+      "options": [
+        {
+          "value": "menu_icon_logo_center",
+          "label": "t:sections.header.settings.header_layout.options.menu_icon_left_logo_center.label"
+        },
+        {
+          "value": "navigation_left_logo_center",
+          "label": "t:sections.header.settings.header_layout.options.navigation_left_logo_center.label"
+        },
+        {
+          "value": "logo_left_navigation_center",
+          "label": "t:sections.header.settings.header_layout.options.logo_left_navigation_center.label"
+        }
+      ],
+      "default": "navigation_left_logo_center"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_show_search",
+      "label": "t:sections.header.settings.header_show_search.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "t:sections.header.settings.sticky_header.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "t:sections.header.settings.show_icons.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header_overlay_settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay_on_homepage",
+      "label": "t:sections.header.settings.enable_overlay_on_homepage.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay_on_collection_pages",
+      "label": "t:sections.header.settings.enable_overlay_on_collection_pages.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay_on_product_pages",
+      "label": "t:sections.header.settings.enable_overlay_on_product_pages.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "overlay_text_color",
+      "label": "t:sections.header.settings.overlay_text_color.label",
+      "options": [
+        {
+          "value": "same_as_section",
+          "label": "t:common.options.same_as_section.label"
+        },
+        {
+          "value": "white",
+          "label": "t:common.options.white.label"
+        },
+        {
+          "value": "black",
+          "label": "t:common.options.black.label"
+        }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "image_picker",
+      "id": "overlay_logo",
+      "label": "t:sections.header.settings.overlay_logo.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_when_overlaid_and_stuck",
+      "label": "t:sections.header.settings.transparent_when_overlaid_and_stuck.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_show_separator_border",
+      "label": "t:sections.header.settings.overlay_show_separator_border.label",
+      "info": "t:sections.header.settings.overlay_show_separator_border.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header_overlay_compensation",
+      "info": "Adjust the padding above the first section when overlay header is enabled."
+    },
+    {
+      "type": "range",
+      "id": "overlay_first_section_padding_top_desktop",
+      "label": "t:sections.header.settings.overlay_first_section_padding_top_desktop.label",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "rem",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "overlay_first_section_padding_top_mobile",
+      "label": "t:sections.header.settings.overlay_first_section_padding_top_mobile.label",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "rem",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "t:common.settings.header_color"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:sections.header.settings.color_scheme.label",
+      "info": "t:sections.header.settings.color_scheme.info",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:common.options.primary.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:common.options.secondary.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:common.options.tertiary.label"
+        },
+        {
+          "value": "quaternary",
+          "label": "t:common.options.quaternary.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gradient_background",
+      "label": "t:common.settings.use_gradient_background.label"
+    },
+    {
+      "type": "select",
+      "id": "dropdown_bg",
+      "label": "t:sections.header.settings.dropdown_bg.label",
+      "options": [
+        {
+          "value": "card",
+          "label": "t:common.options.card.label"
+        },
+        {
+          "value": "text",
+          "label": "t:common.options.text.label"
+        },
+        {
+          "value": "accent-1",
+          "label": "t:common.options.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:common.options.accent_2.label"
+        }
+      ],
+      "default": "card"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header_sidebar_menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sidebar_show_footer_menu",
+      "label": "t:sections.header.settings.sidebar_show_footer_menu.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "sidebar_show_social_icons",
+      "label": "t:sections.header.settings.sidebar_show_social_icons.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_desktop_link",
+      "limit": 1,
+      "name": "t:sections.header.blocks.feature_desktop_link.name",
+      "settings": [
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:common.settings.button_link.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:common.settings.button_label.label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "radio",
+          "id": "position",
+          "label": "t:sections.header.blocks.feature_desktop_link.settings.position.label",
+          "options": [
+            {
+              "value": "first_item_in_navigation",
+              "label": "t:sections.header.blocks.feature_desktop_link.settings.position.options.first_item_in_navigation.label"
+            },
+            {
+              "value": "right_of_cart",
+              "label": "t:sections.header.blocks.feature_desktop_link.settings.position.options.right_of_cart.label"
+            }
+          ],
+          "default": "first_item_in_navigation"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_button_shadow",
+          "label": "t:sections.header.blocks.feature_desktop_link.settings.hide_button_shadow.label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

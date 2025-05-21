@@ -1,0 +1,17 @@
+{% if template contains 'cart' %}
+  <script>
+    sessionStorage.setItem("openCart", "true");
+    window.location.href = '/';
+  </script>
+{% endif %}
+
+<script>
+  if(document.referrer.indexOf('/cart') > -1){
+    if(sessionStorage.getItem("openCart")) {
+      window.addEventListener('load', function(){
+        upcartOpenCart();
+        sessionStorage.removeItem("openCart");
+      });
+    }
+  }
+</script>

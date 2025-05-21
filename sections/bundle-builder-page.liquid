@@ -1,0 +1,1031 @@
+<style>
+.bbp-wrap {
+    padding: 40px 0px;
+}
+  .bbp-content {
+    text-align: center;
+}
+  .bbp-p-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 16px;
+}
+  .bbp-pr {
+    width: calc(16.67% - 26px);
+}
+  .bbp-pr-title.base.strong {
+    text-align: center;
+    margin: 7px 0px 5px;
+}
+  .bbp-pr-price {
+    text-align: center;
+}
+  .bbp-col {
+    margin-top: 30px;
+}
+  .bbp-col .heading3.strong {
+    display: flex;
+    gap: 16px;
+}
+  .act-wrap button {
+    width: 100%;
+    margin-top: 5px;
+}
+  .switch-qs .qs-span {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 15px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+  .switch-qs {
+  position: relative;
+}
+.switch-qs-content {
+  display: none;
+  position: absolute;
+  background: white;
+  min-height: 100px;
+  border: 1px solid var(--fade-border);
+  padding: 16px;
+  border-radius: 8px;
+  top: 0;
+  min-width: 265px;
+  font-size: 14px;
+  transform: translate(-50%, -100%);
+  left: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 20px;
+  z-index: 9;
+}
+.switch-qs:hover .switch-qs-content{
+  display: block;
+}
+  span.qs-span {
+  width: 32px;
+  background: #F6F6F6;
+  padding: 3px 4px 5px;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.bbp-sticky-wrap {
+    margin: 10px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    position: fixed;
+    bottom: 0px;
+    width: calc(100% - 20px);
+    z-index: 12;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+  .bbp-btn-total {
+    width: 100%;
+    max-width: 320px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+  .bbp-total.base.strong {
+    display: flex;
+    justify-content: space-between;
+}
+  .bbp-sbtn button {
+    width: 100%;
+}
+  .bbp-spr {
+    border: 2px solid #F6F6F6;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border-style: dotted;
+}
+  .bbp-stikcy-pwrap {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    overflow: auto;
+}
+  .bbp-stikcy-pwrap2 {
+    display: inline-flex;
+    gap: 10px;
+    position: relative;
+    /* overflow: auto;
+    width: 100%; */
+}
+  .bbp-spr-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #F6F6F6;
+    padding: 4px 16px;
+    position: absolute;
+    border-radius: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+}
+  .sb-cont-bar {
+    background: #f6f6f6;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    position: absolute;
+    overflow: hidden;
+}
+  .sb-cont {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    margin: 50px 0px;
+}
+.sb-count {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -12px;
+    gap: 8px;
+}
+  .sb-count div {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    width: max-content;
+}
+  .sb-count span {
+    width: 32px;
+    height: 32px;
+    background: #f6f6f6;
+    display: block;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  .sb-cont-bar:before {
+    content: '';
+    position: absolute;
+    height: 8px;
+    background: var(--alert-green);
+    width: 0%;
+}
+  .sb-cont[steps="step3"] .sb-cont-bar:before {
+    width: 8%;
+  }
+  .sb-cont[steps="step3"] .sb-count span.one {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step4"] .sb-cont-bar:before {
+    width: 21%;
+  }
+  .sb-cont[steps="step4"] .sb-count span.one, .sb-cont[steps="step4"] .sb-count span.two {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step5"] .sb-cont-bar:before {
+    width: 33%;
+  }
+  .sb-cont[steps="step5"] .sb-count span.one, 
+  .sb-cont[steps="step5"] .sb-count span.two,
+  .sb-cont[steps="step5"] .sb-count span.three {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step6"] .sb-cont-bar:before {
+    width: 46%;
+  }
+  .sb-cont[steps="step6"] .sb-count span.one, 
+  .sb-cont[steps="step6"] .sb-count span.two,
+  .sb-cont[steps="step6"] .sb-count span.three,
+  .sb-cont[steps="step6"] .sb-count span.four {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step7"] .sb-cont-bar:before {
+    width: 58%;
+  }
+  .sb-cont[steps="step7"] .sb-count span.one, 
+  .sb-cont[steps="step7"] .sb-count span.two,
+  .sb-cont[steps="step7"] .sb-count span.three,
+  .sb-cont[steps="step7"] .sb-count span.four,
+  .sb-cont[steps="step7"] .sb-count span.five{
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step8"] .sb-cont-bar:before {
+    width: 71%;
+  }
+  .sb-cont[steps="step8"] .sb-count span.one, 
+  .sb-cont[steps="step8"] .sb-count span.two,
+  .sb-cont[steps="step8"] .sb-count span.three,
+  .sb-cont[steps="step8"] .sb-count span.four,
+  .sb-cont[steps="step8"] .sb-count span.five,
+  .sb-cont[steps="step8"] .sb-count span.six {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step9"] .sb-cont-bar:before {
+    width: 83%;
+  }
+  .sb-cont[steps="step9"] .sb-count span.one, 
+  .sb-cont[steps="step9"] .sb-count span.two,
+  .sb-cont[steps="step9"] .sb-count span.three,
+  .sb-cont[steps="step9"] .sb-count span.four,
+  .sb-cont[steps="step9"] .sb-count span.five,
+  .sb-cont[steps="step9"] .sb-count span.six,
+  .sb-cont[steps="step9"] .sb-count span.seven  {
+    background: var(--alert-green);
+    color: white;
+  }
+  .sb-cont[steps="step10"] .sb-cont-bar:before {
+    width: 100%;
+  }
+  .sb-cont[steps="step10"] .sb-count span.one, 
+  .sb-cont[steps="step10"] .sb-count span.two,
+  .sb-cont[steps="step10"] .sb-count span.three,
+  .sb-cont[steps="step10"] .sb-count span.four,
+  .sb-cont[steps="step10"] .sb-count span.five,
+  .sb-cont[steps="step10"] .sb-count span.six,
+  .sb-cont[steps="step10"] .sb-count span.seven,
+  .sb-cont[steps="step10"] .sb-count span.eight  {
+    background: var(--alert-green);
+    color: white;
+  }
+  .act-wrap button span {
+    padding: 2px 24px 1px;
+    height: 32px;
+  }
+  .bbp-qtyy button {
+    font-family: monospace;
+    height: 32px !important;
+    display: flex;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    flex: 0 0 auto;
+}
+  .bbp-qtyy {
+    display: flex;
+    height: 32px;
+    border: 1px solid #f6f6f6;
+    border-radius: 50px;
+    justify-content: space-between;
+}
+  .bbp-qtyy input {
+    text-align: center;
+    font-size: 14px;
+    width: 50px;
+}
+  button.base.normal.minus {
+    border-right: 1px solid #f6f6f6;
+}
+  button.base.normal.plus {
+    border-left: 1px solid #f6f6f6;
+}
+  .bbp-qtyy {
+    margin-top: 10px;
+    display: none;
+}
+.act-wrap.active .bbp-qtyy{
+  display: flex;
+}
+.act-wrap.active > button{
+  display: none;
+}
+  .bbp-spr-img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+  .pcs {
+    position: absolute;
+    top: 4px;
+    font-size: 8px;
+    background: white;
+    width: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    padding: 3.5px 0px 4.5px;
+    border-radius: 80px;
+    left: 4px;
+}
+  .pcs-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    font-size: 10px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    cursor: pointer;
+    padding: 3.5px 0px 4.5px;
+}
+  .bbp-content .base.normal {
+    margin-top: 8px;
+}
+  .bbpr-title {
+    margin-top: 4px;
+    font-size: 12px;
+    text-align: center;
+}
+  .bbp-error-msg{
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: -10px
+  }
+  .bbp-error-msg:empty{
+    display: none;
+  }
+  .bbp-price {
+    display: flex;
+    gap: 4px;
+}
+ .bbp-price span.cprice {
+    font-weight: 400;
+    font-size: 14px;
+    color: #8E8E8E;
+    text-decoration: line-through;
+}
+  .bbp-pr-price {
+    display: none;
+}
+      .bbp-spr:empty {
+    display: none;
+}
+@media only screen and (max-width: 1200px) {
+  .bbp-p-wrap {
+    gap: 24px;
+  }
+  .bbp-pr {
+    width: calc(25% - 18px);
+  }
+}
+.bbp-show-hide{
+  display: none;
+}
+.bbp-show-hide .hide-items{
+  display: none;
+}
+  .mbl-bbp-grid {
+    display: none;
+}
+.sb-count {
+  width: 58px;
+}
+  .bbp-pr-title.base.strong {
+    white-space: nowrap;
+}
+    .bbpr-title {
+    white-space: nowrap;
+}
+@media only screen and (max-width: 767px) {
+  .bbpr-title {
+    white-space: nowrap;
+}
+  body.android .sb-count span{
+    padding-top: 3px;
+  }
+  .switch-qs-content{
+    transform: translate(-70%, -100%);
+  }
+  .sb-count div{
+    width: 100%;
+  }
+  .status-bar-wrap {
+    overflow: scroll;
+    padding: 40px 0px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  .sb-cont {
+    width: 200%;
+    margin: 0;
+  }
+  .mbl-bbp-grid {
+    display: block;
+  }
+  .bbp-show-hide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .bbp-pr {
+    width: calc(50% - 18px);
+  }
+  .bbp-pr-title.base.strong {
+    font-size: 14px;
+  }
+  .bbp-pr-price {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .act-wrap span {
+    font-size: 14px;
+  }
+  .bbp-sticky-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bbp-stikcy-pwrap {
+    display: none;
+  }
+  .bbp-btn-total{
+    max-width: 100%;
+  }
+  .bbp-sticky-wrap.active .bbp-stikcy-pwrap {
+    display: flex;
+    width: 100%;
+  }
+  .bbp-sticky-wrap.active .bbp-show-hide svg {
+    transform: rotate(180deg);
+  }
+  .bbp-sticky-wrap.active .show-items {
+    display: none;
+  }
+  .bbp-sticky-wrap.active .hide-items {
+    display: block;
+  }
+  .mbl-bbp-grid {
+    text-align: center;
+    width: 100%;
+    overflow: auto;
+  }
+  .bbp-pr-title.base.strong {
+    white-space: nowrap;
+  }
+  .bbp-show-hide {
+    display: none;
+  }
+   .bbp-wrap.prAdded + .bbp-sticky-wrap  .bbp-show-hide {
+    display: flex;
+  }
+  .mbl-bbp-grid {
+    display: none;
+  }
+  .bbp-wrap.prAdded .mbl-bbp-grid {
+    display: block;
+  }
+}
+
+.bbp-pr-img {
+    position: relative;
+}
+</style>
+<div class="bbp-wrap">
+  <div class="container">
+    <div class="bbp-content">
+      <div class="heading2 strong">{{ section.settings.hdng }}</div>
+      <div class="base normal">{{ section.settings.sbhdng }}</div>
+    </div>
+    <div class="status-bar-wrap">
+      <div class="sb-cont">
+        <div class="sb-cont-bar"></div>
+        <div class="sb-count">
+          <span class="new-spirit-md one">3</span>
+          <div>-33%</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md two">4</span>
+          <div>-40%</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md three">5</span>
+          <div>-44% <br>+ Free Shipping</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md four">6</span>
+          <div>-47%</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md five">7</span>
+          <div>-49%</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md six">8</span>
+          <div>-50% <br>+ Free Salted Caramel</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md seven">9</span>
+          <div>-51% {% comment %}<br>+ Free Totebag{% endcomment %}</div>
+        </div>
+        <div class="sb-count">
+          <span class="new-spirit-md eight">10</span>
+          <div>-52%</div>
+          <!-- <div>-50% <br>+ Free Caramelized Pear</div> -->
+        </div>
+      </div>
+    </div>
+    <div class="mbl-bbp-grid">
+      <div class="bbp-stikcy-pwrap2">
+        <div class="bbp-spr"></div>
+        <div class="bbp-spr"></div>
+        <div class="bbp-spr"></div>
+        <div class="bbp-spr"></div>
+        <div class="bbp-spr-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M6.0625 1.1875V4.9375H9.8125C10.1172 4.9375 10.375 5.19531 10.375 5.5C10.375 5.82812 10.1172 6.0625 9.8125 6.0625H6.0625V9.8125C6.0625 10.1406 5.80469 10.375 5.5 10.375C5.17188 10.375 4.9375 10.1406 4.9375 9.8125V6.0625H1.1875C0.859375 6.0625 0.625 5.82812 0.625 5.5C0.625 5.19531 0.859375 4.9375 1.1875 4.9375H4.9375V1.1875C4.9375 0.882812 5.17188 0.625 5.5 0.625C5.80469 0.625 6.0625 0.882812 6.0625 1.1875Z" fill="black"/>
+          </svg>
+            Add products to your bundle
+        </div>
+      </div>
+    </div>
+    <div class="bbp-col">
+      <div class="heading3 strong">Lip balms</div>
+      <div class="bbp-p-wrap">
+        {% for block in section.blocks %}
+          {% assign pr = block.settings.pr %}
+          {% if block.type == 'lipbalm' %}
+            <div class="bbp-pr">
+              <div class="bbp-pr-img">
+                {% if pr.handle contains 'hb-rose-cardamom' or pr.handle contains 'hb-lavender-chamomille' or pr.handle contains 'hb-red-pepper' or pr.handle contains 'hb-lemon-cheesecake'
+                  or pr.handle contains 'hb-hibiscus-citrus' or pr.handle contains 'hb-salted-caramel' %}
+                  <div class="tag base-sm strong  new">New</div>
+                {% elsif pr.handle contains 'hb-honey' or pr.handle contains 'hb-mint' or pr.handle contains 'hb-strawberry' or pr.handle contains 'hb-watermelon' or pr.handle contains 'hb-blueberry' %}
+                  <div class="tag base-sm strong  best-seller">Best seller</div>
+                {% endif %}
+                
+                <img src="{{ block.settings.primg | img_url: '300x' }}" /></div>
+              <div class="bbp-pr-title base strong">{{ block.settings.title }}</div>
+              <div class="bbp-pr-price">{{ pr.price | money }}</div>
+              <div class="act-wrap">
+                <button class="push-btn">
+                  <span class="push-btn-surface w-full">
+                    Add to bundle
+                  </span>
+                </button>
+                <div class="bbp-qtyy">
+                  <button class="base normal minus">-</button>
+                  <input type="number" vid="{{ pr.selected_or_first_available_variant.id }}" value="0" price="{{ pr.price }}" phandle="{{ pr.handle }}" pimg="{{ block.settings.primg | img_url: '300x' }}" ptitle="{{ block.settings.title | replace: ' lip balm', '' }}" readonly>
+                  <button class="base normal plus">+</button>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="bbp-col">
+      <div class="heading3 strong">
+        SPF lip balms
+        <div class="switch-qs">
+          <span class="qs-span">
+            ?
+          </span>
+          <div class="switch-qs-content">
+            <p>SPF (Sun Protection Factor) measures how well a lip balm protects your lips from the harmful UV rays of the sun. SPF25 blocks about 96% of UVB rays, significantly reducing the risk of sunburn and long-term skin damage.</p>
+            <br><p>The taste and scent of our SPF balms are no different from the regular balms, and Honeybalm SPF can be recognized by the SPF logo on the back of each balm.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bbp-p-wrap">
+        {% for block in section.blocks %}
+          {% assign pr = block.settings.pr %}
+          {% if block.type == 'spflipbalm' %}
+            <div class="bbp-pr">
+              <div class="bbp-pr-img">
+                {% if pr.handle contains 'miscellaneous' %}
+                  <div class="tag base-sm strong  new">New</div>
+                {% elsif pr.handle contains 'miscellaneous' %}
+                  <div class="tag base-sm strong  best-seller">Best seller</div>
+                {% endif %}
+                <img src="{{ block.settings.primg | img_url: '300x' }}" />
+              </div>
+              <div class="bbp-pr-title base strong">{{ block.settings.title }}</div>
+              <div class="bbp-pr-price">{{ pr.price | money }}</div>
+              <div class="act-wrap">
+                <button class="push-btn">
+                  <span class="push-btn-surface w-full">
+                    Add to bundle
+                  </span>
+                </button>
+                <div class="bbp-qtyy">
+                  <button class="base normal minus">-</button>
+                  <input type="number" vid="{{ pr.selected_or_first_available_variant.id }}" phandle="{{ pr.handle }}" price="{{ pr.price }}" value="0" pimg="{{ block.settings.primg | img_url: '300x' }}" ptitle="{{ block.settings.title | replace: 'SPF ', '' | replace: 'lip balm', 'SPF'  }}" readonly>
+                  <button class="base normal plus">+</button>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="bbp-col">
+      <div class="heading3 strong">Lip scrubs</div>
+      <div class="bbp-p-wrap">
+        {% for block in section.blocks %}
+          {% assign pr = block.settings.pr %}
+          {% if block.type == 'lipscrub' %}
+            <div class="bbp-pr">
+              <div class="bbp-pr-img">
+                {% if pr.handle contains 'strawberry-lip-scrub' %}
+                  <div class="tag base-sm strong  new">New</div>
+                {% elsif pr.handle contains 'miscellaneous' %}
+                  <div class="tag base-sm strong  best-seller">Best seller</div>
+                {% endif %}
+                <img src="{{ block.settings.primg | img_url: '300x' }}" /></div>
+              <div class="bbp-pr-title base strong">{{ block.settings.title }}</div>
+              <div class="bbp-pr-price">{{ pr.price | money }}</div>
+              <div class="act-wrap">
+                <button class="push-btn">
+                  <span class="push-btn-surface w-full">
+                    Add to bundle
+                  </span>
+                </button>
+                <div class="bbp-qtyy">
+                  <button class="base normal minus">-</button>
+                  <input type="number" vid="{{ pr.selected_or_first_available_variant.id }}" value="0" price="{{ pr.price }}" phandle="{{ pr.handle }}" pimg="{{ block.settings.primg | img_url: '300x' }}" ptitle="{{ block.settings.title | replace: ' lip balm', '' }}" readonly>
+                  <button class="base normal plus">+</button>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+            
+  </div>
+</div>
+<div class="bbp-sticky-wrap">
+  <div class="bbp-show-hide">
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+      <path d="M1.125 7.46875C0.96875 7.3125 0.96875 7.09375 1.125 6.9375L7.71875 0.34375C7.875 0.1875 8.09375 0.1875 8.25 0.34375L14.8438 6.9375C15 7.09375 15 7.3125 14.8438 7.46875L14.625 7.6875C14.4688 7.84375 14.25 7.84375 14.0938 7.6875L8 1.59375L1.875 7.6875C1.71875 7.84375 1.5 7.84375 1.34375 7.6875L1.125 7.46875Z" fill="black"/>
+    </svg>
+    <div class="show-items">Show items</div>
+    <div class="hide-items">Hide items</div>
+  </div>
+  <div class="bbp-stikcy-pwrap">
+    <div class="bbp-spr"></div>
+    <div class="bbp-spr"></div>
+    <div class="bbp-spr"></div>
+    <div class="bbp-spr"></div>
+    <div class="bbp-spr-label">
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+      <path d="M6.0625 1.1875V4.9375H9.8125C10.1172 4.9375 10.375 5.19531 10.375 5.5C10.375 5.82812 10.1172 6.0625 9.8125 6.0625H6.0625V9.8125C6.0625 10.1406 5.80469 10.375 5.5 10.375C5.17188 10.375 4.9375 10.1406 4.9375 9.8125V6.0625H1.1875C0.859375 6.0625 0.625 5.82812 0.625 5.5C0.625 5.19531 0.859375 4.9375 1.1875 4.9375H4.9375V1.1875C4.9375 0.882812 5.17188 0.625 5.5 0.625C5.80469 0.625 6.0625 0.882812 6.0625 1.1875Z" fill="black"/>
+      </svg>
+        Add products to your bundle
+    </div>
+  </div>
+  <div class="bbp-btn-total">
+    <div class="bbp-total base strong">
+      <div class="bbp-qty">Total (0 items)</div>
+      <div class="bbp-price"><span class="aprice">$0.00</span></div>
+    </div>
+    <div class="bbp-sbtn">
+      <button class="push-btn">
+        <span class="push-btn-surface w-full">
+          Add to bag
+        </span>
+      </button>
+    </div>
+    <div class="bbp-error-msg"></div>
+  </div>
+</div>
+        
+{% comment %}
+{% assign col = collections['new-bundle-builder'] %}
+ <ul style="display: none;">
+  {% for prr in col.products %}
+   <li class="bp{{ forloop.index0 }}" vid="{{ prr.selected_or_first_available_variant.id }}"  price="{{ prr.price | money }}" cprice="{{ prr.compare_at_price | money }}"></li>
+  {% endfor %}
+ </ul>
+{% endcomment %}
+        
+<script>
+
+  var all_qtyn = 0;
+  
+  function all_qty(qty){
+    function applyShopifyCeilingDiscount(price, discountPercent) {
+        let discountAmount = (price * discountPercent) / 100;
+        let discountedPrice = price - discountAmount;
+        return discountedPrice * 10 / 10;
+      }
+    
+    all_qtyn += qty;
+    var progress_bar = document.querySelector('.sb-cont');
+    if(all_qtyn >= 3 && all_qtyn <= 10){
+      progress_bar.setAttribute('steps','step'+all_qtyn);
+    }else{
+      progress_bar.removeAttribute('steps');
+    }
+    var default_html = '<div class="bbp-spr"></div>'+
+                '<div class="bbp-spr"></div>'+
+                '<div class="bbp-spr"></div>'+
+                '<div class="bbp-spr"></div>'+
+                '<div class="bbp-spr-label">'+
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M6.0625 1.1875V4.9375H9.8125C10.1172 4.9375 10.375 5.19531 10.375 5.5C10.375 5.82812 10.1172 6.0625 9.8125 6.0625H6.0625V9.8125C6.0625 10.1406 5.80469 10.375 5.5 10.375C5.17188 10.375 4.9375 10.1406 4.9375 9.8125V6.0625H1.1875C0.859375 6.0625 0.625 5.82812 0.625 5.5C0.625 5.19531 0.859375 4.9375 1.1875 4.9375H4.9375V1.1875C4.9375 0.882812 5.17188 0.625 5.5 0.625C5.80469 0.625 6.0625 0.882812 6.0625 1.1875Z" fill="black"></path></svg>'+
+                    'Voeg producten toe aan je bundel'+
+                '</div>';
+    var html = '';
+    var bpr = document.querySelectorAll('.bbp-pr');
+    for(var i=0; i < bpr.length; i++){
+      var bprqty = bpr[i].querySelector('.bbp-qtyy input').value;
+      if(bprqty > 0){
+        var bprimg = bpr[i].querySelector('.bbp-qtyy input').getAttribute('pimg');
+        var ptitle = bpr[i].querySelector('.bbp-qtyy input').getAttribute('ptitle');
+        var phandle = bpr[i].querySelector('.bbp-qtyy input').getAttribute('phandle');
+        html += '<div class="bbp-spr-p"><div class="bbp-spr-img"><img src="'+bprimg+'" /><div class="pcs">'+bprqty+'x</div><div class="pcs-close" phandle="'+phandle+'" qty="'+bprqty+'">x</div></div><div class="bbpr-title">'+ptitle+'</div></div>';
+      }
+    }
+    document.querySelector('.bbp-stikcy-pwrap').innerHTML = html;
+    document.querySelector('.bbp-stikcy-pwrap2').innerHTML = html;
+    document.querySelector('.bbp-qty').innerHTML = 'Total ('+all_qtyn+' items)';
+    if(all_qtyn == 0){
+      document.querySelector('.bbp-stikcy-pwrap').innerHTML = default_html;
+      document.querySelector('.bbp-stikcy-pwrap2').innerHTML = default_html;
+    }
+    close();
+    
+    // if(all_qtyn < 3){
+      var bbp_qty = document.querySelectorAll('.bbp-qtyy input');
+      var totaal = 0;
+      for(var i=0; i < bbp_qty.length; i++){
+        if(bbp_qty[i].value != 0){
+          totaal += bbp_qty[i].value * Number(bbp_qty[i].getAttribute('price'));
+        }
+      }
+      totaal = totaal / 100;
+      if(all_qtyn == 0){
+        document.querySelector('.bbp-price').innerHTML = '<span class="aprice">$0.00</span>';
+      }else{
+        
+        let qtyyy = parseInt(all_qtyn);
+        if(qtyyy == 1){
+          document.querySelector('.bbp-price').innerHTML = '<span class="aprice">$'+totaal.toFixed(2)+'</span>';
+        }else if(qtyyy == 2){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 19.97);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 3){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 33.3);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 4){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 39.97);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 5){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 43.97);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 6){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 46.63);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 7){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 48.54);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 8){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 49.96);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else if(qtyyy == 9){
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 51.07);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }else{
+          let final_price = applyShopifyCeilingDiscount(totaal.toFixed(2), 51.96);
+          document.querySelector('.bbp-price').innerHTML = '<span class="cprice">$'+totaal.toFixed(2)+'</span><span class="aprice">$'+final_price.toFixed(2)+'</span>';
+        }
+        
+      }
+      
+    // }else{
+    //   var cls = all_qtyn - 3;
+    //   if(document.querySelector('li.bp'+ cls).getAttribute('cprice') != ''){
+    //     document.querySelector('.bbp-price').innerHTML = '<span class="cprice">'+document.querySelector('li.bp'+ cls).getAttribute('cprice')+'</span><span class="aprice">'+document.querySelector('li.bp'+ cls).getAttribute('price')+'</span>';
+    //   }else{
+    //     document.querySelector('.bbp-price').innerHTML = '<span class="aprice">'+document.querySelector('li.bp'+ cls).getAttribute('price')+'</span>';
+    //   }
+    // }
+
+    if(all_qtyn > 6){
+      document.querySelector('.status-bar-wrap').scrollLeft += document.querySelector('.status-bar-wrap').scrollWidth;
+    }else{
+      document.querySelector('.status-bar-wrap').scrollLeft -= document.querySelector('.status-bar-wrap').scrollWidth;
+    }
+    if(all_qtyn > 0){
+      document.querySelector('.bbp-wrap').classList.add('prAdded');
+    }else{
+      document.querySelector('.bbp-wrap').classList.remove('prAdded');
+    }
+  }
+
+  document.querySelector('.bbp-sbtn button').addEventListener('click', function(){
+    if(all_qtyn < 3){
+      document.querySelector('.bbp-error-msg').innerText = '';
+      document.querySelector('.bbp-error-msg').innerText = 'Complete your pack, min. 3 items';
+      setTimeout(function(){
+        document.querySelector('.bbp-error-msg').innerText = '';
+      },2000);
+    }else{
+      // var cls = all_qtyn - 3;
+      // const productId = document.querySelector('li.bp'+ cls).getAttribute('vid');
+      // const quantity = 1;
+
+      var properties_val = '';
+      properties_val = {}
+      var items = [];
+      var bbp_qty = document.querySelectorAll('.bbp-qtyy input');
+      for(var i=0; i < bbp_qty.length; i++){
+        // if(bbp_qty[i].value != 0){
+        //   properties_val[bbp_qty[i].getAttribute('ptitle')] = bbp_qty[i].value;
+        // }
+        if(bbp_qty[i].value != 0){
+        items.push({
+                    id: bbp_qty[i].getAttribute('vid'),
+                    quantity: bbp_qty[i].value
+                  });
+        }
+      }
+      
+      // const item = {
+      //   id: productId,
+      //   quantity: quantity,
+      //   properties: properties_val
+      // };
+      
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: items }),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Product added to cart:', data);
+      })
+      .catch((error) => {
+        console.error('Error adding product to cart:', error);
+      });
+    }
+  });
+  
+  function close(){
+    var close = document.querySelectorAll('.bbp-spr-p .pcs-close');
+    for(var i=0; i < close.length; i++){
+      close[i].addEventListener('click', function(){
+        var qty = Number(this.getAttribute('qty'));
+        var phandle = this.getAttribute('phandle');
+        document.querySelector('input[phandle="'+phandle+'"]').value = 0; 
+        document.querySelector('input[phandle="'+phandle+'"]').closest('.act-wrap').classList.remove('active'); 
+        all_qty(-qty);
+      });
+    }
+  }
+  
+  var atc_btns = document.querySelectorAll('.act-wrap > button');
+  for(var i=0; i < atc_btns.length; i++){
+    atc_btns[i].addEventListener('click', function(){
+      if(all_qtyn < 10){
+        this.closest('.act-wrap').classList.add('active');
+        this.closest('.act-wrap').querySelector('.bbp-qtyy input').value = 1;
+        all_qty(1);
+      }
+    });
+  }
+
+  var plus_btns = document.querySelectorAll('.bbp-qtyy button.plus');
+  for(var i=0; i < plus_btns.length; i++){
+    plus_btns[i].addEventListener('click', function(){
+      var qtyv = Number(this.closest('.bbp-qtyy').querySelector('input').value) + 1;
+      if(all_qtyn < 10){
+        this.closest('.bbp-qtyy').querySelector('input').value = qtyv;
+        all_qty(1);
+      }
+    });
+  }
+  
+  var minus_btns = document.querySelectorAll('.bbp-qtyy button.minus');
+  for(var i=0; i < minus_btns.length; i++){
+    minus_btns[i].addEventListener('click', function(){
+      var qtyv = Number(this.closest('.bbp-qtyy').querySelector('input').value) - 1;
+      if(qtyv >= 0){
+        this.closest('.bbp-qtyy').querySelector('input').value = qtyv;
+        all_qty(-1);
+        if(qtyv == 0){
+          this.closest('.act-wrap').classList.remove('active');
+        }
+      }
+    });
+  }
+
+  document.querySelector('.bbp-show-hide').addEventListener('click', function(){
+    document.querySelector('.bbp-sticky-wrap').classList.toggle('active');
+  });
+  
+</script>
+<script>
+  if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+    document.body.classList.add('android');
+  }
+</script>
+{% schema %}
+  {
+    "name": "Bundle Builder Page",
+    "settings": [
+      {
+        "type": "html",
+        "id": "hdng",
+        "label": "Heading"
+      },
+      {
+        "type": "html",
+        "id": "sbhdng",
+        "label": "Sub Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "lipbalm",
+        "type": "lipbalm",
+        "settings": [
+          {
+            "type": "product",
+            "id": "pr",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "primg",
+            "label": "Product Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "name": "spflipbalm",
+        "type": "spflipbalm",
+        "settings": [
+          {
+            "type": "product",
+            "id": "pr",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "primg",
+            "label": "Product Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "name": "lipscrub",
+        "type": "lipscrub",
+        "settings": [
+          {
+            "type": "product",
+            "id": "pr",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "primg",
+            "label": "Product Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bundle Builder Page",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,611 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_e63YRG": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/image_33_1.png",
+        "image_mobile": "shopify://shop_images/Hero_image_new.webp",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "<span class=\"new-spirit-md\">FAQ</span>",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "haeding_content_UNRJCE": {
+      "type": "haeding-content",
+      "settings": {
+        "heading": "Frequently asked questions",
+        "text": "Welcome to our FAQ page – where some of our most asked questions about Honeybalm and our business are answered. Here, we've compiled a comprehensive collection of answers to address your queries, making your experience with our products and brand as smooth as our lip balms.  <br> <br> If your question is not listed here, please contact us at info@honeybalm.com and our support team will answer your question(s) within 24 hours.",
+        "btntxt": "",
+        "btnlnk": ""
+      }
+    },
+    "faq_8g3Pyq": {
+      "type": "faq",
+      "blocks": {
+        "question_zYi88B": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How do I use the Honeybalm lip balm with the honey applicator?",
+            "answer": "<p>You can take the honey applicator out of the lid, and gently dip the honey applicator into the lip balm. With the lip balm on the honey applicator, carefully touch the honey applicator to your lips. Starting from the center of your lips, glide the honey applicator towards the corners of your mouth. You can also apply the lip balm to your lower lip and press your lips together to distribute it evenly. </p>"
+          }
+        },
+        "question_igjdqz": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What makes the honey applicator in Honeybalm lip balms special?",
+            "answer": "<p>The Honeybalm honey applicator is not only super cute, but also super useful. It's <strong>more hygienic</strong> than using your finger to apply the balm, perfect for girls with <strong>long nails</strong> and it's helps applying the balm evenly on your lips. </p>"
+          }
+        },
+        "question_CBQdpd": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What ingredients are used in the Honeybalm lip balms?",
+            "answer": "<p>All of our lip balms are made with real, organic ingredients. Please <a href=\"/pages/ingredients\" title=\"Ingredients\"><strong>check our ingredients page</strong></a> for all the ingredients we use for each flavor.</p>"
+          }
+        },
+        "question_R7nrPt": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What are the benefits of Honeybalm lip balm?",
+            "answer": "<p>Normal and ordinary lip balms are made with a lot of chemicals that are bad for your lips. Honeybalm is made with <strong>real, organic ingredients </strong>such as bee wax and propolis. This gives your lips a hydrating and protection base, straight from mother nature. Honeybalm keeps your lips <strong>soft</strong>, <strong>hydrated</strong>, <strong>protected </strong>and <strong>beautiful </strong>💛<br/><br/>All of our flavors contain propolis and bee wax, and some of our <strong>newest flavors </strong>also contain extra organic ingredients such as strawberry extracts or cacao butter. For more detailed information about our ingredients, click <a href=\"/pages/ingredients\" title=\"Ingredients\"><strong>here</strong></a>.</p>"
+          }
+        },
+        "question_JwyqDk": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is Honeybalm lip balm suitable for all lip types, including sensitive lips?",
+            "answer": "<p>Honeybalm is suitable for all lip types and is super effective against <strong>dry and chapped lips</strong>. </p>"
+          }
+        },
+        "question_zYcc4U": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Can I use Honeybalm lip balm as a base before applying lipstick or other lip products?",
+            "answer": "<p><strong>Yes, you definitely can! </strong>Most of our customers use Honeybalm combined with their lipstick or lipgloss, but you can also apply it without any other lip cosmetics. You can even use Honeybalm as an overnight lip mask!</p>"
+          }
+        },
+        "question_tB3mDN": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is Honeybalm animal test-proof?",
+            "answer": "<p>Yes, we are proud to say that Honeybalm is <strong>100% cruelty free!</strong></p>"
+          }
+        },
+        "question_7XaVNN": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How often should I apply Honeybalm lip balm throughout the day?",
+            "answer": "<p>For the best results, we recommend to use Honeybalm multiple times throughout the day, to always keep your lips <strong>soft, smooth, hydrated and protected</strong>. Some of our customers use Honeybalm once a day and it gives them great results anyway!</p>"
+          }
+        },
+        "question_t3KhW3": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Do the different flavors of Honeybalm lip balm provide any additional benefits?",
+            "answer": "<p>Every flavor Honeybalm lip balm is made with different <strong>natural ingredients</strong>, each giving you the wonderful result that you wish for. Please check out <a href=\"/pages/ingredients\" title=\"Ingredients\">our ingredients page</a> for specific information and more details about the ingredients in each flavor.</p>"
+          }
+        },
+        "question_Kn4zRV": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Can I use Honeybalm lip balm as an overnight lip treatment?",
+            "answer": "<p>Yes, you definitely can! Using Honeybalm as an overnight lip treatment can help restoring and <strong>repairing your lips during your sleep</strong>, which gives you beautiful soft and hydrated lips the next morning. </p>"
+          }
+        },
+        "question_hraUR9": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "I have a honey allergy, can I still use Honeybalm?",
+            "answer": "<p>No, we would not recommend using Honeybalm when you have a honey allergy, since most of our flavors contain real honey and/or propolis.</p>"
+          }
+        },
+        "question_child7": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is Honeybalm safe for children?",
+            "answer": "<p>Yes, Honeybalm is safe for children. We tested this with nutritional safety experts. However, we do not recommend the Red Pepper flavor for children due to the natural pepper extracts.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_zYi88B",
+        "question_igjdqz",
+        "question_CBQdpd",
+        "question_R7nrPt",
+        "question_JwyqDk",
+        "question_zYcc4U",
+        "question_tB3mDN",
+        "question_7XaVNN",
+        "question_t3KhW3",
+        "question_Kn4zRV",
+        "question_hraUR9",
+        "question_child7"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "heading_text_style": "heading",
+        "two_columns_desktop": false,
+        "title": "Usage and benefits",
+        "richtext": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "faq_7cbT3K": {
+      "type": "faq",
+      "blocks": {
+        "question_m4enq6": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How long will it take to receive my order?",
+            "answer": "<p>At Honeybalm, we understand that receiving your order in a timely manner is important to you, and we strive to ship out all orders as quickly as possible. On average, it takes around <strong>6-10 working days </strong>to deliver your parcel after it has been placed 🚚</p>"
+          }
+        },
+        "question_BetDdY": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What is the average delivery time for Honeybalm products to different regions of USA?",
+            "answer": "<p>Our delivery time is consistent across all regions in USA. On average, you can expect your order to arrive within 6-10 business days from the date it is placed. Thanks!</p>"
+          }
+        },
+        "question_XcE4pL": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How can I track my Honeybalm lip balm order after it's been shipped?",
+            "answer": "<p>24-48 hours after placing your order, you will receive a tracking number that allows you to follow your parcel. We are currently integrating a tracking system on the website, which will be live by the end of August.</p>"
+          }
+        },
+        "question_JUXLce": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Do you offer express shipping options for faster delivery of Honeybalm lip balm?",
+            "answer": "<p>We currently do <strong>not</strong> offer express shipping options for faster delivery. However, we are planning to open a fulfilment center in USA soon. Subscribe to our newsletter to receive weekly updates on new features and try-outs.</p>"
+          }
+        },
+        "question_rbmQzi": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is there a tracking number provided for my Honeybalm order, and how can I access it?",
+            "answer": "<p><strong>Yes! </strong>You will receive a tracking number 24-48 hours after placing your order through <strong>e-mail or phone</strong>, depending on your information provided when placing your order.</p>"
+          }
+        },
+        "question_ip3z38": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Do you offer free shipping for larger orders of Honeybalm products?",
+            "answer": "<p>We do! Honeybalm offers FREE shipping on orders above <strong>$25.99</strong>. If your total order amount is below than this, the shipping cost will be $4.95.</p>"
+          }
+        },
+        "question_qd3xPE": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Can I change my shipping address after placing the order for Honeybalm lip balm?",
+            "answer": "<p>When you entered a wrong shipping address or if you want to change your shipping address, please send us an e-mail at <strong>info@honeybalm.com</strong>. If your order is not yet shipped, we can change it. If not, we forward the information to our shipping partners and they will change the shipping address if they are able to.</p>"
+          }
+        },
+        "question_zrzq3F": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What should I do if my Honeybalm lip balm order hasn't arrived within the estimated delivery time?",
+            "answer": "<p>On busy periods we can experience some slight delays. We will update you if any delays occur. If you experience any unexpected delay(s), please reach out to us at <strong>info@honeybalm.com</strong>, and our team will help you and compensate you accordingly!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_m4enq6",
+        "question_BetDdY",
+        "question_XcE4pL",
+        "question_JUXLce",
+        "question_rbmQzi",
+        "question_ip3z38",
+        "question_qd3xPE",
+        "question_zrzq3F"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "heading_text_style": "heading",
+        "two_columns_desktop": false,
+        "title": "Shipping and delivery",
+        "richtext": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "faq_TmhjiX": {
+      "type": "faq",
+      "blocks": {
+        "question_BTifhW": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What is your returns and refunds policy for Honeybalm lip balm products?",
+            "answer": "<p>For our full returns and refunds policy, please check out <a href=\"/pages/returns-and-exchanges\" title=\"Returns and Exchanges\">this page</a>.</p>"
+          }
+        },
+        "question_nPcArX": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What is the timeframe within which I can initiate a return for a Honeybalm lip balm?",
+            "answer": "<p>You can return your Honeybalm order up to <strong>30 days</strong> after receiving your order. Please check out our <a href=\"/pages/returns-and-exchanges\" title=\"Returns and Exchanges\">return page</a> for more details.</p>"
+          }
+        },
+        "question_hLWVtK": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What should I do if I received a damaged or defective Honeybalm lip balm product?",
+            "answer": "<p>If you are not satisfied with your products or if you received damaged products, please reach out to us at <strong>info@honeybalm.com</strong> so our team can help you accordingly.</p>"
+          }
+        },
+        "question_MPzqNt": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What if I received the wrong flavor of Honeybalm lip balm? Can I get a replacement or refund?",
+            "answer": "<p>If you received different balms then excpected, please reach out to our team at <strong>info@honeybalm.com</strong> and they will help you further!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_BTifhW",
+        "question_nPcArX",
+        "question_hLWVtK",
+        "question_MPzqNt"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "heading_text_style": "heading",
+        "two_columns_desktop": false,
+        "title": "Returns and refunds",
+        "richtext": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "faq_K3d9Fj": {
+      "type": "faq",
+      "blocks": {
+        "question_HPmWFb": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Do you collaborate with influencers, bloggers, or other brands for promoting Honeybalm lip balm products?",
+            "answer": "<p>Yes we certainly do! If you are an influencer, blogger or promotor, you can always send an e-mail to <strong>info@honeybalm.com. </strong>Please check out our <a href=\"/pages/b2b\" title=\"B2B\">B2B page</a> for business enquiries.</p>"
+          }
+        },
+        "question_xTNbib": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How can I pitch a collaboration idea or proposal to Honeybalm for consideration?",
+            "answer": "<p>You can always pitch your idea, collaboration or proposal to us by sending an e-mail to <strong>info@honeybalm.com</strong>.</p>"
+          }
+        },
+        "question_C8QENW": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Can I resell Honeybalm in my business?",
+            "answer": "<p>Yes, you can! Please check out <a href=\"/pages/b2b\" title=\"B2B\">our detailed B2B page</a> for more information about reselling and partnerships.</p>"
+          }
+        },
+        "question_tTM6CR": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is there a dedicated contact or team for handling collaboration inquiries and proposals?",
+            "answer": "<p>Yes! You can reach our team at <strong>info@honeybalm.com</strong>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_HPmWFb",
+        "question_xTNbib",
+        "question_C8QENW",
+        "question_tTM6CR"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "heading_text_style": "heading",
+        "two_columns_desktop": false,
+        "title": "Collaborations and parnterships",
+        "richtext": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "all_flavours_hLewDX": {
+      "type": "all-flavours",
+      "blocks": {
+        "logo_JeMFdU": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/honey7_14c18ef6-0932-4431-8840-a6956758fa17.webp",
+            "clr": "#fff6d8",
+            "title": "Honey",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-honey"
+          }
+        },
+        "logo_NMe6Kn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/strawberry7_595f93de-0229-4fd6-a132-b2d51935e651.webp",
+            "clr": "#fdefff",
+            "title": "Strawberry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-strawberry"
+          }
+        },
+        "logo_BTUCYC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cherry7_25763d9f-49ae-455e-b02a-5409c9aa5185.webp",
+            "clr": "#ffcece",
+            "title": "Cherry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-cherry"
+          }
+        },
+        "logo_JwEKzX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Chocolate_2.webp",
+            "clr": "#f3e0cc",
+            "title": "Chocolate",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-chocolate"
+          }
+        },
+        "logo_XqVQQg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/coconut7_c4377bfc-3ae4-45f3-aa1b-7b83d162448b.webp",
+            "clr": "#fffaf0",
+            "title": "Coconut",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-coconut"
+          }
+        },
+        "logo_3dPyFx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/vanilla7.webp",
+            "clr": "#fff6e5",
+            "title": "Vanilla",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-vanilla"
+          }
+        },
+        "logo_jxHGGa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/mint7_a6e9881e-e524-4686-930d-4c9dba9f3056.webp",
+            "clr": "",
+            "title": "Mint",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-mint"
+          }
+        },
+        "logo_wMPBQP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Watermelon_5.webp",
+            "clr": "",
+            "title": "Watermelon",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-watermelon"
+          }
+        },
+        "logo_wMPBkl": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Blueberry_5.webp",
+            "clr": "",
+            "title": "Blueberry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-blueberry"
+          }
+        },
+        "logo_wMPBbr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Pineapple_3.webp",
+            "clr": "",
+            "title": "Pineapple",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-pineapple"
+          }
+        },
+        "logo_pumpkin": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Pumpkin-spice_4.webp",
+            "clr": "",
+            "title": "Pumpkin Spice",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-pumpkin"
+          }
+        },
+        "logo_caramel": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_CP_7.webp",
+            "clr": "",
+            "title": "Caramelized Pear",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-caramelized-pear"
+          }
+        },
+        "logo_candy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Candy-Cane_2.webp",
+            "clr": "",
+            "title": "Candy Cane",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-candy"
+          }
+        },
+        "logo_wMPBbh": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/2025002_Rose_Cardamom_Composition_shot.png",
+            "clr": "",
+            "title": "Rose Cardamom",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-rose-cardamom"
+          }
+        },
+        "logo_wMPBsk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/2025002_Lavender-Chamomile_Front_Shot.png",
+            "clr": "",
+            "title": "Lavender Chamomille",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-lavender-chamomille"
+          }
+        },
+        "logo_lemon": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Lemon-Cheesecake_4_MENU.webp",
+            "clr": "",
+            "title": "Lemon Cheesecake",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-lemon-cheesecake"
+          }
+        },
+        "logo_red": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Red-Pepper_5_MENU.webp",
+            "clr": "",
+            "title": "Red Pepper",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-red-pepper"
+          }
+        },
+        "logo_hibiscus": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Hibiscus-Citrus_3_MENU.webp",
+            "clr": "",
+            "title": "Hibiscus Citrus",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-hibiscus-citrus"
+          }
+        },
+        "logo_saltedjj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Salted-Caramel_3_MENU.webp",
+            "clr": "",
+            "title": "Salted Caramel",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-salted-caramel"
+          }
+        }
+      },
+      "block_order": [
+        "logo_JeMFdU",
+        "logo_NMe6Kn",
+        "logo_BTUCYC",
+        "logo_JwEKzX",
+        "logo_XqVQQg",
+        "logo_3dPyFx",
+        "logo_jxHGGa",
+        "logo_wMPBQP",
+        "logo_wMPBkl",
+        "logo_wMPBbr",
+        "logo_pumpkin",
+        "logo_caramel",
+        "logo_candy",
+        "logo_wMPBbh",
+        "logo_wMPBsk",
+        "logo_lemon",
+        "logo_red",
+        "logo_hibiscus",
+        "logo_saltedjj"
+      ],
+      "settings": {
+        "title": "See all our flavours",
+        "max_width": 100,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscribe and get some <span class=\"new-spirit-md\">lip care</span> secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_e63YRG",
+    "haeding_content_UNRJCE",
+    "faq_8g3Pyq",
+    "faq_7cbT3K",
+    "faq_TmhjiX",
+    "faq_K3d9Fj",
+    "all_flavours_hLewDX",
+    "1650891804363a2769"
+  ]
+}

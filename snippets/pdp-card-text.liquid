@@ -1,0 +1,32 @@
+{% if product.handle contains 'hb-' %}
+<style>
+.pdp-card-txt-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 990px) {
+  .pdp-card-txt-wrap {
+    display: none;
+  }
+}
+</style>
+<div class="pdp-card-txt-wrap">
+  <div class="card-txt-slab base strong">
+    💦 Moisturizing
+  </div>
+  <div class="card-txt-slab base strong">
+    {% if product.handle contains '-spf' %}
+      ☀️ SPF25 protection
+    {% else %}
+      🐽 Smells great
+    {% endif %}
+  </div>
+  <div class="card-txt-slab base strong">
+    🍂 Vegan
+  </div>
+</div>
+{% endif %}

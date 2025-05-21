@@ -1,0 +1,47 @@
+.text-sm.cms-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account_details .card{
+  background: #FFF6D8;
+  padding: 24px;
+  border-radius: 8px;
+}
+.account_details a.theme-button span {
+    justify-content: center;
+}
+.account_details a.theme-button span svg{
+    margin-top: -4px;
+}
+.account_rows table {
+    border: 0;
+}
+.account_rows .table-wrap{
+  background: #FFFAFA;
+}
+.account_rows .table-wrap td {
+    background: transparent;
+}
+.account_rows .table-wrap td, .account_rows .table-wrap th {
+    padding: 3px;
+  text-align: left;
+}
+.account_rows .table-wrap {
+    background: #FFFAFA;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+@media only screen and (max-width: 990px) {
+  .ac_headwrap{
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 767px) {
+    .responsive-table th:before, .responsive-table td:before {
+        font-size: 14px;
+    }
+}

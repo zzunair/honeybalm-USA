@@ -1,0 +1,105 @@
+<div class="shiny-results-lp-wrap py-section-vertical-spacing">
+  <div class="container">
+    <div class="shiny-image-wrap">
+      <img src="{{ section.settings.dskimg | img_url: '1200x' }}" class="hidden lg:block" />
+      <img src="{{ section.settings.mblimg | img_url: '900x' }}" class="lg:hidden" />
+    </div>
+    <div class="shiney-content-wrap">
+      <div class="heading2 strong">{{ section.settings.title }}</div>
+      <div class="base normal">{{ section.settings.text }}</div>
+      <ul>
+        {% for block in section.blocks %}
+          <li>
+            <div class="simg-wrap">
+              <img src="{{ block.settings.img | img_url: '300x' }}" />
+            </div>
+            <div class="scontent-wrap">
+              <div class="heading4 strong">{{ block.settings.title }}</div>
+              <div class="base normal">{{ block.settings.text }}</div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      {%- if section.settings.btnlnk != blank and section.settings.btntxt != '' -%}
+      <div class="mt-8">
+        <a href="{{ section.settings.btnlnk }}" class="inline-block push-btn">
+          <span class="push-btn-surface btn-arrow">{{ section.settings.btntxt }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+              <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+  <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+  {
+    "name": "Shiny results lp",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "dskimg",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mblimg",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btnlnk",
+        "label": "Button Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shiny results lp"
+      }
+    ]
+  }
+{% endschema %}

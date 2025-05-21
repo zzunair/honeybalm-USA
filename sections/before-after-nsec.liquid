@@ -1,0 +1,137 @@
+<style>
+  .twentytwenty-overlay {
+    display: none;
+  }
+  .ba-nsec-wrap .container{
+    background-color: {{section.settings.clr }};
+    border-radius: 8px;
+  }
+  .container.bs-cont {
+    display: flex;
+    gap: 125px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+  .ba-nsec-ltr {
+    width: 50%;
+}
+.ba-nsec-rtr {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+  .bs-inner-wrap {
+    max-width: 640px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;
+}
+  .ba-tag {
+    background: white;
+    position: absolute;
+    z-index: 9;
+    padding: 0px 8px 4px 8px;
+    border-radius: 4px;
+    top: 16px;
+    left: 16px;
+}
+  .ba-tag.after{
+    left: auto;
+    right: 16px;
+  }
+
+  @media only screen and (max-width: 990px) {
+    .container.bs-cont {
+        flex-direction: column;
+    }
+    .ba-nsec-ltr, .ba-nsec-rtr {
+      width: 100%;
+    }
+    .container.bs-cont {
+        gap: 40px;
+        padding: 16px;
+    }
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+{{ '//cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/js/jquery.twentytwenty.min.js' | script_tag }}
+{{ '//cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/js/jquery.event.move.min.js' | script_tag }}
+{{ '//cdnjs.cloudflare.com/ajax/libs/mhayes-twentytwenty/1.0.0/css/twentytwenty.min.css'| stylesheet_tag }}
+<div class="ba-nsec-wrap px-section py-section-vertical-spacing relative z-10 max-w-site mx-auto">
+  <div class="container bs-cont">
+    <div class="ba-nsec-ltr">
+      <div class="bs-inner-wrap">
+        <div class="ba-tag before base-sm">Before</div>
+        <div class="ba-tag after base-sm">After</div>
+        <div class='twentytwenty-container'>
+            <img src='{{ section.settings.img1 | img_url: '640x' }}' />
+            <img src='{{ section.settings.img2 | img_url: '640x' }}' />
+        </div>
+      </div>
+    </div>
+    <div class="ba-nsec-rtr">
+      <div class="heading2 strong">{{ section.settings.hdng }}</div>
+      <div class="base normal">{{ section.settings.txt }}</div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    // $(function($){$('.twentytwenty-container').twentytwenty();});
+    setTimeout(function(){
+      $(function($){$('.twentytwenty-container').twentytwenty();});
+    },3000);
+    setTimeout(function(){
+      window.dispatchEvent(new Event('resize'));
+    },4000);
+    setTimeout(function(){
+      window.dispatchEvent(new Event('resize'));
+    },6000);
+    setTimeout(function(){
+      window.dispatchEvent(new Event('resize'));
+    },7000);
+    
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Before After NSec",
+    "settings": [
+      {
+        "type": "color",
+        "id": "clr",
+        "label": "Background Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "img1",
+        "label": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "img2",
+        "label": "Image 2"
+      },
+      {
+        "type": "html",
+        "id": "hdng",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "txt",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Before After Nsec"
+      }
+    ]
+  }
+{% endschema %}

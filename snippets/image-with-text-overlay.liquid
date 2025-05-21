@@ -1,0 +1,177 @@
+{% liquid
+  assign image_class = 'w-full'
+  unless loading
+    assign loading = 'lazy'
+  endunless
+  if style == 'inset'
+    assign image_class = image_class | append: ' media-style'
+  endif
+
+  if heading_size == 'heading-feature'
+    assign content_max_width = 'max-w-xl'
+  else
+    assign content_max_width = 'max-w-lg width-set'
+  endif
+
+  if display_content_below_image_on_mobile
+    assign content_class = 'lg:grid lg:absolute lg:inset-0 lg:w-full lg:h-full'
+    assign content_inset_class = 'max-w-site lg:py-5 lg:px-section mx-auto'
+    assign card_container_class = 'lg:card-container'
+    assign card_content_class = 'lg:card py-5 lg:py-10 lg:px-section'
+    assign card_border_class = 'lg:card-border'
+  else
+    assign content_class = 'grid absolute inset-0 w-full h-full'
+    assign content_inset_class = 'max-w-site py-5 px-section mx-auto'
+    assign card_container_class = 'card-container'
+    assign card_content_class = 'card py-5 py-10 px-section'
+    assign card_border_class = 'card-border'
+  endif
+%}
+
+<div class="relative z-10 lg:bg-transparent h-full">
+  {%- if cta_url != blank and cta_text == blank -%}
+    <a href="{{ cta_url }}" class="absolute inset-0 z-20"></a>
+  {%- endif -%}
+
+  <div class="{% if crop contains 'slideshow' %}lg:h-full{% endif %} {% if style == 'inset' %}max-w-site px-5 lg:px-10 py-5 mx-auto{% endif %}">
+    <div class="{{ crop }}{% if style == 'inset' %} media-style-container{% endif %}">
+      {% if image != blank %}
+        {% capture image_tag_output %}{{
+          image
+          | image_url: width: 2000
+          | image_tag: sizes: '100vw', class: image_class, loading: loading
+        }}{% endcapture %}
+        {%- if image_mobile != blank -%}
+          <div class="hidden lg:block">{{ image_tag_output }}</div>
+        {%- else -%}
+          {{ image_tag_output }}
+        {%- endif -%}
+        {%- if image_mobile != blank -%}
+          <div class="lg:hidden">
+            {{
+              image_mobile
+              | image_url: width: 1200
+              | image_tag: sizes: '100vw', class: image_class, loading: loading
+            }}
+          </div>
+        {%- endif -%}
+      {% else %}
+        {% if template contains 'index' %}
+          <video class="hidden lg:block" autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/s/files/1/0762/6824/1232/files/NEW_NEW_NEW_HOP.m4v?v=1744629522" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video class="lg:hidden" autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/s/files/1/0762/6824/1232/files/Vertical_HOP_HOP_BUNNY.m4v?v=1744646329" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% else %}
+          <div class="w-full {% unless slideshow_height == 'natural' %}absolute inset-0{% endunless %}">
+            {{
+              'lifestyle-1'
+              | placeholder_svg_tag: 'block text-scheme-placeholder-foreground fill-current bg-neutral-100'
+            }}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+  <div
+    class="px-section container py-section-vertical-spacing {{ content_class }} z-10  text-scheme-text {{ place_content }} {{ text_align }} {% if style == 'inset' %}max-w-site mx-auto{% endif %}"
+  >
+    {%- capture content %}
+    {% if title != blank %}
+      <h2 class="font-heading img-txt-heading strong {{ heading_size }} heading-style {{ settings.heading_drop_shadow_style }}">
+        {{ title }}
+      </h2>
+    {% endif %}
+    {% if richtext != blank %}
+      <div class="rte text-theme-basic mt-5">
+        {{ richtext }}
+      </div>
+    {% endif %}
+
+    {% comment %}
+      {% if template.suffix == index %}
+      <div class="ntxt">
+        *while supplies last
+      </div>
+    {% endif %}
+    {% endcomment %}
+
+    {% if cta_url != blank and cta_text != blank %}
+      <div class="relative z-10 mt-5" style="display: flex;flex-wrap: wrap;gap: 10px;">
+        <a class="inline-block push-btn" href="{{ cta_url }}">
+          <span class="push-btn-surface">{{ cta_text }}</span>
+        </a>
+        {% comment %}
+        <a class="inline-block push-btn ab-heroButton" href="/pages/bundle-builder">
+          <span class="push-btn-surface outline-btn" style="border: 0px;">Bundle Builder</span>
+        </a>
+      {% endcomment %}
+      </div>
+    {% endif %}
+  {%- endcapture -%}
+
+    <div class="{% if style == 'inset' %}{{ content_inset_class }}{% endif %}">
+      {%- unless text_overlay_color != 'same_as_section'
+        and display_content_below_image_on_mobile == false
+      -%}
+        <div class="{% unless text_overlay_color == 'same_as_section' %}lg:hidden{% endunless %} {% if display_on_card == true %}{{ card_container_class }}{% endif %} {{ content_max_width }}">
+        {% unless template.suffix == 'mystery-balm' %}
+          <!-- <div class="prdct-rev-text base normal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="115" height="17" viewBox="0 0 115 17" fill="none"><path d="M105.094 0.56244C105.469 -0.18756 106.531 -0.15631 106.875 0.56244L108.937 4.71869L113.5 5.37494C114.312 5.49994 114.625 6.49994 114.031 7.09369L110.75 10.3124L111.531 14.8437C111.656 15.6562 110.781 16.2812 110.062 15.9062L106 13.7499L101.906 15.9062C101.187 16.2812 100.312 15.6562 100.437 14.8437L101.219 10.3124L97.9373 7.09369C97.3435 6.49994 97.656 5.49994 98.4685 5.37494L103.062 4.71869L105.094 0.56244Z" fill="#ef5953"></path>
+                              <path d="M80.8435 0.56244C81.2185 -0.18756 82.281 -0.15631 82.6248 0.56244L84.6873 4.71869L89.2498 5.37494C90.0623 5.49994 90.3748 6.49994 89.781 7.09369L86.4998 10.3124L87.281 14.8437C87.406 15.6562 86.531 16.2812 85.8123 15.9062L81.7498 13.7499L77.656 15.9062C76.9373 16.2812 76.0623 15.6562 76.1873 14.8437L76.9685 10.3124L73.6873 7.09369C73.0935 6.49994 73.406 5.49994 74.2185 5.37494L78.8123 4.71869L80.8435 0.56244Z" fill="#ef5953"></path>
+                              <path d="M56.5935 0.56244C56.9685 -0.18756 58.031 -0.15631 58.3748 0.56244L60.4373 4.71869L64.9998 5.37494C65.8123 5.49994 66.1248 6.49994 65.531 7.09369L62.2498 10.3124L63.031 14.8437C63.156 15.6562 62.281 16.2812 61.5623 15.9062L57.4998 13.7499L53.406 15.9062C52.6873 16.2812 51.8123 15.6562 51.9373 14.8437L52.7185 10.3124L49.4373 7.09369C48.8435 6.49994 49.156 5.49994 49.9685 5.37494L54.5623 4.71869L56.5935 0.56244Z" fill="#ef5953"></path>
+                              <path d="M32.3435 0.56244C32.7185 -0.18756 33.781 -0.15631 34.1248 0.56244L36.1873 4.71869L40.7498 5.37494C41.5623 5.49994 41.8748 6.49994 41.281 7.09369L37.9998 10.3124L38.781 14.8437C38.906 15.6562 38.031 16.2812 37.3123 15.9062L33.2498 13.7499L29.156 15.9062C28.4373 16.2812 27.5623 15.6562 27.6873 14.8437L28.4685 10.3124L25.1873 7.09369C24.5935 6.49994 24.906 5.49994 25.7185 5.37494L30.3123 4.71869L32.3435 0.56244Z" fill="#ef5953"></path>
+                              <path d="M8.09354 0.56244C8.46854 -0.18756 9.53104 -0.15631 9.87479 0.56244L11.9373 4.71869L16.4998 5.37494C17.3123 5.49994 17.6248 6.49994 17.031 7.09369L13.7498 10.3124L14.531 14.8437C14.656 15.6562 13.781 16.2812 13.0623 15.9062L8.99979 13.7499L4.90604 15.9062C4.18729 16.2812 3.31229 15.6562 3.43729 14.8437L4.21854 10.3124L0.937285 7.09369C0.343535 6.49994 0.656035 5.49994 1.46854 5.37494L6.06229 4.71869L8.09354 0.56244Z" fill="#ef5953"></path>
+                            </svg>         
+                            3,000+ 5 star reviews
+                      </div> -->
+          {% comment %}
+        {% if template.suffix == index %}
+          <div class="new-text-svg">
+            🗓 Every day, an extra sale  
+          </div>
+        {% endif %}
+          {% endcomment %}
+          {% endunless %}
+{% if template contains 'index' %}
+          <div class="fuller">“Softer, healthier lips!”</div>
+          <div class="free-div-wrap">
+            <div class="text-wrap-free">
+          <!-- <div class="limited-edition">
+            GET LUCKY  
+          </div> -->
+          <!-- <div class="free-div">
+            FREE  
+          </div> -->
+            </div>
+            <!-- <img src="{{ 'plumping_white.png' | file_img_url: '400x' }}"> -->
+          </div>
+  {% endif %}
+          <div class="break-words {% if display_on_card == true %}{{ card_content_class }}{% endif %} ">
+            {{ content }}
+          </div>
+          {% if display_on_card and settings.card_show_border_on_shadow -%}
+            <div class="{{ card_border_class }}"></div>
+          {%- endif %}
+        </div>
+      {%- endunless -%}
+
+      {% unless text_overlay_color == 'same_as_section' %}
+        <div
+          class="{% unless text_overlay_color != 'same_as_section' and display_content_below_image_on_mobile == false %}hidden lg:block{% endunless %} {% if display_on_card == true %}{{ card_container_class }} {% endif %}  {{ content_max_width }} text-scheme-text"
+          data-color-scheme="{{ text_overlay_color }}"
+        >
+          <div class="break-words {% if display_on_card == true %}{{ card_content_class }}{% endif %}">
+            {{ content }}
+          </div>
+          {% if display_on_card and settings.card_show_border_on_shadow -%}
+            <div class="{{ card_border_class }}"></div>
+          {%- endif %}
+        </div>
+      {% endunless %}
+    </div>
+  </div>
+</div>

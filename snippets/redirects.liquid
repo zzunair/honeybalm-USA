@@ -1,0 +1,245 @@
+{% comment %} To hide/ To redirect products {% endcomment %}
+{% if product.handle =='honeybalm-chocolate' or product.handle =='hb-chocolate-2' or product.handle =='honeybalm-chocolate-checkout-upsell' %}
+  <script>
+    window.location.href = "/products/hb-chocolate";
+  </script>
+  {% elsif product.handle =='cherry' or product.handle =='hb-cherry-2'%}
+  <script>
+    window.location.href = "/products/hb-cherry";
+  </script>
+  {% elsif product.handle =='coconut' or product.handle =='hb-coconut-2' %}
+  <script>
+    window.location.href = "/products/hb-coconut";
+  </script>
+  {% elsif product.handle =='strawberry' or product.handle =='hb-strawberry-2'%}
+  <script>
+    window.location.href = "/products/hb-strawberry";
+  </script>
+  {% elsif product.handle =='vanilla' or product.handle =='hb-vanilla-2' %}
+  <script>
+    window.location.href = "/products/hb-vanilla";
+  </script>
+  {% elsif product.handle =='hb-mint-2'%}
+  <script>
+    window.location.href = "/products/hb-mint";
+  </script>
+  {% elsif product.handle =='hb-watermelon-2' or product.handle =='aftersell-watermelon'%}
+  <script>
+    window.location.href = "/products/hb-watermelon";
+  </script>
+  {% elsif product.handle =='hb-pumpkin-2'%}
+  <script>
+    window.location.href = "/products/hb-pumpkin";
+  </script>
+  
+  {% elsif product.handle =='totebag-aftersell'%}
+  <script>
+    window.location.href = "/products/totebag";
+  </script>
+
+  {% elsif product.handle =='honeybalm-mystery-balm-checkout'%}
+  <script>
+    window.location.href = "/products/hb-mystery-balm";
+  </script>
+  
+{% elsif product.handle =='hb-cherry-2-spf'%}
+  <script>
+    window.location.href = "/products/hb-cherry-spf";
+  </script>
+  {% elsif product.handle =='hb-coconut-2-spf'%}
+  <script>
+    window.location.href = "/products/hb-coconut-spf";
+  </script>
+  {% elsif product.handle =='hb-strawberry-2-spf'%}
+  <script>
+    window.location.href = "/products/hb-strawberry-spf";
+  </script>
+  {% elsif product.handle =='hb-honey-2-spf'%}
+  <script>
+    window.location.href = "/products/hb-honey-spf";
+  </script>
+
+
+{% elsif product.handle =='try-out-box-2'%}
+  <script>
+    window.location.href = "/products/try-out-box";
+  </script>
+  {% elsif product.handle =='spf-try-out-box-2'%}
+  <script>
+    window.location.href = "/products/spf-try-out-box";
+  </script>
+  {% elsif product.handle =='red-fruits-pack-2' or product.handle =='sorbet-pack'%}
+  <script>
+    window.location.href = "/products/red-fruits-pack";
+  </script>
+  {% elsif product.handle =='favourites-pack-2' or product.handle =='exotic-pack'%}
+  <script>
+    window.location.href = "/products/favourites-pack";
+  </script>
+  {% elsif product.handle =='classic-pack-2' or product.handle =='classic-pack'%}
+  <script>
+    window.location.href = "/products/classic-pack-1";
+  </script>
+
+  
+{% elsif product.handle =='honeybalm-honey'
+  or product.handle =='hb-honey-2'
+  
+   or product.handle =='3-pack-aftersell'
+  or product.handle =='4-pack-aftersell'
+  or product.handle =='5-pack-aftersell'
+  or product.handle =='starter-5-pack'
+
+
+
+   or product.handle =='10-pack-nbb'
+  or product.handle =='9-pack-nbb'
+  or product.handle =='8-pack-nbb'
+  or product.handle =='7-pack-nbb'
+  or product.handle =='6-pack-nbb'
+  or product.handle =='5-pack-nbb'
+  or product.handle =='4-pack-nbb'
+  or product.handle =='3-pack-nbb'
+
+  or product.handle =='10-pack-nbb-2'
+  or product.handle =='9-pack-nbb-2'
+  or product.handle =='8-pack-nbb-2'
+  or product.handle =='7-pack-nbb-2'
+  or product.handle =='6-pack-nbb-2'
+  or product.handle =='5-pack-nbb-2'
+  or product.handle =='4-pack-nbb-2'
+  or product.handle =='3-pack-nbb-2'
+
+  or product.handle =='free-honeybalm-honey'
+  or product.handle == 'starter-3-pack'
+  
+  
+  or collection.handle == 'best-selling'
+  or page.handle == 'ingredients'
+
+  or product.handle =='clear-applicator-set'
+  or product.handle =='yellow-applicator-set'
+  or product.handle =='pink-applicator-set'
+  or product.handle =='brown-applicator-set'
+  or product.handle =='red-applicator-set'
+  or product.handle =='white-applicator-set'
+  or product.handle =='blue-applicator-set'
+  or product.handle =='applicator-replacement-set'
+  or product.handle =='totebag'
+
+  or product.handle =='large-display'
+  or product.handle =='counter-display'
+
+  or product.handle =='keychain'
+  or product.handle =='stickers'
+  or product.handle =='stickerset-2'
+  or product.handle =='stickerset-3'
+  or product.handle =='stickerset-4'
+  or product.handle =='honeybalm-cherry-spf-checkout'
+
+  or product.handle =='honeybalm-caramelized-pear-upcart'
+
+  or product.handle =='honeybalm-red-pepper-upcart'
+  or product.handle =='lavender-chamomille-upcart'
+  or product.handle =='hibiscus-citrus-upcart'
+  or product.handle =='pumpkin-spice-upcart'
+  or product.handle =='candy-cane-upcart'
+  or product.handle =='salted-caramel-upcart'
+
+  or product.handle == 'bundle-pack-x3'
+  or product.handle =='honeybalm-cherry'
+  or product.handle =='bundle-5-pack'
+  or product.handle =='gratis-applicator-set'
+  or product.handle =='totebag'
+  or product.handle =='luxury-presentation-box'
+  or product.handle =='totebag-aftersell'
+  or product.handle =='3-pack-aftersell'
+  or product.handle =='4-pack-aftersell'
+  or product.handle =='5-pack-aftersell'
+  or product.handle =='hb-mystery-balm'
+
+  or product.handle =='honeybalm-gift-card'
+  or product.handle =='valentine-pack'
+  or product.handle == 'influencer-card'
+
+  or collection.handle == 'new-bundle-builder'
+  or collection.handle == 'all-selling-products'
+  or collection.handle == 'search-products'
+  or collection.handle == 'packs'
+  
+
+  or product.handle =='10-pack-nbb'
+  or product.handle =='9-pack-nbb'
+  or product.handle =='8-pack-nbb'
+  or product.handle =='7-pack-nbb'
+  or product.handle =='6-pack-nbb'
+  or product.handle =='5-pack-nbb'
+  or product.handle =='4-pack-nbb'
+  or product.handle =='3-pack-nbb'
+
+  or product.handle =='hb-tropical-fusion'
+%}
+  <script>
+    window.location.href = "/products/hb-honey";
+  </script>
+
+{% elsif collection.handle == 'all'
+  or blog.handle == 'news'
+  or page.handle == 'advertorial-page'
+  or page.handle == 'honeybalm-affiliate-program'
+%}
+  <script>
+    window.location.href = "/";
+  </script>
+  
+{% elsif page.handle =='b2b'%}
+  <script>
+    window.location.href = "https://www.wholesale-honeybalm.com/";
+  </script>
+  
+{% endif %}
+
+
+{% comment %}
+  or product.handle =='bundle-pack-🀀󫰼󤰼󪰧 
+  or product.handle =='bundle-pack-🍓🍫🍯-1'
+  or product.handle =='applicator-3-pack-limited-edition'
+  or product.handle =='bundle-4'
+  or product.handle =='bundle-3'
+  or product.handle =='bundle-2'
+  or product.handle =='bundle-6-pack'
+  or product.handle =='starter-5-set'
+  or product.handle =='all-flavour-pack' or product.handle =='classic-flavour-pack' or product.handle =='special-edition-pack'
+
+
+  or product.handle =='honeybalm-vanilla-5-pack'
+  or product.handle =='honeybalm-honey-5-pack'
+  or product.handle =='honeybalm-strawberry-5-pack'
+  or product.handle =='honeybalm-chocolate-5-pack'
+  or product.handle =='honeybalm-cherry-5-pack'
+  or product.handle =='honeybalm-coconut-5-pack'
+  or product.handle =='honeybalm-vanilla-3-pack'
+  or product.handle =='honeybalm-honey-3-pack'
+  or product.handle =='honeybalm-strawberry-3-pack'
+  or product.handle =='honeybalm-chocolate-3-pack'
+  or product.handle =='honeybalm-cherry-3-pack'
+  or product.handle =='honeybalm-coconut-3-pack'
+
+  
+  or product.handle =='honeybalm-vanilla-1'
+  or product.handle =='honeybalm-coconut'
+  or product.handle =='honeybalm-cherry-1'
+  or product.handle =='honeybalm-lipbalsem-3-pack'
+  or product.handle =='3-pack-honeybalm-erdbeer'
+  or product.handle =='honeybalm-chocolate-1'
+
+
+  or product.handle =='10-pack'
+  or product.handle =='9-pack'
+  or product.handle =='8-pack'
+  or product.handle =='7-pack'
+  or product.handle =='6-pack'
+  or product.handle =='5-pack'
+  or product.handle =='4-pack'
+  or product.handle =='3-pack'
+  {% endcomment %}

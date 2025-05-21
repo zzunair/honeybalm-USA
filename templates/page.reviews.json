@@ -1,0 +1,342 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_pqMnQm": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/image_33_1.png",
+        "image_mobile": "shopify://shop_images/Hero_image_new.webp",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Health\nmeets\n<br> wonderfull\n<span class=\"new-spirit-md\">softness!</span>",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "haeding_content_yHgYwc": {
+      "type": "haeding-content",
+      "settings": {
+        "heading": "Our story",
+        "text": "Our journey began with a simple wish - to find a natural solution for dry lips.\n<br><br>\nWe were surprised by the plethora of lip balms on the market that were full of harmful ingredients like petroleum and PFAS. It was clear that there was a need for something better and so we decided to do it ourselves💛",
+        "btntxt": "",
+        "btnlnk": ""
+      }
+    },
+    "text_columns_with_images_PpXTkN": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "column_PhiGRr": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Frame-1.png",
+            "title": "Honey against dry lips",
+            "text": "<p>There is nothing worse than dry lips. When using our lip balms, you don't have to worry about dry lips. All our lip balms are soft and give your lips the hydration and protection it needs.</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_G67Kc6": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Frame-2.png",
+            "title": "Propolus for protection",
+            "text": "<p>It is produced by bees and is known for its healing properties, serving as a potent antibiotic. It helps to soothe your lips and possesses an antiseptic effect that protects your lips throughout the day.</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_GejpYU": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Frame-3.png",
+            "title": "Own design for usage",
+            "text": "<p>We have created a unique design that is made with our community's needs in mind. From the bottle to the applicator, everything is thought through</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "column_PhiGRr",
+        "column_G67Kc6",
+        "column_GejpYU"
+      ],
+      "settings": {
+        "revtxt": "3.000+ positive reviews",
+        "lnktxt": "Read more",
+        "lnk": "",
+        "display_on_card": false,
+        "slideshow_on_mobile": false,
+        "title": "What makes Honeybalm so effective?",
+        "crop": "",
+        "image_shape": "default",
+        "show_index_on_blocks": false,
+        "index_shape": "star_1",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "compare_table_piHebM": {
+      "type": "compare-table",
+      "blocks": {
+        "block_CwtkNA": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Animal_test_free.webp",
+            "lhdng": "Animal test free",
+            "ltxt": "Our products are 100% animal cruelty-free."
+          }
+        },
+        "block_bCCk7d": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Natural_ingredients.webp",
+            "lhdng": "Natural ingredients",
+            "ltxt": "We pride ourselves on all the natural ingredients we use."
+          }
+        },
+        "block_cD4DgC": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Beeswax.webp",
+            "lhdng": "Affordable",
+            "ltxt": "We make our products as affordable as possible, even more so with our bundles."
+          }
+        },
+        "block_btqnBP": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Vitamin_E.webp",
+            "lhdng": "Vitamin E",
+            "ltxt": "We add tocopherol to our product, which is a technical term for vitamin E."
+          }
+        }
+      },
+      "block_order": [
+        "block_CwtkNA",
+        "block_bCCk7d",
+        "block_cD4DgC",
+        "block_btqnBP"
+      ],
+      "settings": {
+        "clr1": "#fff6d8",
+        "clr2": "#ffeda8",
+        "hdng": "The benefits of Honeybalm",
+        "img": "shopify://shop_images/Vector_4.png",
+        "otext": "Other balms"
+      }
+    },
+    "image_with_text2_gUJYVj": {
+      "type": "image-with-text2",
+      "settings": {
+        "clr1": "#fff6d8",
+        "clr2": "#ffeda8",
+        "display_on_card": false,
+        "image": "shopify://shop_images/Ingredients_image.webp",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Where do we get our ingredients from?",
+        "heading_size": "heading-feature",
+        "richtext": "<p>We believe in supporting local communities. That's why we source our ingredients directly from the source. Our honey and propolis come from local beekeepers, our strawberry extract from nearby farms and our cocoa extract from carefully selected growers.  </p><p>Our lip balms are perfected by combining the power of the right ingredients. Propolis, an essential bee product, not only adds profound nutrition but also has proven benefits in cosmetic products. Tocopherol, or vitamin E, is an antioxidant powerhouse that helps repair and renew the skin.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "all_flavours_hLewDX": {
+      "type": "all-flavours",
+      "blocks": {
+        "logo_JeMFdU": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/honey7_14c18ef6-0932-4431-8840-a6956758fa17.webp",
+            "clr": "#fff6d8",
+            "title": "Honey",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-honey"
+          }
+        },
+        "logo_NMe6Kn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/strawberry7_595f93de-0229-4fd6-a132-b2d51935e651.webp",
+            "clr": "#fdefff",
+            "title": "Strawberry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-strawberry"
+          }
+        },
+        "logo_BTUCYC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cherry7_25763d9f-49ae-455e-b02a-5409c9aa5185.webp",
+            "clr": "#ffcece",
+            "title": "Cherry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-cherry"
+          }
+        },
+        "logo_JwEKzX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/chocolate7.webp",
+            "clr": "#f3e0cc",
+            "title": "Chocolate",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-chocolate"
+          }
+        },
+        "logo_XqVQQg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/coconut7_c4377bfc-3ae4-45f3-aa1b-7b83d162448b.webp",
+            "clr": "#fffaf0",
+            "title": "Coconut",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-coconut"
+          }
+        },
+        "logo_3dPyFx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/vanilla7.webp",
+            "clr": "#fff6e5",
+            "title": "Vanilla",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-vanilla"
+          }
+        },
+        "logo_eg6VpC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/mint7_a6e9881e-e524-4686-930d-4c9dba9f3056.webp",
+            "clr": "",
+            "title": "Mint",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-mint"
+          }
+        },
+        "logo_egs6VpC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Watermelon_5.webp",
+            "clr": "",
+            "title": "Watermelon",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-watermelon"
+          }
+        },
+        "logo_egs6Vky": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Pumpkin-spice_4.webp",
+            "clr": "",
+            "title": "Pumpkin Spice",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-pumpkin"
+          }
+        },
+        "logo_egs6Vghy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Mystery_2.webp",
+            "clr": "",
+            "title": "Mystery Balm",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-mystery-balm"
+          }
+        },
+        "logo_egs6Vgnr": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Candy-Cane_2.webp",
+            "clr": "",
+            "title": "Candy Cane",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-candy"
+          }
+        }
+      },
+      "block_order": [
+        "logo_JeMFdU",
+        "logo_NMe6Kn",
+        "logo_BTUCYC",
+        "logo_JwEKzX",
+        "logo_XqVQQg",
+        "logo_3dPyFx",
+        "logo_eg6VpC",
+        "logo_egs6VpC",
+        "logo_egs6Vky",
+        "logo_egs6Vghy",
+        "logo_egs6Vgnr"
+      ],
+      "settings": {
+        "title": "See all our flavors",
+        "max_width": 100,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscribe and get some <span class=\"new-spirit-md\">lip care</span> secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_pqMnQm",
+    "haeding_content_yHgYwc",
+    "text_columns_with_images_PpXTkN",
+    "compare_table_piHebM",
+    "image_with_text2_gUJYVj",
+    "all_flavours_hLewDX",
+    "1650891804363a2769"
+  ]
+}

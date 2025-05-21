@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="{{ 'account.css' | asset_url }}">
+<div class="section-content py-section-vertical-spacing px-section container" data-color-scheme="primary">
+  <div class="mb-10 lg:flex lg:items-center lg:justify-between ac_headwrap">
+    <div class="ac_headings">
+      <h1 class="heading2 new-spirit-md account_title">{{ 'customer.account.title' | t }}</h1>
+      <!-- <div class="base-sm">Subtitle</div> -->
+    </div>
+    <div class="text-sm cms-info">
+      {% if customer.first_name != blank %}
+        <span class="base-sm">
+          {% capture first_name %}<a class="" href="{{ routes.account_url }}">{{ customer.first_name }}</a>{% endcapture %}
+          {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+        </span>
+      {% else %}
+        <span class="base-sm">
+        <a class="" href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+        </span>
+      {% endif %}
+      
+      <a class="inline-block text-primary-accent-1 " href="{{ routes.account_logout_url }}">
+        <span class="push-btn-surface outline-btn">{{ 'layout.customer.log_out' | t }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M7.46875 6L10.8438 9.375C11.0312 9.5625 11.0312 9.90625 10.8438 10.0938L10.0625 10.875C9.875 11.0625 9.53125 11.0625 9.34375 10.875L6 7.5L2.625 10.875C2.4375 11.0625 2.09375 11.0625 1.90625 10.875L1.125 10.0938C0.9375 9.90625 0.9375 9.5625 1.125 9.375L4.5 6L1.125 2.65625C0.9375 2.46875 0.9375 2.125 1.125 1.9375L1.90625 1.15625C2.09375 0.96875 2.4375 0.96875 2.625 1.15625L6 4.53125L9.34375 1.15625C9.53125 0.96875 9.875 0.96875 10.0625 1.15625L10.8438 1.9375C11.0312 2.125 11.0312 2.46875 10.8438 2.65625L7.46875 6Z" fill="black"/>
+        </svg>
+        </span></a>
+    </div>
+  </div>
+
+  <div class="lg:grid grid-cols-1 lg:grid-cols-12 max-w-screen">
+    <div class="lg:col-span-8 account_rows">
+      <h2 class="heading4 strong mb-4">{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+          {% for order in customer.orders %}
+            <div class="table-wrap mb-4">
+            <table class="responsive-table text-sm lg:text-base">
+              <thead class="text-sm">
+                <tr>
+                  <th scope="col base-sm">{{ 'customer.orders.order_number' | t }}</th>
+                  <th scope="col base-sm">{{ 'customer.orders.date' | t }}</th>
+                  <th scope="col base-sm">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th scope="col base-sm">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th scope="col base-sm">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="responsive-table-row lg:border-none">
+                <td class="text-primary-accent-1  base-sm" data-label="{{ 'customer.orders.order_number' | t }}"><span class="underline">{{ order.name | link_to: order.customer_url }}</span></td>
+                <td data-label="{{ 'customer.orders.date' | t }}" class=" base-sm">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                <td data-label="{{ 'customer.orders.payment_status' | t }}" class=" base-sm">{{ order.financial_status_label }}</td>
+                <td data-label="{{ 'customer.orders.fulfillment_status' | t }}" class=" base-sm">{{ order.fulfillment_status_label }}</td>
+                <td data-label="{{ 'customer.orders.total' | t }}" class=" base-sm">{{ order.total_price | money }}</td>
+              </tr>
+              </tbody>
+            </table>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          {% render 'pagination' with paginate, section_color: 'primary' %}
+        {% endif %}
+
+      {% endpaginate %}
+    </div>
+
+    <div class="mt-8 lg:mt-0 lg:col-span-3 lg:col-start-10 mb-2 account_details">
+      <div class="card-container">
+        <div class="card p-5 relative z-shape-divider">
+          <h2 class="heading4 strong">{{ 'customer.account.details' | t }}</h2>
+          <div class="mb-6">{{ customer.default_address | format_address }}</div>
+          {%- capture address_link -%}{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }}){%- endcapture -%}
+          <a class="inline-block push-btn w-full theme-button" href="{{ routes.account_addresses_url }}">
+            <span class="push-btn-surface w-full outline-btn">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }}) 
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+            <path d="M8.5 5.25C10 5.25 11.25 6.5 11.25 8C11.25 9.53125 10 10.75 8.5 10.75C6.96875 10.75 5.75 9.53125 5.75 8C5.75 6.5 6.96875 5.25 8.5 5.25ZM8.5 9.25C9.1875 9.25 9.75 8.71875 9.75 8C9.75 7.3125 9.1875 6.75 8.5 6.75C7.78125 6.75 7.25 7.3125 7.25 8C7.25 8.71875 7.78125 9.25 8.5 9.25ZM16 7.25C16.25 7.25 16.5 7.5 16.5 7.75V8.25C16.5 8.53125 16.25 8.75 16 8.75H14.4375C14.0938 11.4688 11.9375 13.625 9.25 13.9688V15.5C9.25 15.7812 9 16 8.75 16H8.25C7.96875 16 7.75 15.7812 7.75 15.5V13.9688C5.03125 13.625 2.875 11.4688 2.53125 8.75H1C0.71875 8.75 0.5 8.53125 0.5 8.25V7.75C0.5 7.5 0.71875 7.25 1 7.25H2.53125C2.875 4.5625 5.03125 2.40625 7.75 2.0625V0.5C7.75 0.25 7.96875 0 8.25 0H8.75C9 0 9.25 0.25 9.25 0.5V2.0625C11.9375 2.40625 14.0938 4.5625 14.4375 7.25H16ZM8.5 12.5C10.9688 12.5 13 10.5 13 8C13 5.53125 10.9688 3.5 8.5 3.5C6 3.5 4 5.53125 4 8C4 10.5 6 12.5 8.5 12.5Z" fill="black"/>
+            </svg>
+            </span>
+          </a>
+        </div>
+        <div class="card-border"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+{% if template.suffix contains 'honey' or template.suffix contains 'strawberry' or template.suffix contains 'cherry' or template.suffix contains 'coconut' %}
+  {% unless template.suffix contains 'applicators' %}
+<style>
+.spf-switch-outerwrap {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.switch-qs {
+  position: relative;
+}
+.switch-qs-content {
+  display: none;
+  position: absolute;
+  background: white;
+  min-height: 100px;
+  border: 1px solid var(--fade-border);
+  padding: 16px;
+  border-radius: 8px; 
+  top: 0;
+  min-width: 265px;
+  font-size: 14px;
+  transform: translate(-50%, -100%);
+  left: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 20px;
+  z-index: 9;
+}
+.switch-qs:hover .switch-qs-content{
+  display: block;
+}
+span.qs-span {
+  width: 32px;
+  background: #F6F6F6;
+  padding: 3px 4px 5px;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.spf-switch-wrap {
+  background: #F6F6F6;
+  padding: 4px;
+  border-radius: 50px;
+  display: inline-flex;
+  width: 56px;
+    height: 32px;
+}
+.spf-switch-wrap a {
+  width: 100px;
+  text-align: center;
+  border-radius: 50px;
+}
+.spf-switch-wrap a.active{
+  background: white;
+}
+.spf-switch-wrap a span {
+  margin-top: -1px;
+  display: block;
+  margin-bottom: 1px;
+}
+@media only screen and (max-width: 990px) {
+  .switch-qs-content {
+    transform: translate(-100%, -100%);
+    /* left: 100%; */
+    left: 300%;
+  }
+}
+.spf-switch-wrap.active {
+  background: #2CD151;
+}
+.spf-switch-outerwrap > .base.normal {
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+}
+.withSPF25{
+  padding-bottom: 2px;
+  /* display: none; */
+}
+</style>
+{% assign link = "" %}
+{% if product.handle contains '-spf' %}
+  {% assign link = product.handle | replace: '-spf', '' %}
+{% else %}
+  {% assign link = product.handle | append: '-spf' %}
+{% endif %}
+<div class="spf-switch-outerwrap">
+  <div class="spf-switch-wrap {% if product.handle contains '-spf' %}active{% endif %}">
+    <a href="/products/{{ link }}" class="base normal {% unless product.handle contains '-spf' %}active{% endunless %}">
+      <span>
+        <!-- No SPF -->
+      </span>
+    </a>
+    <a href="/products/{{ link }}" class="base normal {% if product.handle contains '-spf' %}active{% endif %}">
+      <span>
+        <!-- SPF -->
+      </span>
+    </a>
+  </div>
+  <div class="base normal">With SPF<span class="withSPF25">25</span></div>
+  <div class="switch-qs">
+    <span class="qs-span">
+      ?
+    </span>
+    <div class="switch-qs-content">
+      <p>SPF (Sun Protection Factor), measures how well a lip balm protects your lips from the sun's harmful UV rays. SPF25 blocks about 96% of UVB rays, significantly reducing the risk of sunburn and long-term skin damage.</p>
+      <br><p>The taste and smell of our SPF balms aren’t different from the normal balms and Honeybalm SPF can be identified by the SPF logo on the back of each balm.</p>
+    </div>
+  </div>
+</div>
+{% endunless %}
+{% endif %}

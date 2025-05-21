@@ -1,0 +1,106 @@
+<style>
+  .product-block-container .se-wrapper{
+    display: flex;
+    column-gap: 10px;
+    background: var(--color-light);
+    border-radius: 8px;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: 32px; */
+}
+
+.product-block-container  .se-l-text {
+    margin: 0px 12px;
+}
+.product-block-container  .se-timer-wrap {
+    display: flex;
+    column-gap: 10px;
+    flex-grow: 1;
+}
+.product-block-container  .se-time-box {
+    /* background: var(--mint-medium); */
+    background: var(--color-light);
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+}
+  /* .se-time-box .se-time-text {
+    margin-bottom: 5px;
+} */
+
+@media only screen and (max-width: 990px) {
+ .product-block-container  .se-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+ .product-block-container  .se-timer-wrap{
+    width: 100%;
+  }
+  .product-block-container .flex.items-center.csm-cntnt {
+    max-width: unset;
+    margin-left: 0vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0rem;
+    padding-bottom: 30px;
+  }
+}
+/* .product-block {
+    margin-top: 0rem;
+} */
+
+  body.template-product .product-block-container .se-timer-wrap {
+    max-width: 290px;
+    column-gap: 20px;
+}
+</style>
+<div class="se-wrapper" style="background-color: {{ timer-background }};">
+  <div class="se-l-text base strong">Sale ends in:</div> 
+  <div class="se-timer-wrap">
+    <div class="se-time-box hrs"><div class="se-time-text base normal">Hours</div><span class="base strong">00</span></div>
+    <div class="se-time-box mins"><div class="se-time-text base normal">Minutes</div><span class="base strong">00</span></div>
+    <div class="se-time-box secs"><div class="se-time-text base normal">Seconds</div><span class="base strong">00</span></div>
+  </div>
+</div> 
+<script>
+    // Function to calculate time until tomorrow 12 PM UK time
+    function timeUntilTomorrow() {
+        var now = new Date();
+        var ukTime = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+        var tomorrow = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0); // Set time to tomorrow 12 PM UK
+    
+        var timeDiff = tomorrow - ukTime;
+    
+        var seconds = Math.floor((timeDiff / 1000) % 60);
+        var minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+        var hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    
+        return {
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+    
+    // Function to update the countdown timer display
+    function updateCountdown() {
+        var time = timeUntilTomorrow();
+        document.querySelector(".se-time-box.hrs span").innerText = time.hours;
+        document.querySelector(".se-time-box.mins span").innerText = time.minutes;
+        document.querySelector(".se-time-box.secs span").innerText = time.seconds;
+    }
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+    
+    // Initial call to set initial countdown values
+    updateCountdown();
+</script>

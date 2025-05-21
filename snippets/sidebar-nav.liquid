@@ -1,0 +1,323 @@
+{%- assign base_font_class = base_font_class | replace: 'font-heading', 'font-main' %}
+<template data-should-teleport="#left-drawer-slot">
+  <div
+    :data-modal-label="$store.modals.leftDrawer.contents === 'nav' ? '{{ section.settings.main_linklist.title }}' : false"
+    x-show="$store.modals.leftDrawer.contents === 'nav'"
+    class="sidebar-nav py-5 px-section mobile-nav {% if settings.enable_sidebar_nav_animation %} sidebar-nav--enable-transitions {% endif %}"
+  >
+    <!-- <div class="relative flex items-center justify-between pb-5">
+      <h2 class="sr-only" class="" tabindex="-1">
+        {{ section.settings.main_linklist.title }}
+      </h2>
+      <button @click.prevent="$store.modals.close('nav')" class="block top-0">
+        <span class="sr-only">{{ 'general.accessibility.close_modal' | t }}</span>
+        <span class="inline-block w-5 h-5">{% render 'icon-close' %}</span>
+      </button>
+    </div> -->
+    <a href="/pages/bundle-builder" class="bb_box">
+      <div class="bb-content">
+        <div class="heading4 strong">Build your own bundle</div>
+        <div class="base normal">Get up to 52% discount!</div>
+      </div>
+      <div class="bb_arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+          <path d="M6.8125 1.21875C6.9375 1.0625 7.1875 1.0625 7.34375 1.21875L13.875 7.75C14.0312 7.90625 14.0312 8.125 13.875 8.28125L7.34375 14.8125C7.1875 14.9688 6.9375 14.9688 6.8125 14.8125L6.1875 14.2188C6.03125 14.0625 6.03125 13.8125 6.1875 13.6875L11.0312 8.8125H0.375C0.15625 8.8125 0 8.65625 0 8.4375V7.5625C0 7.375 0.15625 7.1875 0.375 7.1875H11.0312L6.1875 2.34375C6.03125 2.21875 6.03125 1.96875 6.1875 1.8125L6.8125 1.21875Z" fill="black"/>
+        </svg>
+      </div>
+    </a>
+    <ul class="">
+      {% for link in section.settings.main_linklist.links %}
+        {% comment %}
+          First level
+        {% endcomment %}
+        {% assign showcase_link_tiles = '' %}
+        {% if link.title != 'Bundle Builder' %}
+        <li class="text-lg lg:text-xl" style="--first-delay-tap: {% increment first_delay_tap %};">
+          {% if link.links.size > 0 %}
+            <div
+              x-data="
+                {
+                  expanded:true
+                }
+              "
+            >
+              <div
+                class="w-full flex flex-row justify-between items-center font-heading  text-left base strong mbl-nav-heading"
+               
+              >
+                <span>{{ link.title }}</span>
+                <!-- <div class="ml-auto">
+                  <span class="w-3 h-3 block" :class="{'rotate-180': expanded}">{% render 'icon-chevron-down' %}</span>
+                </div> -->
+              </div>
+              <div x-show="expanded" x-collapse>
+                {% assign ind = forloop.index %}
+                <ul class="pb-3 text-base font-main">
+                  {% for link in link.links %}
+                    {% comment %}
+                      Second level
+                    {% endcomment %}
+                    {%- liquid
+                      assign showcase_link = false
+                      if section.settings.showcase_second_level_links
+                        if link.type == 'collection_link' or link.type == 'product_link'
+                          if link.links.size == 0
+                            assign showcase_link = true
+                          endif
+                        endif
+                      endif
+                    -%}
+                    {% if forloop.index == 1 and ind == 2 %}
+                      {% comment %}
+                    <li class="my-3 text-base mbl-nav-li b2b" style="--second-delay-tap: 7;">
+                      <a class="mbl-nav-bg wo-sub " href="https://us.calendar-honeybalm.com/" target="_blank">
+                        <span>Advent Calendar</span>
+                        <span class="w-3 h-3 block sub-chev rotate-180" :class="{'rotate-180': expanded}">
+                          <svg class="theme-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 12L23.2826 36.0527C23.3724 36.1542 23.4826 36.2354 23.6062 36.291C23.7297 36.3467 23.8636 36.3755 23.999 36.3755C24.1345 36.3755 24.2684 36.3467 24.3919 36.291C24.5154 36.2354 24.6257 36.1542 24.7155 36.0527L46 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                      {% endcomment %}
+                    <li class="my-3 text-base mbl-nav-li b2b" style="--second-delay-tap: 7;">
+                      <a class="mbl-nav-bg wo-sub " href="/account/login">
+                        <span>Account</span>
+                        <span class="w-3 h-3 block sub-chev rotate-180" :class="{'rotate-180': expanded}">
+                          <svg class="theme-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 12L23.2826 36.0527C23.3724 36.1542 23.4826 36.2354 23.6062 36.291C23.7297 36.3467 23.8636 36.3755 23.999 36.3755C24.1345 36.3755 24.2684 36.3467 24.3919 36.291C24.5154 36.2354 24.6257 36.1542 24.7155 36.0527L46 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="my-3 text-base mbl-nav-li b2b" style="--second-delay-tap: 7;">
+                      <a class="mbl-nav-bg wo-sub " href="/pages/rewards">
+                        <span>Reward system</span>
+                        <span class="w-3 h-3 block sub-chev rotate-180" :class="{'rotate-180': expanded}">
+                          <svg class="theme-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 12L23.2826 36.0527C23.3724 36.1542 23.4826 36.2354 23.6062 36.291C23.7297 36.3467 23.8636 36.3755 23.999 36.3755C24.1345 36.3755 24.2684 36.3467 24.3919 36.291C24.5154 36.2354 24.6257 36.1542 24.7155 36.0527L46 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                  {% endif %}
+
+                    {% unless showcase_link %}
+                      <li class="my-3 text-base mbl-nav-li {{ link.title | handle }}" style="--second-delay-tap: {% increment second_delay_tap %};">
+                        {% if link.links.size > 0 %}
+                          <div
+                            x-data="{ expanded: false }">
+                            <button
+                              class="w-full flex mbl-nav-bg flex-row justify-between items-center {{ base_font_class }}"
+                              @click="expanded = ! expanded"
+                              :aria-expanded="expanded"
+                            >
+                              <span>{{ link.title }}</span>
+                              <div class="ml-auto">
+                                <span class="w-3 h-3 block sub-chev" :class="{'rotate-180': expanded}">
+                                  {% render 'icon-chevron-down' %}
+                                </span>
+                              </div>
+                            </button>
+                            {% assign link2 = link %}
+
+
+                            {% if link2.title == 'Accessories' %}
+
+                              <ul x-show="expanded" x-collapse class="mbl-mega-p-wrap">
+                              {% for pro in collections['applicators'].products %}
+                                {% comment %}
+                                  Third level
+                                {% endcomment %}
+                                <li
+                                  class="mbl-mega-p"
+                                  style="--third-delay-tap: {% increment third_delay_tap %};"
+                                >
+                                  <a {% if link.active %}aria-current="page"{% endif %} href="{{ pro.url }}" class="">
+                                    <div class="menu-img-wrap {{ pro.title | downcase }}">
+                                        <img src="{{ pro.images[0].src | img_url: '300x' }}"/>
+                                    </div>
+                                    <div class="mega-title heading4 strong">
+                                      {{ pro.title }}
+                                    </div>
+                                    <div class="mega-text base normal"></div>
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                              
+                              {% continue %}
+                            {% endif %}
+
+
+                            
+                            <ul x-show="expanded" x-collapse class="mbl-mega-p-wrap">
+                              {% for link in link.links %}
+                                {% comment %}
+                                  Third level
+                                {% endcomment %}
+                                <li
+                                  class="mbl-mega-p"
+                                  style="--third-delay-tap: {% increment third_delay_tap %};"
+                                >
+                                  <a {% if link.active %}aria-current="page"{% endif %} href="{{ link.url }}" class="">
+                                    {% assign pro_handle = link.url | split: '/products/' | last %}
+                                    <!-- { % assign pro = all_products[pro_handle] %} -->
+                                    {% assign pro = link.object %}
+                                    <div class="menu-img-wrap {{ link.title | downcase }}">
+                                      {% if link.title == "SPF Try-out box" or link.title == "Mystery Balm" or link.title == "Salted Caramel" or link.title == "Red Pepper" 
+                                         or link.title == "Lemon Cheesecake" or link.title == "Hibiscus Citrus" or link.title == "Candy Cane" or link.title == "Honey lip scrub" 
+                                         or link.title == "Blueberry" or link.title == "Pineapple" or link.title == "Rose Cardamom" %}
+                                        <img src="{{ pro.images[1].src | img_url: '300x' }}"/>
+                                      {% elsif link.title == "Try-out box" or link.title contains "Valentine" or link.title == "Classic Pack" or link.title == "Favourites Pack"
+                                        or link.title == "Lavender Chamomille" %}
+                                        <img src="{{ pro.images[0].src | img_url: '300x' }}"/>
+                                      {% elsif link2.title == 'Packs' %}
+                                        <img src="{{ pro.images[0].src | img_url: '300x' }}"/>                                      
+                                      {% elsif link.title == "Watermelon" or link.title == "Strawberry lip scrub" %}
+                                        <img src="{{ pro.images[3].src | img_url: '300x' }}"/>
+                                      {% else %}
+                                        <img src="{{ pro.images[6].src | img_url: '300x' }}"/>
+                                      {% endif %}
+                                      {% if link.title == "Strawberry lip scrub" or link.title == "Rose Cardamom" or link.title == "Salted Caramel"
+                                           or link.title == "Hibiscus Citrus" %}
+                                        <div class="menu-tag base-sm strong  new">New</div>
+                                      {% elsif link.title == "Honey SPF" or link.title == "Coconut SPF" or link.title == "Watermelon" or link.title == "Mint" or link.title == "Try-out box" or link.title == "Blueberry" %}
+                                        <div class="menu-tag base-sm strong best-seller">Best seller</div>
+                                      {% endif %}
+                                      {% if link.title == "Mystery Balm" or link.title == "Red Pepper" or link.title == "SPF Try-out box" or link.title == "Strawberry SPF" or link.title == "Lavender Chamomille"
+                                        or link.title == "Lemon Cheesecake" %}
+                                        <div class="menu-tag base-sm strong  new">Sold out</div>
+                                        {% comment %}
+                                      {% elsif link.title == "Honey lip scrub" %}
+                                        <div class="menu-tag base-sm strong new temp_unavailable">Temporarily unavailable</div>
+                                        {% endcomment %}
+                                      {% endif %}
+                                    </div>
+                                    <div class="mega-title heading4 strong">
+                                      {{ link.title }}
+                                    </div>
+                                    <div class="mega-text base normal">{% if link.title contains "scrub" %}Lip scrub{% else %}Lip balm{% endif %}</div>
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% else %}
+                          <a class="mbl-nav-bg wo-sub {% if link.title == 'Bundel Builder' %} bundle {% endif %}" href="{{ link.url }}">
+                            <span>{{ link.title }}</span>
+                            <span class="w-3 h-3 block sub-chev" :class="{'rotate-180': expanded}">
+                              {% render 'icon-chevron-down' %}
+                            </span>
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% else %}
+                      {%- capture link_tile -%}
+                        <li class="text-base">
+                          {%- assign object = link.object -%}
+                          {% render 'showcase-tile' with object: object, crop: section.settings.crop %}
+                        </li>
+                      {%- endcapture -%}
+                      {%- assign showcase_link_tiles = showcase_link_tiles | append: link_tile -%}
+                    {%- endunless -%}
+                  {% endfor %}
+                  {% comment %}
+                  {% if forloop.index == 2 %}
+                    <li class="my-3 text-base mbl-nav-li b2b" style="--second-delay-tap: 7;">
+                      <a class="mbl-nav-bg wo-sub " href="/account/login">
+                        <span>Account</span>
+                        <span class="w-3 h-3 block sub-chev rotate-180" :class="{'rotate-180': expanded}">
+                          <svg class="theme-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 12L23.2826 36.0527C23.3724 36.1542 23.4826 36.2354 23.6062 36.291C23.7297 36.3467 23.8636 36.3755 23.999 36.3755C24.1345 36.3755 24.2684 36.3467 24.3919 36.291C24.5154 36.2354 24.6257 36.1542 24.7155 36.0527L46 12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% endcomment %}
+                </ul>
+                {% if showcase_link_tiles != '' %}
+                  <ul class="mb-5 nav-item grid gap-5 grid-cols-2">
+                    {{ showcase_link_tiles }}
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+        {% else %}
+          <!-- <a class="block font-heading py-2.5" href="{{ link.url }}">
+            {{ link.title }}
+          </a> -->
+        {% endif %}
+        </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+
+    <div class="mt-0 space-y-5 account-css">
+      {%- if section.settings.sidebar_show_footer_menu -%}
+      <nav aria-label="Secondary">
+        <ul class="space-y-1.5">
+          {%- for link in linklists['footer'].links -%}
+            <li>
+              <a class="inline-block py-1" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+      {%- endif -%}
+
+
+      {% if shop.customer_accounts_enabled %}
+        <ul class="space-y-1.5">
+            <li>
+              <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+            </li>
+          {% comment %}
+          {% if customer %}
+            <li>
+              <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+            </li>
+            <li>
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+          {% else %}
+            <li>
+              {{ 'layout.customer.log_in' | t | customer_login_link }}
+            </li>
+            <li>
+              {{ 'layout.customer.create_account' | t | customer_register_link }}
+            </li>
+          {% endif %}
+          {% endcomment %}
+        </ul>
+      {% endif %}
+
+      {%- if section.settings.header_show_search -%}
+      <form class="relative mt-10 max-w-2xl mx-auto block" action="/search" method="get" role="search">
+        <label for="Search" class="visually-hidden">
+          {{ 'general.search.placeholder' | t }}
+        </label>
+        <input type="search"
+              name="q"
+              id="Search"
+              class="pr-12 placeholder-current input w-full"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t }}">
+        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 p-1" type="submit" class="button">
+          <span class="inline-block w-5 h-5">{% render 'icon-search' %}</span>
+          <span class="visually-hidden">{{ 'general.search.submit' | t }}</span>
+        </button>
+      </form>
+      {%- endif -%}
+
+      {%- if section.settings.sidebar_show_social_icons -%}
+      {%- render 'social-icons', list_class: 'justify-start' -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</template>

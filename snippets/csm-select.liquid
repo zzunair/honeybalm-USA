@@ -1,0 +1,356 @@
+ <style>
+        .custom-select {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .select-selected {
+                background-color: transparent;
+                padding: 4px;
+                border: 1px solid var(--fade-border);
+                cursor: pointer;
+                user-select: none;
+                border-radius: 50px;
+          min-height: 42px;
+        }
+
+        .select-items {
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            z-index: 99;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .select-items div {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .select-items div img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .select-items div a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .select-items div:hover {
+            background-color: #e9e9e9;
+        }
+
+        .select-arrow {
+                position: absolute;
+                top: 50%;
+                right: 14px;
+                pointer-events: none;
+                background: var(--select-svg);
+                width: 14px;
+                height: 15px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+          transform: translateY(-50%);
+        }
+
+        .same-as-selected {
+            background-color: #e9e9e9;
+        }
+   .select-selected a{
+     pointer-events: none;
+   }
+   .custom-select .choose-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+     position: relative;
+    overflow: hidden;
+}
+   .custom-select a {
+    display: flex;
+    background: transparent;
+    gap: 10px;
+    align-items: center;
+}
+   .custom-select .choose-text.base-sm.normal {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2px;
+}
+   .select-items.choose-prdcts {
+    gap: 8px !important;
+    background: white;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 10px 4px;
+    max-height: 500px;
+    border-radius: 0.5rem;
+    /* border: 0; */
+}
+   .custom-select .choose-logo img {
+    margin: 0;
+    position: absolute;
+}
+   /* .select-selected:empty {
+    display: none;
+}
+   .select-selected:empty ~ .select-arrow {
+    display: none;
+} */
+    </style>
+<div class="custom-select">
+    <div class="select-selected"></div>
+    <div class="select-items choose-prdcts {% if product.handle contains '-spf' %}spf-only{% elsif product.handle contains 'totebag' %}totebag-only{% endif %}">
+        {% if section.settings.prdct1 != blank %}
+        <a class="honey {{ section.settings.name1 | handle }} {% if section.settings.prdct1 contains product.handle or product.handle contains 'hb-honey' %}same-as-selected{% endif %}" href="{{ section.settings.prdct1 }}{% if product.handle contains '-spf' %}-spf{% endif %}">
+          <div class="choose-logo">
+          {{ section.settings.logo1 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name1 }}</div>
+          {% comment %}
+          {% if section.settings.name1 == 'Honey' and product.handle contains '-spf' %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+          {% endif %}
+          {% endcomment %}
+        </a>
+        {% endif %}
+        {% if section.settings.prdct2 != blank %}
+        <a class="strawberry {{ section.settings.name2 | handle }} {% if section.settings.prdct2 contains product.handle or product.handle contains 'hb-strawberry' %}same-as-selected{% endif %}" href="{{ section.settings.prdct2 }}{% if product.handle contains '-spf' %}-spf{% endif %}">
+          <div class="choose-logo">
+          {{ section.settings.logo2 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name2 }}</div>
+          
+          {% if section.settings.name2 == 'Strawberry' and product.handle contains '-spf' %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+          {% endif %}
+          
+        </a>
+        {% endif %}
+        {% if section.settings.prdct3 != blank %}
+        <a class="chocolate {{ section.settings.name3 | handle }} {% if section.settings.prdct3 contains product.handle or product.handle contains 'hba-mint-applicators' %}same-as-selected{% endif %}" href="{{ section.settings.prdct3 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo3 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name3 }}</div>
+        </a>
+        {% endif %}
+        {% if section.settings.prdct4 != blank %}
+        <a class="cherry {{ section.settings.name4 | handle }} {% if section.settings.prdct4 contains product.handle or product.handle contains 'hb-cherry' %}same-as-selected{% endif %}" href="{{ section.settings.prdct4 }}{% if product.handle contains '-spf' %}-spf{% endif %}">
+          <div class="choose-logo">
+          {{ section.settings.logo4 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name4 }}</div>
+          {% comment %}
+          {% if section.settings.name4 == 'Cherry' and product.handle contains '-spf' %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+          {% endif %}
+          {% endcomment %}
+        </a>
+        {% endif %}
+        {% if section.settings.prdct5 != blank %}
+        <a class="coconut {{ section.settings.name5 | handle }} {% if section.settings.prdct5 contains product.handle or product.handle contains 'hb-coconut' %}same-as-selected{% endif %}" href="{{ section.settings.prdct5 }}{% if product.handle contains '-spf' %}-spf{% endif %}">
+          <div class="choose-logo">
+          {{ section.settings.logo5 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name5 }}</div>
+          {% if section.settings.name5 == 'SPF Try-out box'  %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+          {% endif %}
+          {% comment %}
+          {% elsif section.settings.name5 == 'Coconut' and product.handle contains '-spf' %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Temporarily unavailable</div>
+          {% endcomment %}
+        </a>
+        {% endif %}
+        {% if section.settings.prdct6 != blank %}
+        <a class="vanilla {{ section.settings.name6 | handle }} {% if section.settings.prdct6 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct6 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo6 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name6 }}</div>
+          {% if section.settings.name6 == 'Valentine Pack' %}
+            <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+          {% endif %}
+        </a>
+        {% endif %}
+        {% if section.settings.prdct8 != blank %}
+        <a class="mint {{ section.settings.name8 | handle }} {% if section.settings.prdct8 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct8 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo8 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name8 }}</div>
+        </a>
+        {% endif %}
+        {% if section.settings.prdct7 != blank %}
+        <a class="applicator {{ section.settings.name7 | handle }} {% if section.settings.prdct7 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct7 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo7 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name7 }}</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct13 != blank %}
+        <a class="blueberry {{ section.settings.name13 | handle }} {% if section.settings.prdct13 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct13 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo13 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name13 }}</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct14 != blank %}
+        <a class="red-pepper {{ section.settings.name14 | handle }} {% if section.settings.prdct14 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct14 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo14 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name14 }}</div>
+          <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct15 != blank %}
+        <a class="pineapple {{ section.settings.name15 | handle }} {% if section.settings.prdct15 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct15 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo15 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name15 }}</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct16 != blank %}
+        <a class="rose-cardamom {{ section.settings.name16 | handle }} {% if section.settings.prdct16 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct16 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo16 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name16 }}</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct17 != blank %}
+        <a class="lavender-chamomille {{ section.settings.name17 | handle }} {% if section.settings.prdct17 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct17 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo17 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name17 }}</div>
+          <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct18 != blank %}
+        <a class="hibiscus-citrus {{ section.settings.name18 | handle }} {% if section.settings.prdct18 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct18 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo18 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name18 }}</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct19 != blank %}
+        <a class="lemon-cheesecake {{ section.settings.name19 | handle }} {% if section.settings.prdct19 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct19 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo19 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name19 }}</div>
+          <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct12 != blank %}
+        <a class="caramelized-pear {{ section.settings.name12 | handle }} {% if section.settings.prdct12 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct12 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo12 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name12 }}</div>
+          <!-- <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div> -->
+        </a>
+        {% endif %}
+      {% if section.settings.prdct11 != blank %}
+        <a class="candy {{ section.settings.name11 | handle }} {% if section.settings.prdct11 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct11 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo11 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name11 }}</div>
+          <!-- <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div> -->
+        </a>
+        {% endif %}
+      
+      {% if section.settings.prdct9 != blank %}
+        <a class="pumpkin {{ section.settings.name9 | handle }} {% if section.settings.prdct9 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct9 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo9 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name9 }}</div>
+          <!-- <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div> -->
+        </a>
+        {% endif %}
+      {% if section.settings.prdct10 != blank %}
+        <a class="mystery {{ section.settings.name10 | handle }} {% if section.settings.prdct10 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct10 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo10 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name10 }}</div>
+          <div class="pdp-off base normal out_of_stock" style="display: block;">Sold out</div>
+        </a>
+        {% endif %}
+      {% if section.settings.prdct21 != blank %}
+        <a class="salted-caramel {{ section.settings.name21 | handle }} {% if section.settings.prdct21 contains product.handle %}same-as-selected{% endif %}" href="{{ section.settings.prdct21 }}">
+          <div class="choose-logo">
+          {{ section.settings.logo21 }}
+          </div>
+          <div class="choose-text base-sm normal">{{ section.settings.name21 }}</div>
+        </a>
+        {% endif %}
+      
+    </div>
+    <span class="select-arrow"></span>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.querySelector('.select-selected');
+        const selectItems = document.querySelector('.select-items');
+        const options = selectItems.querySelectorAll('a');
+
+        // Set default selected option (first option)
+        // const defaultOption = options[0];
+        if(document.querySelector('.same-as-selected')){
+        select.innerHTML = document.querySelector('.same-as-selected').outerHTML;
+        }else{
+          document.querySelector('.custom-select').style.display = 'none';
+          return false;
+        }
+        // defaultOption.classList.add('same-as-selected');
+
+        // Toggle dropdown visibility
+        select.addEventListener('click', function () {
+            selectItems.style.display = selectItems.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Hide dropdown if clicking outside
+        window.addEventListener('click', function (event) {
+            if (!select.contains(event.target)) {
+                selectItems.style.display = 'none';
+            }
+        });
+
+        // Handle option selection
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                // Update the selected text and link
+                select.innerHTML = option.outerHTML;
+
+                // Highlight the selected option
+                options.forEach(opt => opt.classList.remove('same-as-selected'));
+                option.classList.add('same-as-selected');
+
+                // Hide the dropdown
+                selectItems.style.display = 'none';
+            });
+        });
+    });
+</script>

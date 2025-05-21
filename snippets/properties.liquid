@@ -1,0 +1,41 @@
+{% if product.handle == 'try-out-box' %}
+  <input type="hidden" name="properties[Honey]" value="1"> 
+  <input type="hidden" name="properties[Cherry]" value="1"> 
+  <input type="hidden" name="properties[Vanilla]" value="1"> 
+  <input type="hidden" name="properties[Coconut]" value="1"> 
+  <input type="hidden" name="properties[Strawberry]" value="1"> 
+  <input type="hidden" name="properties[Mint]" value="1"> 
+  <input type="hidden" name="properties[Chocolate]" value="1">
+  <input type="hidden" name="properties[Watermelon]" value="1">
+{% elsif product.handle == 'spf-try-out-box' %}
+  <input type="hidden" name="properties[Honey SPF]" value="1"> 
+  <input type="hidden" name="properties[Cherry SPF]" value="1"> 
+  <input type="hidden" name="properties[Coconut SPF]" value="1"> 
+  <input type="hidden" name="properties[Strawberry SPF]" value="1">
+{% elsif product.handle == 'red-fruits-pack' %}
+  <input type="hidden" name="properties[Strawberry]" value="1"> 
+  <input type="hidden" name="properties[Cherry]" value="1"> 
+  <input type="hidden" name="properties[Watermelon]" value="1"> 
+{% elsif product.handle == 'favourites-pack' %}
+  <input type="hidden" name="properties[Honey]" value="1"> 
+  <input type="hidden" name="properties[Watermelon]" value="1"> 
+  <input type="hidden" name="properties[Strawberry]" value="1"> 
+  <input type="hidden" name="properties[Cherry]" value="1"> 
+  <input type="hidden" name="properties[Vanilla]" value="1"> 
+{% elsif product.handle == 'classic-pack-1' %}
+  <input type="hidden" name="properties[Honey]" value="1"> 
+  <input type="hidden" name="properties[Cherry]" value="1">
+  <input type="hidden" name="properties[Strawberry]" value="1"> 
+  <input type="hidden" name="properties[Chocolate]" value="1"> 
+{% elsif product.handle == 'valentine-pack' %}
+  <input type="hidden" name="properties[Strawberry Lip Scrub]" value="1"> 
+  <input type="hidden" name="properties[Cherry]" value="1">
+  <input type="hidden" name="properties[Watermelon]" value="1">
+  <input type="hidden" name="properties[Valentine's Day Gift Box]" value="1">
+{% elsif product.handle == 'mothers-day-pack' %}
+  <input type="hidden" name="properties[Honey]" value="1"> 
+  <input type="hidden" name="properties[Strawberry]" value="1"> 
+  <input type="hidden" name="properties[Rose Cardamom]" value="1">
+{% elsif product.handle == 'hb-red-pepper' %}
+  <input type="hidden" name="properties[Notice]" value="Not recommended for children due to the natural pepper extracts.">
+{% endif %}

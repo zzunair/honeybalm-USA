@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "bundles_list_TRJMx8": {
+      "type": "bundles-list",
+      "blocks": {
+        "block_6e8L6w": {
+          "type": "block",
+          "settings": {
+            "img": "shopify://shop_images/Group_152_4.png",
+            "title": "Special edition pack",
+            "desc": "Real honey & propolis",
+            "tag": "Best seller",
+            "prdct": "special-edition-pack"
+          }
+        },
+        "block_L3NfcJ": {
+          "type": "block",
+          "settings": {
+            "img": "shopify://shop_images/Group_152_5.png",
+            "title": "Classic flavour pack",
+            "desc": "Real honey & propolis",
+            "tag": "New",
+            "prdct": "classic-flavour-pack"
+          }
+        },
+        "block_cGEqm4": {
+          "type": "block",
+          "settings": {
+            "img": "shopify://shop_images/Group_152_6.png",
+            "title": "Red flavour pack",
+            "desc": "Real honey & propolis",
+            "tag": "",
+            "prdct": "red-flavour-pack"
+          }
+        },
+        "block_yN6nzg": {
+          "type": "block",
+          "settings": {
+            "img": "shopify://shop_images/Group_152_7.png",
+            "title": "All flavour pack",
+            "desc": "Get extra off",
+            "tag": "",
+            "prdct": "all-flavour-pack"
+          }
+        }
+      },
+      "block_order": [
+        "block_6e8L6w",
+        "block_L3NfcJ",
+        "block_cGEqm4",
+        "block_yN6nzg"
+      ],
+      "settings": {
+        "txt1": "The <span class=\"new-spirit-md\">bundles</span>",
+        "txt2": "",
+        "btntxt": "",
+        "btnlnk": ""
+      }
+    },
+    "all_flavours_hLewDX": {
+      "type": "all-flavours",
+      "blocks": {
+        "logo_JeMFdU": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_1_1.png",
+            "clr": "#fff6d8",
+            "title": "Honey",
+            "text": "Lip balm",
+            "link": "/"
+          }
+        },
+        "logo_NMe6Kn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_2.png",
+            "clr": "#fdefff",
+            "title": "Strawberry",
+            "text": "Lip balm",
+            "link": ""
+          }
+        },
+        "logo_BTUCYC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_3.png",
+            "clr": "#ffcece",
+            "title": "Cherry",
+            "text": "Lip balm",
+            "link": "/"
+          }
+        },
+        "logo_JwEKzX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_4.png",
+            "clr": "#f3e0cc",
+            "title": "Chocolate",
+            "text": "Lip balm",
+            "link": "/"
+          }
+        },
+        "logo_XqVQQg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_5.png",
+            "clr": "#fffaf0",
+            "title": "Coconut",
+            "text": "Lip balm",
+            "link": "/"
+          }
+        },
+        "logo_3dPyFx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2843_6.png",
+            "clr": "#fff6e5",
+            "title": "Vanilla",
+            "text": "Lip balm",
+            "link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "logo_JeMFdU",
+        "logo_NMe6Kn",
+        "logo_BTUCYC",
+        "logo_JwEKzX",
+        "logo_XqVQQg",
+        "logo_3dPyFx"
+      ],
+      "settings": {
+        "title": "See all our <span class=\"new-spirit-md\">flavours</span>",
+        "max_width": 100,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "<span class=\"new-spirit-md italic\">Subscribe</span> and get some juicy secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bundles_list_TRJMx8",
+    "all_flavours_hLewDX",
+    "1650891804363a2769"
+  ]
+}

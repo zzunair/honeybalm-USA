@@ -1,0 +1,311 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_pqMnQm": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/image_33_1.png",
+        "image_mobile": "shopify://shop_images/Hero_image_new.webp",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Some <span class=\"new-spirit-md\">shiny</span><br>reviews we got",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "171337111946248968": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_iJJHeG": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "hide_thumbnails": true,
+            "product_handle": "",
+            "aggregated": true,
+            "data-limit": 30,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_iJJHeG"
+      ],
+      "settings": {
+        "apply_vertical_spacing": true,
+        "apply_horizontal_spacing": true,
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "all_flavours_hLewDX": {
+      "type": "all-flavours",
+      "blocks": {
+        "logo_JeMFdU": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/honey7_14c18ef6-0932-4431-8840-a6956758fa17.webp",
+            "clr": "#fff6d8",
+            "title": "Honey",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-honey"
+          }
+        },
+        "logo_NMe6Kn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/strawberry7_595f93de-0229-4fd6-a132-b2d51935e651.webp",
+            "clr": "#fdefff",
+            "title": "Strawberry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-strawberry"
+          }
+        },
+        "logo_BTUCYC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/cherry7_25763d9f-49ae-455e-b02a-5409c9aa5185.webp",
+            "clr": "#ffcece",
+            "title": "Cherry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-cherry"
+          }
+        },
+        "logo_JwEKzX": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Chocolate_2.webp",
+            "clr": "#f3e0cc",
+            "title": "Chocolate",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-chocolate"
+          }
+        },
+        "logo_XqVQQg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/coconut7_c4377bfc-3ae4-45f3-aa1b-7b83d162448b.webp",
+            "clr": "#fffaf0",
+            "title": "Coconut",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-coconut"
+          }
+        },
+        "logo_3dPyFx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/vanilla7.webp",
+            "clr": "#fff6e5",
+            "title": "Vanilla",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-vanilla"
+          }
+        },
+        "logo_jxHGGa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/mint7_a6e9881e-e524-4686-930d-4c9dba9f3056.webp",
+            "clr": "",
+            "title": "Mint",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-mint"
+          }
+        },
+        "logo_wMPBQP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Watermelon_5.webp",
+            "clr": "",
+            "title": "Watermelon",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-watermelon"
+          }
+        },
+        "logo_wMPBkl": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Blueberry_5.webp",
+            "clr": "",
+            "title": "Blueberry",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-blueberry"
+          }
+        },
+        "logo_wMPBbr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Pineapple_3.webp",
+            "clr": "",
+            "title": "Pineapple",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-pineapple"
+          }
+        },
+        "logo_pumpkin": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Pumpkin-spice_4.webp",
+            "clr": "",
+            "title": "Pumpkin Spice",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-pumpkin"
+          }
+        },
+        "logo_caramel": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_CP_7.webp",
+            "clr": "",
+            "title": "Caramelized Pear",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-caramelized-pear"
+          }
+        },
+        "logo_candy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Candy-Cane_2.webp",
+            "clr": "",
+            "title": "Candy Cane",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-candy"
+          }
+        },
+        "logo_wMPBbh": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/2025002_Rose_Cardamom_Composition_shot.png",
+            "clr": "",
+            "title": "Rose Cardamom",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-rose-cardamom"
+          }
+        },
+        "logo_wMPBsk": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/2025002_Lavender-Chamomile_Front_Shot.png",
+            "clr": "",
+            "title": "Lavender Chamomille",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-lavender-chamomille"
+          }
+        },
+        "logo_lemon": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Lemon-Cheesecake_4_MENU.webp",
+            "clr": "",
+            "title": "Lemon Cheesecake",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-lemon-cheesecake"
+          }
+        },
+        "logo_red": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Red-Pepper_5_MENU.webp",
+            "clr": "",
+            "title": "Red Pepper",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-red-pepper"
+          }
+        },
+        "logo_hibiscus": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Hibiscus-Citrus_3_MENU.webp",
+            "clr": "",
+            "title": "Hibiscus Citrus",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-hibiscus-citrus"
+          }
+        },
+        "logo_saltedjj": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PDP_images_Salted-Caramel_3_MENU.webp",
+            "clr": "",
+            "title": "Salted Caramel",
+            "text": "Lip balm",
+            "link": "shopify://products/hb-salted-caramel"
+          }
+        }
+      },
+      "block_order": [
+        "logo_JeMFdU",
+        "logo_NMe6Kn",
+        "logo_BTUCYC",
+        "logo_JwEKzX",
+        "logo_XqVQQg",
+        "logo_3dPyFx",
+        "logo_jxHGGa",
+        "logo_wMPBQP",
+        "logo_wMPBkl",
+        "logo_wMPBbr",
+        "logo_pumpkin",
+        "logo_caramel",
+        "logo_candy",
+        "logo_wMPBbh",
+        "logo_wMPBsk",
+        "logo_lemon",
+        "logo_red",
+        "logo_hibiscus",
+        "logo_saltedjj"
+      ],
+      "settings": {
+        "title": "See all our flavours",
+        "max_width": 100,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscribe and get some <span class=\"new-spirit-md\">lip care</span> secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_pqMnQm",
+    "171337111946248968",
+    "all_flavours_hLewDX",
+    "1650891804363a2769"
+  ]
+}

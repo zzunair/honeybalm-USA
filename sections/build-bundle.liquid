@@ -1,0 +1,741 @@
+<style>
+  .bundle-outer-{{ section.id }}{
+    background-color: {{ section.settings.clr }};
+  }
+  .spf-switch-wrapp input[type="checkbox"]:checked ~ label.spf-switch .spf-switch-thumb {
+    background-color: {{ section.settings.clr }};
+  }
+ .bundle-outer-{{ section.id }} .text-scheme-background {
+    color: {{ section.settings.clr }} !important;
+  }
+ .bundle-outer-{{ section.id }} .shape-divider.top-0 {
+    top: 100%;
+  }
+ .bundle-outer-{{ section.id }} .shape-divider.bottom-0 {
+    bottom: 100%;
+  }
+{% if template.suffix contains 'bundlebuilder' %}
+ .bundle-outer-{{ section.id }} .bundle-wrap{
+   margin-top: 0px;
+ }
+{% endif %}
+</style>
+<div class="bundle-outer-{{ section.id }}">
+  <div class="bundle-wrap">
+    <div class="container">
+      <div class="bundle-top">
+        <div class="bundle-title heading2 strong">{{ section.settings.title }}</div>
+        <div class="bundle-select-wrap base normal">
+          {{ section.settings.text }}
+          <div class="bndlselect-wrap">
+            {% assign col = collections[section.settings.col] %}
+            {% assign first_variant = all_products[section.settings.def].variants.first %}
+              {% if first_variant.compare_at_price > first_variant.price %}
+                {% assign discount = first_variant.compare_at_price | minus: first_variant.price | times: 100 | divided_by: first_variant.compare_at_price | round %}
+                <div class="bndl-off base-sm normal">{{ discount }}% off</div>
+              {% endif %}
+              <select class="base normal" name="id">
+                {% for prdct in col.products %}
+                  {% assign vdiscount = 0 %}
+                  {% if prdct.compare_at_price > prdct.price %}
+                    {% assign discount2 = prdct.compare_at_price | minus: prdct.price | times: 100 | divided_by: prdct.compare_at_price | round %}
+                    {% assign vdiscount = discount2 %}
+                  {% endif %}
+                  <option value="{{ prdct.selected_or_first_available_variant.id }}" bundle="{{ prdct.handle | split: '-' | first }}" price="{{ prdct.price | money }}" compare="{{ prdct.compare_at_price | money }}" disc="{{ vdiscount }}" {% if prdct.handle == section.settings.def %} selected {% endif %}>{{ prdct.title }}&nbsp&nbsp&nbsp&nbsp&nbsp({{ vdiscount }}% off)</option>
+                {% endfor %}
+              </select>
+          </div>
+        </div>
+
+        <div class="build-mbl-price-text">for just <span class="build-mbl-compare">{{ all_products[section.settings.def].compare_at_price | money }}</span> <span class="build-mbl-price">{{ all_products[section.settings.def].price | money }}</span></div>
+      </div>
+      <div class="bundle-products">
+        {% assign p_handles = '' %}
+        {% for block in section.blocks %}
+          {% if block.type == 'block' %}
+            {% assign prdct = all_products[block.settings.prdct] %}{% assign p_handles = p_handles | append: block.settings.prdct | append: ','  %}
+            <div class="bundle-product" p-handle="{{ block.settings.prdct }}">
+              <div class="bundle-p-img">
+                <a href="{{ prdct.url }}">
+                  <img class="bundle-png1" src="{{ prdct.images[0].src | img_url: '300x' }}">
+                {% if prdct.handle == 'hb-watermelon' %}
+                  <div class="new-bundle-tag base-sm strong">New</div>
+                {% endif %}
+                </a>
+              </div>
+              <div class="bundle-p-content">
+                <div class="bundle-p-title heading4 strong">{{ block.settings.ptitle }}</div>
+                {% comment %}<div class="bundle-p-text base normal">{{ block.settings.ptext }}</div>{% endcomment %}
+                <div class="bundle-p-text base normal">
+                  {% if prdct.handle == 'hb-honey' %}
+                      The original. Smooth like heaven.
+                    {% elsif prdct.handle == 'hb-strawberry' %}
+                      A sweet, fruity treat for your lips.
+                    {% elsif prdct.handle == 'hb-cherry' %}
+                      Slightly tinted, with a cherry kiss.
+                    {% elsif prdct.handle == 'hb-chocolate' %}
+                      Dive into a luscious chocolate fantasy.
+                    {% elsif prdct.handle == 'hb-coconut' %}
+                      Who needs a Pina Colada?!
+                    {% elsif prdct.handle == 'hb-vanilla' %}
+                      Smooth your lips with creamy vanilla.
+                    {% elsif prdct.handle == 'hb-mint' %}
+                      Chill your lips with an icy minty sensation.
+                    {% elsif prdct.handle == 'hb-watermelon' %}
+                      Smooth your lips with summer vibes
+                  {% endif %}
+                </div>
+                <div class="qty-bwrap">
+                  <div class="bundle-input-wrap not-active">
+                    <div class="b-minus">-</div>
+                    <input type="number" value="0" p-img="{% if prdct.images[7] %}{{ prdct.images[7] | img_url: '40x' }}{% else %}{{ prdct.images.last | img_url: '40x' }}{% endif %}" readonly>
+                    <div class="b-plus"><span>Add</span> +</div>
+                  </div>
+                  {% if prdct.handle == 'hb-honey' or prdct.handle == 'hb-strawberry' or prdct.handle == 'hb-cherry' or prdct.handle == 'hb-coconut' %}
+                    <div class="spf-switch-wrapp">
+                      <input type="checkbox" id="{{ forloop.index }}spf">
+                      <label class="spf-switch" for="{{ forloop.index }}spf">
+                        <div class="spf-switch-thumb"><span>☀️</span></div>
+                      </label>
+                      <div class="base-sm normal sf-txt">
+                        <div class="spf">SPF</div>
+                        <div class="no-spf">No SPF</div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% assign p_handles = p_handles | split: ',' %}
+      </div>
+      <div class="bundle-bottom">
+        <button class="inline-block push-btn">
+          <span class="push-btn-surface base strong">Add to bag <span class="atc-money normal base normal">{{ all_products[section.settings.def].price | money }}</span></span>
+        </button>
+        <div class="selected-bundle-wrap">
+          {% assign count = section.settings.def | split: '-' | first %}
+          {% for i in (1..count) %}
+            <div class="slct-bndl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.96456 10V6.03982H0V3.94912H3.96456V0H6.05759V3.94912H10V6.03982H6.05759V10H3.96456Z" fill="#D1D1D1"/>
+              </svg>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="shipping-bndl-text base normal">Free shipping from $31.95!{% comment %}{{ section.settings.btmtxt }}{% endcomment %}</div>
+    </div>
+  </div>
+
+{%- liquid
+  assign shape_dividers = section.blocks | where: "type", "shape_divider"
+  assign no_padding = true
+  if style == 'inset'
+    assign no_padding = false
+  endif
+  for shape_divider in shape_dividers
+    render 'block-shape-divider' with block: shape_divider, section: section, no_padding: no_padding
+  endfor
+-%}
+</div>
+
+<script>
+    var honey_array = [];
+    var strawberry_array = [];
+    var cherry_array = [];
+    var coconut_array = [];
+  
+    var bundle = {{count}};
+    var isCustomEvent = false;
+    document.querySelector('.bndlselect-wrap select').addEventListener('change', function(){
+      var discount = this.options[this.selectedIndex].getAttribute('disc');
+      this.parentElement.querySelector('.bndl-off').innerHTML = discount+'% off';
+    });
+    var qty = document.querySelectorAll('.bundle-input-wrap');
+    for(var i = 0; i < qty.length; i++){
+      qty[i].querySelector('.b-plus').addEventListener('click', function(){
+        addProducts(this, 'plus');
+      });
+      qty[i].querySelector('.b-minus').addEventListener('click', function(){
+        addProducts(this, 'minus');
+      });
+    }
+
+    function update_spf(thiss, val){
+      var p_handle = thiss.closest('.bundle-product').getAttribute('p-handle');
+      if(p_handle == "hb-honey"){
+        if(val == 'plus'){
+          if(thiss.closest('.bundle-product').querySelector('.spf-switch-wrapp input').checked){
+            honey_array.push(1);
+          }else{
+            honey_array.push(0);
+          }
+        }else{
+          honey_array.pop();
+        }
+      }else if(p_handle == "hb-strawberry"){
+        if(val == 'plus'){
+          if(thiss.closest('.bundle-product').querySelector('.spf-switch-wrapp input').checked){
+            strawberry_array.push(1);
+          }else{
+            strawberry_array.push(0);
+          }
+        }else{
+          strawberry_array.pop();
+        }
+      }else if(p_handle == "hb-cherry"){
+        if(val == 'plus'){
+          if(thiss.closest('.bundle-product').querySelector('.spf-switch-wrapp input').checked){
+            cherry_array.push(1);
+          }else{
+            cherry_array.push(0);
+          }
+        }else{
+          cherry_array.pop();
+        }
+      }else if(p_handle == "hb-coconut"){
+        if(val == 'plus'){
+          if(thiss.closest('.bundle-product').querySelector('.spf-switch-wrapp input').checked){
+            coconut_array.push(1);
+          }else{
+            coconut_array.push(0);
+          }
+        }else{
+          coconut_array.pop();
+        }
+      }
+    }
+
+    function addProducts(thiss, value){
+
+      var get_qty = document.querySelectorAll('.bundle-input-wrap');
+      var added_qty = 0;
+      for(var i = 0; i < qty.length; i++){
+        added_qty += Number(get_qty[i].querySelector('input').value);
+      }
+      
+      if(value == 'plus' && added_qty < 10){
+        thiss.parentElement.classList.remove('not-active');
+        thiss.parentElement.querySelector('input').value = Number(thiss.parentElement.querySelector('input').value) + 1;
+        update_spf(thiss, 'plus');
+        if(added_qty >= bundle){
+          bundle = added_qty + 1;
+          selectOptionByAttributeValue("bundle", bundle);
+        }
+        fillSelection();
+      }
+      if(value == 'minus'){
+        thiss.parentElement.querySelector('input').value = Number(thiss.parentElement.querySelector('input').value) - 1;
+        update_spf(thiss, 'minus');
+        if(thiss.parentElement.querySelector('input').value == 0){
+          thiss.parentElement.classList.add('not-active');
+        }
+        fillSelection();
+      }
+    }
+
+  function selectOptionByAttributeValue(attribute, value) {
+    // Get the select element
+    var selectElement = document.querySelector(".bndlselect-wrap select");
+
+    // Loop through options to find the one with the specified attribute value
+    for (var i = 0; i < selectElement.options.length; i++) {
+      var option = selectElement.options[i];
+      if (option.getAttribute(attribute) == value) {
+        option.selected = true;
+        isCustomEvent = true;
+        selectElement.dispatchEvent(new Event("change", { bubbles: true }));
+        break;
+      }
+    }
+  }
+
+  function spf_fill(val, html, bndl_qty, qtys){
+    console.log('hooo', honey_array, strawberry_array, cherry_array, coconut_array);
+    if(val == 'hb-honey'){
+      for(var i = 0; i < honey_array.length; i++){
+        if(honey_array[i] == 0){
+          html += '<div class="slct-bndl">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                  '</div>';
+          bndl_qty += 1;
+        }else{
+          html += '<div class="slct-bndl spf">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                    '<span class="spf-logo">☀️</span>'+
+                  '</div>';
+          bndl_qty += 1;
+        }
+      }
+    }else if(val == 'hb-strawberry'){
+      for(var i = 0; i < strawberry_array.length; i++){
+        if(strawberry_array[i] == 0){
+          html += '<div class="slct-bndl">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                  '</div>';
+          bndl_qty += 1;
+        }else{
+          html += '<div class="slct-bndl spf">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                    '<span class="spf-logo">☀️</span>'+
+                  '</div>';
+          bndl_qty += 1;
+        }
+      }
+    }else if(val == 'hb-cherry'){
+      for(var i = 0; i < cherry_array.length; i++){
+        if(cherry_array[i] == 0){
+          html += '<div class="slct-bndl">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                  '</div>';
+          bndl_qty += 1;
+        }else{
+          html += '<div class="slct-bndl spf">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                    '<span class="spf-logo">☀️</span>'+
+                  '</div>';
+          bndl_qty += 1;
+        }
+      }
+    }else if(val == 'hb-coconut'){
+      for(var i = 0; i < coconut_array.length; i++){
+        if(coconut_array[i] == 0){
+          html += '<div class="slct-bndl">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                  '</div>';
+          bndl_qty += 1;
+        }else{
+          html += '<div class="slct-bndl spf">'+
+                    '<img src="'+qtys.getAttribute('p-img')+'"/>'+
+                    '<span class="spf-logo">☀️</span>'+
+                  '</div>';
+          bndl_qty += 1;
+        }
+      }
+    }
+    return {
+        html: html,
+        bndl_qty: bndl_qty
+    };
+  }
+
+  function fillSelection(){
+      var bundle_val = Number(document.querySelector(".bndlselect-wrap select").options[document.querySelector(".bndlselect-wrap select").selectedIndex].getAttribute('bundle'));
+      var all_qtys = document.querySelectorAll('.bundle-input-wrap input');
+      var html = '';
+      var bndl_qty = 0;
+      for(var j = 0; j < all_qtys.length; j++){
+        if(all_qtys[j].closest('.bundle-product').getAttribute('p-handle') == 'hb-honey' || 
+           all_qtys[j].closest('.bundle-product').getAttribute('p-handle') == 'hb-strawberry' || 
+           all_qtys[j].closest('.bundle-product').getAttribute('p-handle') == 'hb-cherry' || 
+           all_qtys[j].closest('.bundle-product').getAttribute('p-handle') == 'hb-coconut'){
+           var result = spf_fill(all_qtys[j].closest('.bundle-product').getAttribute('p-handle'), html, bndl_qty, all_qtys[j]);
+           html = result.html;
+           bndl_qty = result.bndl_qty;
+          console.log('htmlll', html, bndl_qty);
+        }else{
+        
+        var qty_val = all_qtys[j].value; 
+        for(var k = 0; k < qty_val; k++){
+          html += '<div class="slct-bndl">'+
+                    '<img src="'+all_qtys[j].getAttribute('p-img')+'"/>'+
+                  '</div>';
+          bndl_qty += 1;
+        }
+        }
+      }
+      for(bndl_qty ; bndl_qty < bundle_val; bndl_qty++){
+        html += '<div class="slct-bndl">'+
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3.96456 10V6.03982H0V3.94912H3.96456V0H6.05759V3.94912H10V6.03982H6.05759V10H3.96456Z" fill="#D1D1D1"></path></svg>'+
+                '</div>';
+      }
+      document.querySelector('.selected-bundle-wrap').innerHTML = html;
+  }
+  document.querySelector('.bndlselect-wrap select').addEventListener('change', function(){
+    if(!isCustomEvent){
+      honey_array = [];
+      strawberry_array = [];
+      cherry_array = [];
+      coconut_array = [];
+      
+      var bundle_val = Number(document.querySelector(".bndlselect-wrap select").options[document.querySelector(".bndlselect-wrap select").selectedIndex].getAttribute('bundle'));
+      bundle = bundle_val;
+      var all_qtys = document.querySelectorAll('.bundle-input-wrap input');
+      var html = '';
+      for(var j = 0; j < all_qtys.length; j++){
+        all_qtys[j].value = 0;
+        all_qtys[j].parentElement.classList.add('not-active');
+      }
+     for(var i=0; i < bundle_val; i++){
+        html += '<div class="slct-bndl">'+
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3.96456 10V6.03982H0V3.94912H3.96456V0H6.05759V3.94912H10V6.03982H6.05759V10H3.96456Z" fill="#D1D1D1"></path></svg>'+
+                '</div>';
+      }
+      document.querySelector('.selected-bundle-wrap').innerHTML = html;
+    }
+    isCustomEvent = false;
+    var p_price = document.querySelector(".bndlselect-wrap select").options[document.querySelector(".bndlselect-wrap select").selectedIndex].getAttribute('price');
+    var p_compare = document.querySelector(".bndlselect-wrap select").options[document.querySelector(".bndlselect-wrap select").selectedIndex].getAttribute('compare');
+    document.querySelector('.bundle-bottom button .atc-money').innerHTML = p_price;
+    document.querySelector('.build-mbl-price').innerHTML = p_price;
+    document.querySelector('.build-mbl-compare').innerHTML = p_compare;
+  });
+
+
+
+  // submit bundle function 
+
+  document.querySelector('.bundle-bottom button').addEventListener('click', function(){
+    var pack = bundle;
+    var allqty = document.querySelectorAll('.bundle-products .bundle-input-wrap input');
+    var totall = 0;
+    for(var i=0; i < allqty.length; i++){
+          totall += Number(allqty[i].value);
+        }
+    if(totall == pack){
+    var packid = Number(document.querySelector(".bndlselect-wrap select").options[document.querySelector(".bndlselect-wrap select").selectedIndex].getAttribute('value'));
+    var honey_qty = Number(document.querySelector('[p-handle="{{ p_handles[0] }}"] input').value);
+    var strawberry_qty = Number(document.querySelector('[p-handle="{{ p_handles[1] }}"] input').value);
+    var chocolate_qty = Number(document.querySelector('[p-handle="{{ p_handles[3] }}"] input').value);
+    var cherry_qty = Number(document.querySelector('[p-handle="{{ p_handles[2] }}"] input').value);
+    var coconut_qty = Number(document.querySelector('[p-handle="{{ p_handles[4] }}"] input').value);
+    var vanilla_qty = Number(document.querySelector('[p-handle="{{ p_handles[5] }}"] input').value);
+    var mint_qty = Number(document.querySelector('[p-handle="{{ p_handles[6] }}"] input').value);
+    var watermelon_qty = Number(document.querySelector('[p-handle="{{ p_handles[7] }}"] input').value);
+    var properties_val = '';
+    
+    properties_val = {}
+    
+    if(honey_qty > 0){
+        var noSPF = 0;
+        var SPF = 0;
+        for(var i = 0; i < honey_array.length; i++){
+          if(honey_array[i] == 0){
+            noSPF += 1;
+          }else{
+            SPF += 1;
+          }
+        }
+        if(noSPF != 0){properties_val['Honey'] = noSPF;}
+        if(SPF != 0){properties_val['Honey SPF'] = SPF;}
+    }
+    
+    if(strawberry_qty > 0){
+        var noSPF = 0;
+        var SPF = 0;
+        for(var i = 0; i < strawberry_array.length; i++){
+          if(strawberry_array[i] == 0){
+            noSPF += 1;
+          }else{
+            SPF += 1;
+          }
+        }
+        if(noSPF != 0){properties_val['Strawberry'] = noSPF;}
+        if(SPF != 0){properties_val['Strawberry SPF'] = SPF;}
+    }
+    
+    if(chocolate_qty > 0){
+        properties_val['Chocolate'] = chocolate_qty;
+    }
+        
+    if(cherry_qty > 0){
+        var noSPF = 0;
+        var SPF = 0;
+        for(var i = 0; i < cherry_array.length; i++){
+          if(cherry_array[i] == 0){
+            noSPF += 1;
+          }else{
+            SPF += 1;
+          }
+        }
+        if(noSPF != 0){properties_val['Cherry'] = noSPF;}
+        if(SPF != 0){properties_val['Cherry SPF'] = SPF;}
+    }
+    
+    if(coconut_qty > 0){
+        var noSPF = 0;
+        var SPF = 0;
+        for(var i = 0; i < coconut_array.length; i++){
+          if(coconut_array[i] == 0){
+            noSPF += 1;
+          }else{
+            SPF += 1;
+          }
+        }
+        if(noSPF != 0){properties_val['Coconut'] = noSPF;}
+        if(SPF != 0){properties_val['Coconut SPF'] = SPF;}
+    }
+    
+    if(vanilla_qty > 0){
+        properties_val['Vanilla'] = vanilla_qty;
+    }
+
+    if(mint_qty > 0){
+      properties_val['Mint'] = mint_qty;
+    }
+    if(watermelon_qty > 0){
+      properties_val['Watermelon'] = watermelon_qty;
+    }
+    
+    const productId = packid;
+    const quantity = 1;
+    
+    const item = {
+      id: productId,
+      quantity: quantity,
+      properties: properties_val
+    };
+    
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Product added to cart:', data);
+        // window.location.href = '/cart';
+        // document.body.dispatchEvent(
+        //           new CustomEvent('shapes:modalcart:afteradditem', {
+        //             bubbles: true,
+        //             detail: { response: data },
+        //           })
+        //         );
+      })
+      .catch((error) => {
+        console.error('Error adding product to cart:', error);
+      });
+    
+      
+    }else{
+      if(document.querySelector('.bundle-wrap .complete_pack') != null){
+        document.querySelector('.bundle-wrap .complete_pack').remove();
+      }
+      document.querySelector('.bundle-bottom').insertAdjacentHTML("afterend", "<div class='complete_pack'>Please complete your pack</div>");
+      setTimeout(function(){
+        document.querySelector('.bundle-wrap .complete_pack').remove();
+      },2000);
+    }
+
+});
+</script> 
+{% schema %}
+  {
+    "name": "Build Bundle",
+    "settings": [
+      {
+        "type": "text",
+        "id": "btmtxt",
+        "label": "Bundle Bottom Text",
+        "default": "Free shipping on orders above £23!"
+      },
+      {
+        "type": "color",
+        "id": "clr",
+        "label": "Section Color"
+      },
+      {
+        "type": "product",
+        "id": "def",
+        "label": "Default Selected Pack Product"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "collection",
+        "id": "col",
+        "label": "Pack Collection"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "ptitle",
+            "label": "Product Title"
+          },
+          {
+            "type": "text",
+            "id": "ptext",
+            "label": "Product Text"
+          },
+          {
+            "type": "product",
+            "id": "prdct",
+            "label": "Product"
+          }
+        ]
+      },
+      {
+      "name": "t:common.blocks.shape_divider.name",
+      "type": "shape_divider",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "radio",
+          "label": "t:common.blocks.shape_divider.settings.target_section.label",
+          "id": "target_section",
+          "default": "above",
+          "options": [
+            {
+              "value": "above",
+              "label": "t:common.blocks.shape_divider.settings.target_section.options.section_above.label"
+            },
+            {
+              "value": "below",
+              "label": "t:common.blocks.shape_divider.settings.target_section.options.section_below.label"
+            }
+          ],
+          "info": "t:common.blocks.shape_divider.settings.target_section.info"
+        },
+        {
+          "type": "select",
+          "label": "t:common.blocks.shape_divider.settings.target_section_color_scheme.label",
+          "id": "target_section_color_scheme",
+          "default": "secondary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:common.options.primary.label"
+            },
+            {
+              "value": "secondary",
+              "label": "t:common.options.secondary.label"
+            },
+            {
+              "value": "tertiary",
+              "label": "t:common.options.tertiary.label"
+            },
+            {
+              "value": "quaternary",
+              "label": "t:common.options.quaternary.label"
+            }
+          ],
+          "info": "t:common.blocks.shape_divider.settings.target_section_color_scheme.info"
+        },
+        {
+          "type": "select",
+          "label": "t:common.blocks.shape_divider.settings.style.label",
+          "id": "style",
+          "default": "large-waves_1200x84",
+          "options": [
+            {
+              "value": "large-waves_1200x84",
+              "label": "t:common.blocks.shape_divider.settings.style.options.large_waves.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "medium-waves_1200x43",
+              "label": "t:common.blocks.shape_divider.settings.style.options.medium_waves.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "small-waves_1200x20",
+              "label": "t:common.blocks.shape_divider.settings.style.options.small_waves.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "large-zig-zag_1200x65",
+              "label": "t:common.blocks.shape_divider.settings.style.options.large_zig_zag.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "medium-zig-zag_1200x37",
+              "label": "t:common.blocks.shape_divider.settings.style.options.medium_zig_zag.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "small-zig-zag_1200x21",
+              "label": "t:common.blocks.shape_divider.settings.style.options.small_zig_zag.label",
+              "group": "Symmetrical"
+            },
+            {
+              "value": "waves-1-asymmetrical_1440x261",
+              "label": "t:common.blocks.shape_divider.settings.style.options.waves_1.label",
+              "group": "Asymmetrical"
+            },
+            {
+              "value": "waves-2-asymmetrical_1440x330",
+              "label": "t:common.blocks.shape_divider.settings.style.options.waves_2.label",
+              "group": "Asymmetrical"
+            },
+            {
+              "value": "tilt-1-asymmetrical_1440x101",
+              "label": "t:common.blocks.shape_divider.settings.style.options.tilt_1.label",
+              "group": "Asymmetrical"
+            },
+            {
+              "value": "tilt-2-asymmetrical_1440x293",
+              "label": "t:common.blocks.shape_divider.settings.style.options.tilt_2.label",
+              "group": "Asymmetrical"
+            },
+            {
+              "value": "mountains-1-asymmetrical_1440x293",
+              "label": "t:common.blocks.shape_divider.settings.style.options.mountains_1.label",
+              "group": "Asymmetrical"
+            },
+            {
+              "value": "mountains-2-asymmetrical_1440x325",
+              "label": "t:common.blocks.shape_divider.settings.style.options.mountains_2.label",
+              "group": "Asymmetrical"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "flip_horizontal",
+          "label": "t:common.blocks.shape_divider.settings.flip_horizontal.label"
+        },
+        {
+          "type": "header",
+          "content": "t:common.settings.header_animation"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_animation",
+          "label": "t:common.blocks.shape_divider.settings.enable_animation.label",
+          "info": "t:common.blocks.shape_divider.settings.enable_animation.info"
+        },
+        {
+          "type": "radio",
+          "id": "animation_direction",
+          "label": "t:common.blocks.shape_divider.settings.animation_direction.label",
+          "options": [
+            {
+              "value": "",
+              "label": "t:common.options.right_to_left.label"
+            },
+            {
+              "value": "reverse",
+              "label": "t:common.options.left_to_right.label"
+            }
+          ],
+          "default": ""
+        }
+      ]
+    }
+    ],
+    "presets": [
+      {
+        "name": "Build Bundle",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

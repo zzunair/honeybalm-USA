@@ -1,0 +1,78 @@
+<div class="logo_text_splide_outerwrap">
+  <div class="logo_text_splide_wrap container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24" fill="none">
+        <path d="M13.59 0C14.76 0 15.66 0.720001 15.66 1.89C15.66 3.15 14.49 3.78 13.5 4.5C11.25 6.3 9.53999 7.92 9.53999 9.72C9.53999 10.8 10.35 11.52 11.79 12.33C13.68 13.59 14.76 14.67 14.76 16.92C14.76 20.88 10.71 23.58 6.48 23.58C2.52 23.58 0 21.06 0 16.74C0 8.28 9.72 0 13.59 0ZM18.36 16.74C18.36 8.28 28.08 0 31.95 0C33.12 0 34.02 0.720001 34.02 1.89C34.02 3.15 32.85 3.78 31.86 4.5C29.61 6.3 27.9 7.92 27.9 9.72C27.9 10.8 28.71 11.52 30.15 12.33C32.04 13.59 33.12 14.67 33.12 16.92C33.12 20.88 29.07 23.58 24.84 23.58C20.88 23.58 18.36 21.06 18.36 16.74Z" fill="#E7E7E7"/>
+      </svg>
+    <div id="slideshow-{{ section.id }}" class="logo_text_wrap splide">
+      <div class="splide__track">
+          <ul class="splide__list  w-full">
+            {% for block in section.blocks %}
+            <li class="logo_text splide__slide base-sm normal">
+              <div class="logo_img_wrap">
+                <img src="{{ block.settings.img | img_url: '150x' }}" />
+              </div>
+                <div class="base normal">{{ block.settings.text }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <script class="slideshow-options" type="application/json">
+        {
+          "mediaQuery": "max",
+          "arrows": false,
+          "pagination": false,
+          "perPage": 4,
+          "breakpoints": {
+            "990": {
+              "autoScroll": true,
+              "pagination": true,
+              "perPage": 1,
+              "type": "loop",
+              "perMove": 1,
+              "autoplay": false,
+              "interval": 3000, 
+              "focus": "center"
+            }
+          }
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
+  <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+  {
+    "name": "Logo Text Slider",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Logo"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Slide Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo Text Slidero",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

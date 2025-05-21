@@ -1,0 +1,98 @@
+<style>
+/* #shopify-section-{{section.id}}{
+  position: sticky;
+  z-index: 33;
+  top: 80px;
+}
+@media only screen and (max-width: 990px) {
+  #shopify-section-{{section.id}}{
+    position: sticky;
+    z-index: 33;
+    top: 127px;
+  }
+} */
+</style>
+<div class="usp_splide_outerwrap">
+  <div class="usp_splide_wrap container">
+    <div id="slideshow-{{ section.id }}" class="usp_wrap splide">
+        <div class="splide__track">
+          <ul class="splide__list  w-full">
+            <li class="usp splide__slide base-sm normal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                  <path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/>
+                </svg>
+                {{ section.settings.stext1 }}
+                
+            </li>
+            <li class="usp splide__slide base-sm normal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/>
+              </svg>
+              {{ section.settings.stext2 }}
+              
+            </li>
+            <li class="usp splide__slide base-sm normal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/>
+              </svg>
+              {{ section.settings.stext3 }}
+              
+            </li>
+        </ul>
+      </div>
+      <script class="slideshow-options" type="application/json">
+        {
+          "mediaQuery": "max",
+          "arrows": false,
+          "pagination": false,
+          "perPage": 3,
+          "breakpoints": {
+            "990": {
+              "autoScroll": true,
+              "pagination": false,
+              "perPage": 1,
+              "type": "loop",
+              "perMove": 1,
+              "autoplay": true,
+              "interval": 4000, 
+              "focus": "center"
+            }
+          }
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
+  <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+  {
+    "name": "Text Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "stext1",
+        "label": "Slide 1 Text"
+      },
+      {
+        "type": "text",
+        "id": "stext2",
+        "label": "Slide 2 Text"
+      },
+      {
+        "type": "text",
+        "id": "stext3",
+        "label": "Slide 3 Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Slidero",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

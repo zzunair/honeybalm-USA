@@ -1,0 +1,311 @@
+<style>
+.all_ps ul.splide__list.w-full {
+    flex-wrap: wrap;
+    gap: 30px;
+}
+ .all_ps  li.plist.splide__slide {
+    width: calc(25% - 23px);
+}
+   .all_ps .pcontent-wrap {
+    padding: 16px 0px;
+}
+  .all_ps .vr1{
+    display: none;
+  }
+@media only screen and (max-width: 1200px) {
+  .all_ps li.plist.splide__slide {
+      width: calc(33.33% - 20px);
+  }
+}
+@media only screen and (max-width: 990px){
+  .all_ps li.plist.splide__slide {
+      width: calc(50% - 15px);
+  }
+}
+@media only screen and (max-width: 600px){
+  .all_ps li.plist.splide__slide {
+      width: 100%;
+  }
+}
+</style>
+<div class="product-list-wrap py-section-vertical-spacing container all_ps">
+  <div class="pdesc-wrap">
+    <div class="pdesc-lft">
+      <div class="base-lg normal">{{ section.settings.txt2 }}</div>
+      <div class="heading2 strong mt-1.5">{{ section.settings.txt1 }}</div>
+    </div>
+    <!-- <a class="" href="{{ section.settings.btnlnk }}">
+      <span class="push-btn-surface w-full outline-btn">{{ section.settings.btntxt }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+        <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+        </svg>
+      </span>
+    </a> -->
+  </div>
+  <div class="product-list-inner">
+    <div id="slideshow-{{ section.id }}" class="product-list ">
+      <div class="splide__track">
+          <ul class="splide__list  w-full">
+            {% for block in section.blocks %}
+              <li class="plist splide__slide">
+                <div class="plist-img">
+                  {% if block.settings.tag != blank %}
+                  <div class="tag base-sm strong {% if block.settings.tag == 'Best seller' %}best-seller{% endif %} {% if block.settings.tag == 'New' or block.settings.tag == 'Limited Edition' %}new{% endif %}">{{ block.settings.tag }}</div>
+                  {% endif %}
+                  {% assign product = block.settings.prdct %}
+                  <a href="{{ product.url }}">
+                    <img class="img1" src="{{ block.settings.img | img_url: '1200x' }}" />
+                    <img class="img2" src="{{ block.settings.hovimg | img_url: '1200x' }}" />
+                  </a>
+                </div>
+                <div class="pcontent-wrap" 
+                    x-data="
+                    ThemeSection_ProductQuickBuy({
+                    product: {{ product | json | escape }},
+                    variant: {{ current_variant | json | escape }},
+                    featuredMediaID: {{ featured_media.id | json }}
+                    })"
+                  >
+                  <a href="{{ product.url }}"><div class="ptitle heading4 strong">{{ block.settings.title }}</div></a>
+                  <a href="{{ product.url }}"><div class="pdesc base normal">{{ block.settings.desc }}</div></a>
+                  <div class="plist-reviews">
+                    {{ block.settings.svg }}
+                    <span class="base normal">{{ block.settings.rating }}</span>
+                  </div>
+                  <form method="post" action="/cart/add" accept-charset="UTF-8" class="quick-buy-product-form" enctype="multipart/form-data" data-product-form="" data-product-handle="{{ product.handle }}" data-enable-history-state="true" x-ref="productForm"><input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8" value="✓">
+                    <input type="hidden" name="quantity" value="1" />
+                    {% if product.handle == 'try-out-box' %}
+                      <input type="hidden" name="properties[Honey]" value="1"> 
+                      <input type="hidden" name="properties[Cherry]" value="1"> 
+                      <input type="hidden" name="properties[Vanilla]" value="1"> 
+                      <input type="hidden" name="properties[Coconut]" value="1"> 
+                      <input type="hidden" name="properties[Strawberry]" value="1"> 
+                      <input type="hidden" name="properties[Mint]" value="1"> 
+                      <input type="hidden" name="properties[Chocolate]" value="1">
+                      <input type="hidden" name="properties[Watermelon]" value="1">
+                    {% elsif product.handle == 'spf-try-out-box' %}
+                      <input type="hidden" name="properties[Honey SPF]" value="1"> 
+                      <input type="hidden" name="properties[Cherry SPF]" value="1"> 
+                      <input type="hidden" name="properties[Coconut SPF]" value="1"> 
+                      <input type="hidden" name="properties[Strawberry SPF]" value="1">
+                    {% elsif product.handle == 'red-fruits-pack' %}
+                      <input type="hidden" name="properties[Strawberry]" value="1"> 
+                      <input type="hidden" name="properties[Cherry]" value="1"> 
+                      <input type="hidden" name="properties[Watermelon]" value="1"> 
+                    {% elsif product.handle == 'favourites-pack' %}
+                      <input type="hidden" name="properties[Honey]" value="1"> 
+                      <input type="hidden" name="properties[Watermelon]" value="1"> 
+                      <input type="hidden" name="properties[Strawberry]" value="1"> 
+                      <input type="hidden" name="properties[Cherry]" value="1"> 
+                      <input type="hidden" name="properties[Vanilla]" value="1"> 
+                    {% elsif product.handle == 'classic-pack-1' %}
+                      <input type="hidden" name="properties[Honey]" value="1"> 
+                      <input type="hidden" name="properties[Cherry]" value="1">
+                      <input type="hidden" name="properties[Strawberry]" value="1"> 
+                      <input type="hidden" name="properties[Chocolate]" value="1"> 
+                    {% elsif product.handle == 'valentine-pack' %}
+                      <input type="hidden" name="properties[Strawberry Lip Scrub]" value="1"> 
+                      <input type="hidden" name="properties[Cherry]" value="1">
+                      <input type="hidden" name="properties[Watermelon]" value="1">
+                      <input type="hidden" name="properties[Valentine's Day Gift Box]" value="1">
+                    {% elsif product.handle == 'mothers-day-pack' %}
+                      <input type="hidden" name="properties[Honey]" value="1"> 
+                      <input type="hidden" name="properties[Strawberry]" value="1"> 
+                      <input type="hidden" name="properties[Rose Cardamom]" value="1"> 
+                    {% elsif product.handle == 'hb-red-pepper' %}
+                      <input type="hidden" name="properties[Notice]" value="Not recommended for children due to the natural pepper extracts.">
+                    {% endif %}
+                    
+                    {% if product.handle contains 'hb-' or product.handle contains 'scrub' %}
+                    <div class="pselect-wrap">
+                      {% assign first_variant = product.variants[1] %}
+                          <div class="pl-off base normal">33% off</div>
+                        {% assign original_price = product.selected_or_first_available_variant.price %}
+                        {% assign discount_price = original_price | times: 0.667 %}  
+                        {% assign prices3 = discount_price | times: 3 | ceil %} 
+  
+                        {% assign original_price2 = product.selected_or_first_available_variant.price %}
+                        {% assign discount_price2 = original_price2 | times: 0.5603 %}  
+                        {% assign prices5 = discount_price2 | times: 5 | ceil %} 
+                        <select class="base normal" name="quantity">
+                          <option value="1" disc="0" v-price="{{ product.selected_or_first_available_variant.price | money }}">1-Pack </option>
+                          <option value="3" disc="33" v-price="{{ prices3 | money }}" selected>3-Pack &nbsp&nbsp&nbsp&nbsp&nbsp(33% off)</option>
+                          <option value="5" disc="44" v-price="{{ prices5 | money }}">5-Pack &nbsp&nbsp&nbsp&nbsp&nbsp(44% off)</option>
+                       </select>
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+                    </div>
+                    {% else %}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+                      <input type="hidden" name="quantity" value="1" />
+                    {% endif %}
+                    
+                    <button class="inline-block push-btn" type="submit">
+                      <span class="push-btn-surface">Add to bag 
+                        <span class="atc-money normal">
+                          {% if product.handle == 'try-out-box' %}
+                            {% assign original_price = product.selected_or_first_available_variant.price %}
+                            {% assign discount_price = original_price | times: 0.5003 | ceil %}  
+                            {{ discount_price | money }}
+                          {% elsif product.handle == 'spf-try-out-box' %}
+                            {% assign original_price = product.selected_or_first_available_variant.price %}
+                            {% assign discount_price = original_price | times: 0.6003 | ceil %}  
+                            {{ discount_price | money }}
+                          {% elsif product.handle == 'classic-pack-1' %}
+                            {% assign original_price = product.selected_or_first_available_variant.price %}
+                            {% assign discount_price = original_price | times: 0.6003 | ceil %}  
+                            {{ discount_price | money }}
+                          {% elsif product.handle == 'red-fruits-pack' or product.handle == 'mothers-day-pack' %}
+                            {% assign original_price = product.selected_or_first_available_variant.price %}
+                            {% assign discount_price = original_price | times: 0.667 | ceil %}  
+                            {{ discount_price | money }}
+                          {% elsif product.handle == 'favourites-pack' %}
+                            {% assign original_price = product.selected_or_first_available_variant.price %}
+                            {% assign discount_price = original_price | times: 0.5603 | ceil %}  
+                            {{ discount_price | money }}
+                          {% else %}
+                           {{ prices3 | money }}
+                          {% endif %} 
+                        </span>
+                      </span>
+                    </button>
+
+                  </form>
+                </div>
+              </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <!-- <script class="slideshow-options" type="application/json">
+        {
+          "mediaQuery": "max",
+          "arrows": false,
+          "pagination": false,
+          "perPage": 4,
+          "gap": "2.5rem",
+          "breakpoints": {
+            "990": {
+              "autoScroll": true,
+              "pagination": false,
+              "perPage": 1,
+              "type": "loop",
+              "perMove": 1,
+              "autoplay": false,
+              "gap": "1.25rem",
+              "interval": 3000, 
+              "focus": "center",
+              "padding": {
+                "left": "1.25rem",
+                "right": "6rem"
+              }
+            }
+          }
+        }
+      </script> -->
+    </div>
+  </div>
+</div>
+
+  <!-- <script src="{ { 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script> -->
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var selects = document.querySelectorAll('.pselect-wrap select');
+    for(var i = 0; i < selects.length; i++){
+      selects[i].addEventListener('change', function(){
+        var discount = this.options[this.selectedIndex].getAttribute('disc');
+        this.parentElement.querySelector('.pl-off').innerHTML = discount+'% off';
+        if (discount == 0){
+            this.parentElement.querySelector('.pl-off').style.display="none";
+          } else{
+            this.parentElement.querySelector('.pl-off').style.display="block";
+          }
+        this.closest('form').querySelector('.atc-money').innerHTML = this.options[this.selectedIndex].getAttribute('v-price');
+      });
+    }
+  });
+</script>
+<script src="{{ 'vendor-product.bundle.min.js' | asset_url }}" type="module"></script>
+<script src="{{ 'product-quick-buy.js' | asset_url }}" type="module"></script>
+{% schema %}
+  {
+    "name": "Shop Product List",
+    "settings": [
+      {
+        "type": "text",
+        "id": "txt1",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "txt2",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "btnlnk",
+        "label": "Button Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "hovimg",
+            "label": "Hover Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "desc",
+            "label": "Description"
+          },
+          {
+            "type": "html",
+            "id": "svg",
+            "label": "Reviews SVG"
+          },
+          {
+            "type": "text",
+            "id": "rating",
+            "label": "Reviews Rating"
+          },
+          {
+            "type": "text",
+            "id": "tag",
+            "label": "Tag"
+          },
+          {
+            "type": "product",
+            "id": "prdct",
+            "label": "Select Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shop Product List",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

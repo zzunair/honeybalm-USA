@@ -1,0 +1,185 @@
+<div class="product-list-wrap bundle-list-wrap py-section-vertical-spacing container">
+  <div class="pdesc-wrap">
+    <div class="pdesc-lft">
+      <div class="base-lg normal">{{ section.settings.txt2 }}</div>
+      <div class="heading2 strong mt-1.5">{{ section.settings.txt1 }}</div>
+    </div>
+    {% if btnlnk != blank %}
+    <a class="" href="{{ section.settings.btnlnk }}">
+      <span class="push-btn-surface w-full outline-btn">{{ section.settings.btntxt }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+        <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+        </svg>
+      </span>
+    </a>
+    {% endif %}
+  </div>
+  <div class="product-list-inner">
+    <div id="slideshow-{{ section.id }}" class="product-list splide">
+      <div class="splide__track">
+          <ul class="splide__list  w-full">
+            {% for block in section.blocks %}
+              <li class="plist splide__slide">
+                <div class="plist-img">
+                  {% if block.settings.tag != blank %}
+                  <div class="tag base-sm strong {% if block.settings.tag == 'Best seller' %}best-seller{% endif %} {% if block.settings.tag == 'New' %}new{% endif %}">{{ block.settings.tag }}</div>
+                  {% endif %}
+                  {% assign product = all_products[block.settings.prdct] %}
+                  <a href="{{ product.url }}">
+                    <img src="{{ block.settings.img | img_url: '400x' }}" />
+                  </a>
+                </div>
+                <div class="pcontent-wrap" 
+                    x-data="
+                    ThemeSection_ProductQuickBuy({
+                    product: {{ product | json | escape }},
+                    variant: {{ current_variant | json | escape }},
+                    featuredMediaID: {{ featured_media.id | json }}
+                    })"
+                  >
+                  <div class="ptitle heading4 strong">{{ block.settings.title }}</div>
+                  <div class="pdesc base normal">{{ block.settings.desc }}</div>
+                  <form method="post" action="/cart/add" accept-charset="UTF-8" class="quick-buy-product-form" enctype="multipart/form-data" data-product-form="" data-product-handle="{{ product.handle }}" data-enable-history-state="true" x-ref="productForm"><input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8" value="✓">
+                    <input type="hidden" name="quantity" value="1" />
+                    <div class="pselect-wrap" style="display: none;">
+                      {% assign first_variant = product.variants.first %}
+                        {% if first_variant.compare_at_price > first_variant.price %}
+                          {% assign discount = first_variant.compare_at_price | minus: first_variant.price | times: 100 | divided_by: first_variant.compare_at_price | round %}
+                          <div class="pl-off base normal">{{ discount }}% off</div>
+                        {% endif %}
+                      <select class="base normal" name="id">
+                        {% for variant in product.variants %}
+                          {% assign vdiscount = 0 %}
+                          {% if variant.compare_at_price > variant.price %}
+                            {% assign discount2 = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round %}
+                            {% assign vdiscount = discount2 %}
+                          {% endif %}
+                          <option value="{{ variant.id }}" disc="{{ vdiscount }}" v-price="{{ variant.price | money }}" {% if forloop.index == 0 %}selected{% endif %}>{{ variant.title }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    
+                    <button class="inline-block push-btn" type="submit">
+                      <span class="push-btn-surface">Add to bag <span class="atc-money normal">{{ product.first_available_variant.price | money }}</span></span>
+                    </button>
+
+                  </form>
+                </div>
+              </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <script class="slideshow-options" type="application/json">
+        {
+          "mediaQuery": "max",
+          "arrows": false,
+          "pagination": false,
+          "perPage": 4,
+          "gap": "2.5rem",
+          "breakpoints": {
+            "990": {
+              "autoScroll": true,
+              "pagination": false,
+              "perPage": 1,
+              "type": "loop",
+              "perMove": 1,
+              "autoplay": false,
+              "gap": "1.25rem",
+              "interval": 3000, 
+              "focus": "center",
+              "padding": {
+                "left": "0rem",
+                "right": "6rem"
+              }
+            }
+          }
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
+  <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var selects = document.querySelectorAll('.pselect-wrap select');
+    for(var i = 0; i < selects.length; i++){
+      selects[i].addEventListener('change', function(){
+        var discount = this.options[this.selectedIndex].getAttribute('disc');
+        this.parentElement.querySelector('.pl-off').innerHTML = discount+'% off';
+        this.closest('form').querySelector('.atc-money').innerHTML = this.options[this.selectedIndex].getAttribute('v-price');
+      });
+    }
+  });
+</script>
+<script src="{{ 'vendor-product.bundle.min.js' | asset_url }}" type="module"></script>
+<script src="{{ 'product-quick-buy.js' | asset_url }}" type="module"></script>
+{% schema %}
+  {
+    "name": "Bundles List",
+    "settings": [
+      {
+        "type": "text",
+        "id": "txt1",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "txt2",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "btnlnk",
+        "label": "Button Link"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "desc",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "tag",
+            "label": "Tag"
+          },
+          {
+            "type": "product",
+            "id": "prdct",
+            "label": "Select Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bundles List",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

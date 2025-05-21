@@ -1,0 +1,107 @@
+<style>
+  .st-bar-wrap {
+    display: flex;
+    background: #FFDE93;
+    /* color: white; */
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .st-bar-wrap img {
+    max-height: 64px;
+  }
+  .st-bar-wrap span {
+    background: #FCB755;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 6px;
+    line-height: 24px;
+    transform: rotate(4deg);
+  }
+  .st-txt-wrap{
+    display: flex;
+        justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  @media only screen and (max-width: 600px) {
+  .st-bar-wrap img {
+    margin-left: -62px;
+}
+
+.st-txt-wrap {
+    white-space: nowrap;
+    margin-left: -52px;
+}
+    .st-bar-wrap img {
+    margin-left: -29px;
+}
+    .second-txt {
+    white-space: pre-wrap;
+    max-width: 150px;
+}
+
+
+  }
+  @media only screen and (max-width: 410px) {
+    .st-txt-wrap {
+        margin-left: -86px;
+    }
+}
+  .csm-mega-wrap{
+    top: 20px;
+  }
+  .drawer1 {
+    top: 159px;
+}
+  .st-bar-wrap.active {
+    position: sticky;
+    top: 120px;
+    z-index: 11;
+}
+  section.all-flav .section-content {
+    z-index: 10;
+}
+  .live-search-wrap {
+        top: 80px;
+    }
+  @media only screen and (max-width: 990px) {
+    .live-search-wrap {
+        top: 159px;
+    }
+    .st-bar-wrap.active {
+      position: sticky;
+      top: 104px;
+    }
+  }
+</style>
+<div class="st-bar-wrap">
+  <img src="https://cdn.shopify.com/s/files/1/0769/2589/4979/files/free_bar_Salted_Caramel.png?v=1747224796" />
+  <div class="st-txt-wrap">
+  Get a free
+<span class="new-spirit-md">Salted Caramel</span>
+<div class="second-txt">on orders over $39.95! 
+<img style='width:20px; height:20px;display: inline-block;margin-bottom: 4px;margin-left: unset;' src='https://cdn.shopify.com/s/files/1/0769/2589/4979/files/Caramel.png?v=1747401346'>
+</div> 
+  </div>
+</div>
+
+<script>
+let lastScrollTop = 0;
+const scrollBar = document.querySelector(".st-bar-wrap");
+
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop < lastScrollTop) {
+        // Scrolling up
+        scrollBar.classList.add('active');
+    } else {
+        // Scrolling down
+        scrollBar.classList.remove('active');
+    }
+
+    lastScrollTop = scrollTop;
+});
+</script>

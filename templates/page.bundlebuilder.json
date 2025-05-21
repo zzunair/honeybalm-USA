@@ -1,0 +1,485 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_YytrDj": {
+      "type": "image-with-text",
+      "blocks": {
+        "shape_divider_6TU9Kk": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "secondary",
+            "style": "large-waves_1200x84",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_divider_6TU9Kk"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".shape-divider .text-scheme-background {color: #ffeda8;}"
+      ],
+      "settings": {
+        "endtime": "",
+        "display_on_card": false,
+        "image": "shopify://shop_images/Discount_image.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Get up to a 50% summer discount for a limited time!",
+        "heading_size": "heading-feature",
+        "richtext": "<p>Enjoy summer with a temporary discount on all our balms. 100% free from paraffins; designed to protect, moisturize, and nourish. All day long.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "bundle_builder_page_g9EjH6": {
+      "type": "bundle-builder-page",
+      "blocks": {
+        "lipbalm_tiylhr": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-salted-caramel",
+            "primg": "shopify://shop_images/Bundle-Salted.png",
+            "title": "Salted Caramel <br>lip balm"
+          }
+        },
+        "lipbalm_tiyUzn": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-hibiscus-citrus",
+            "primg": "shopify://shop_images/Bundle_Hibiscus.png",
+            "title": "Hibiscus Citrus <br>lip balm"
+          }
+        },
+        "lipbalm_lemon": {
+          "type": "lipbalm",
+          "disabled": true,
+          "settings": {
+            "pr": "hb-lemon-cheesecake",
+            "primg": "shopify://shop_images/Bundle_builder_lemon.png",
+            "title": "Lemon Cheesecake <br> lip balm"
+          }
+        },
+        "lipbalm_redPepper": {
+          "type": "lipbalm",
+          "disabled": true,
+          "settings": {
+            "pr": "hb-red-pepper",
+            "primg": "shopify://shop_images/Bundle_red.png",
+            "title": "Red Pepper <br> lip balm"
+          }
+        },
+        "lipbalm_4e4HqA": {
+          "type": "lipbalm",
+          "disabled": true,
+          "settings": {
+            "pr": "hb-lavender-chamomille",
+            "primg": "shopify://shop_images/Bundlelaven.png",
+            "title": "Lavender Chamomille <br>lip balm"
+          }
+        },
+        "lipbalm_7H3LNa": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-rose-cardamom",
+            "primg": "shopify://shop_images/IMG_7780_bundle.jpg",
+            "title": "Rose Cardamom lip balm"
+          }
+        },
+        "lipbalm_jg8UJR": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-pineapple",
+            "primg": "shopify://shop_images/Pineapple_AI.webp",
+            "title": "Pineapple lip balm"
+          }
+        },
+        "lipbalm_gq9JgC": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-blueberry",
+            "primg": "shopify://shop_images/Blueberry_Bundle.png",
+            "title": "Blueberry lip balm"
+          }
+        },
+        "lipbalm_rFTH9b": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-caramelized-pear",
+            "primg": "shopify://shop_images/Caramelized_Pear.png",
+            "title": "Caramelized Pear lip balm"
+          }
+        },
+        "lipbalm_hR3XWd": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-candy",
+            "primg": "shopify://shop_images/Bundle_builder.png",
+            "title": "Candy Cane lip balm"
+          }
+        },
+        "lipbalm_PhDLkp": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-pumpkin",
+            "primg": "shopify://shop_images/Pumpkin_bb.png",
+            "title": "Pumpkin Spice lip balm"
+          }
+        },
+        "lipbalm_FAJ4MP": {
+          "type": "lipbalm",
+          "disabled": true,
+          "settings": {
+            "pr": "hb-mystery-balm",
+            "primg": "shopify://shop_images/big-Bundle_builder_mysterybalm.png",
+            "title": "Mystery balm"
+          }
+        },
+        "lipbalm_E4KGmR": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-honey",
+            "primg": "shopify://shop_images/Rectangle_146.png",
+            "title": "Honey lip balm"
+          }
+        },
+        "lipbalm_C96mGp": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-strawberry",
+            "primg": "shopify://shop_images/Rectangle_146_7.png",
+            "title": "Strawberry lip balm"
+          }
+        },
+        "lipbalm_eFpWJy": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-chocolate",
+            "primg": "shopify://shop_images/Rectangle_146_2.png",
+            "title": "Chocolate lip balm"
+          }
+        },
+        "lipbalm_tEpwNa": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-cherry",
+            "primg": "shopify://shop_images/Rectangle_146_3.png",
+            "title": "Cherry lip balm"
+          }
+        },
+        "lipbalm_Prc4hj": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-coconut",
+            "primg": "shopify://shop_images/Rectangle_146_4.png",
+            "title": "Coconut lip balm"
+          }
+        },
+        "lipbalm_bgxNJB": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-vanilla",
+            "primg": "shopify://shop_images/Rectangle_146_5.png",
+            "title": "Vanilla lip balm"
+          }
+        },
+        "lipbalm_3p6PdQ": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-mint",
+            "primg": "shopify://shop_images/Rectangle_146_6.png",
+            "title": "Mint lip balm"
+          }
+        },
+        "lipbalm_fHDMUr": {
+          "type": "lipbalm",
+          "settings": {
+            "pr": "hb-watermelon",
+            "primg": "shopify://shop_images/Watermelon_BB.png",
+            "title": "Watermelon lip balm"
+          }
+        },
+        "lipbalm_MabqMJ": {
+          "type": "lipscrub",
+          "settings": {
+            "pr": "honey-lip-scrub",
+            "primg": "shopify://shop_images/Bundle-builder_image.png",
+            "title": "Honey lip scrub"
+          }
+        },
+        "lipbalm_Ccbeey": {
+          "type": "lipscrub",
+          "settings": {
+            "pr": "strawberry-lip-scrub",
+            "primg": "shopify://shop_images/Lip-Scrub_Str.png",
+            "title": "Strawberry lip scrub"
+          }
+        },
+        "spflipbalm_bNnYNc": {
+          "type": "spflipbalm",
+          "settings": {
+            "pr": "hb-honey-spf",
+            "primg": "shopify://shop_images/Rectangle_147.png",
+            "title": "SPF Honey lip balm"
+          }
+        },
+        "spflipbalm_g7tb9i": {
+          "type": "spflipbalm",
+          "disabled": true,
+          "settings": {
+            "pr": "hb-strawberry-spf",
+            "primg": "shopify://shop_images/Rectangle_146_7.png",
+            "title": "SPF Strawberry lip balm"
+          }
+        },
+        "spflipbalm_UcKVUE": {
+          "type": "spflipbalm",
+          "settings": {
+            "pr": "hb-cherry-spf",
+            "primg": "shopify://shop_images/Rectangle_146_8.png",
+            "title": "SPF Cherry lip balm"
+          }
+        },
+        "spflipbalm_ittFcn": {
+          "type": "spflipbalm",
+          "settings": {
+            "pr": "hb-coconut-spf",
+            "primg": "shopify://shop_images/Rectangle_146_4.png",
+            "title": "SPF Coconut lip balm"
+          }
+        }
+      },
+      "block_order": [
+        "lipbalm_tiylhr",
+        "lipbalm_tiyUzn",
+        "lipbalm_lemon",
+        "lipbalm_redPepper",
+        "lipbalm_4e4HqA",
+        "lipbalm_7H3LNa",
+        "lipbalm_jg8UJR",
+        "lipbalm_gq9JgC",
+        "lipbalm_rFTH9b",
+        "lipbalm_hR3XWd",
+        "lipbalm_PhDLkp",
+        "lipbalm_FAJ4MP",
+        "lipbalm_E4KGmR",
+        "lipbalm_C96mGp",
+        "lipbalm_eFpWJy",
+        "lipbalm_tEpwNa",
+        "lipbalm_Prc4hj",
+        "lipbalm_bgxNJB",
+        "lipbalm_3p6PdQ",
+        "lipbalm_fHDMUr",
+        "lipbalm_MabqMJ",
+        "lipbalm_Ccbeey",
+        "spflipbalm_bNnYNc",
+        "spflipbalm_g7tb9i",
+        "spflipbalm_UcKVUE",
+        "spflipbalm_ittFcn"
+      ],
+      "settings": {
+        "hdng": "Build your <span class=\"new-spirit-md\">own bundle</span>",
+        "sbhdng": "And save up to 52% off"
+      }
+    },
+    "build_bundle_8nfhRG": {
+      "type": "build-bundle",
+      "blocks": {
+        "block_qADVAa": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Honey lip balm",
+            "ptext": "The original. Smooth like heaven.",
+            "prdct": "hb-honey"
+          }
+        },
+        "block_MfbBzG": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Strawberry lip balm",
+            "ptext": "A sweet, fruity treat for your lips.",
+            "prdct": "hb-strawberry"
+          }
+        },
+        "block_rFWeUq": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Cherry lip balm",
+            "ptext": "Slightly tinted, with a cherry kiss.",
+            "prdct": "hb-cherry"
+          }
+        },
+        "block_MbAi7n": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Chocolate lip balm",
+            "ptext": "Dive into a luscious chocolate fantasy.",
+            "prdct": "hb-chocolate"
+          }
+        },
+        "block_i8VDfb": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Coconut lip balm",
+            "ptext": "Who needs a Pina Colada?!",
+            "prdct": "hb-coconut"
+          }
+        },
+        "block_fCkHwi": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Vanilla lip balm",
+            "ptext": "Smooth your lips with creamy vanilla.",
+            "prdct": "hb-vanilla"
+          }
+        },
+        "block_HpUXMt": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Mint lip balm",
+            "ptext": "Chill your lips with an icy minty sensation.",
+            "prdct": "hb-mint"
+          }
+        },
+        "block_watermelon45": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Watermelon lip balm",
+            "ptext": "With watermelon extracts & propolis",
+            "prdct": "hb-watermelon"
+          }
+        },
+        "shape_divider_mALAVx": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "secondary",
+            "style": "large-waves_1200x84",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_qADVAa",
+        "block_MfbBzG",
+        "block_rFWeUq",
+        "block_MbAi7n",
+        "block_i8VDfb",
+        "block_fCkHwi",
+        "block_HpUXMt",
+        "block_watermelon45",
+        "shape_divider_mALAVx"
+      ],
+      "disabled": true,
+      "settings": {
+        "btmtxt": "Free shipping from £23.95!",
+        "clr": "#ffeda8",
+        "def": "3-pack",
+        "title": "Build your own bundle and save!",
+        "text": "Choose your pack:",
+        "col": "packs"
+      }
+    },
+    "faq_WjRXyk": {
+      "type": "faq",
+      "blocks": {
+        "question_QmzTzQ": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Does every balm contain a honey stick applicator?",
+            "answer": "<p>Yes! All of our Honeybalm lip balms contain a lid with a honey stick applicator. It doesn't matter which flavor you choose, they all have one. It's not only cute, but also super hygienic, convenient if you have long nails and prevents sticky or greasy fingers.</p>"
+          }
+        },
+        "question_DheK36": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "What are the benefits of Honeybalm?",
+            "answer": "<p>Normal and ordinary lip balms are made with a lot of chemicals that are bad for your lips. Honeybalm is made with real, organic ingredients such as bee wax and propolis. This gives your lips a hydrating and protection base, straight from mother nature. Honeybalm keeps your lips soft, hydrated, protected and beautiful 💛</p><p>All of our flavors contain propolis and bee wax, and some of our newest flavors also contain extra organic ingredients such as strawberry extracts or cacao butter.</p>"
+          }
+        },
+        "question_tWmRpc": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Is Honeybalm animal testing free?",
+            "answer": "<p>YES! Honeybalm is proud to be 100% animal testing free. No bees are harmed in the process of making our lip balms 🐝</p>"
+          }
+        },
+        "question_RW4WPL": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "Does the lip balms have smell and taste?",
+            "answer": "<p>All of our lip balms are made with real, organic ingredients that ensure a wonderful taste and smell of your favorite flavors. We promise you'll love it! 😇</p>"
+          }
+        },
+        "question_zrVFGz": {
+          "type": "question",
+          "settings": {
+            "icon": "none",
+            "question": "How long will it take to receive my order?",
+            "answer": "<p> At Honeybalm, we understand that receiving your order in a timely manner is important to you, and we strive to ship out all orders as quickly as possible. On average, it takes around 5-9 days to deliver your parcel after it has been placed 🚚</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_QmzTzQ",
+        "question_DheK36",
+        "question_tWmRpc",
+        "question_RW4WPL",
+        "question_zrVFGz"
+      ],
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "heading_text_style": "heading",
+        "two_columns_desktop": false,
+        "title": "See the most frequently asked <span class=\"new-spirit-md\">questions </span>of our community",
+        "richtext": "<p>Is your question not listed? Please visit our FAQ page by clicking <a href=\"/pages/faq\" title=\"FAQ\">here</a></p>",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscribe and get some <span class=\"new-spirit-md\">lip care</span> secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "image_with_text_YytrDj",
+    "bundle_builder_page_g9EjH6",
+    "build_bundle_8nfhRG",
+    "faq_WjRXyk",
+    "1650891804363a2769"
+  ]
+}

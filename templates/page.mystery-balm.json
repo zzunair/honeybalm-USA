@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_tRqgxy": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/Hero_mystery.jpg",
+        "image_mobile": "shopify://shop_images/hero_mystery_mobile.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Guess the\n<br>mystery <span class=\"new-spirit-md\">flavor!</span>",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "contact_us_rYtqtU": {
+      "type": "form-mystery-balm",
+      "settings": {
+        "hdng": "Do you know the flavor?",
+        "txt": "If you guess it right you get a free gift package!"
+      }
+    },
+    "featured_product2_V4YiDH": {
+      "type": "featured-product2",
+      "blocks": {
+        "title_YxDK6A": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "text_dGQgEm": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "text": "Grab your Mystery lip balm, scan the code on the packaging, and guess the flavor! You could win an amazing Honeybalm gift pack!",
+            "icon": "none"
+          }
+        },
+        "price_BRPT4b": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "variant_picker_n8VYgC": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "drop_down",
+            "hide_option_labels": true,
+            "enable_color_swatches": false
+          }
+        },
+        "buy_buttons_JCaQUQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": true,
+            "enable_payment_button": false,
+            "show_pickup_availability": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "title_YxDK6A",
+        "text_dGQgEm",
+        "price_BRPT4b",
+        "variant_picker_n8VYgC",
+        "buy_buttons_JCaQUQ"
+      ],
+      "settings": {
+        "ingh": "",
+        "ingt": "",
+        "stars_clr": "#F4EBD1",
+        "text": "Grab your Mystery lip balm, scan the code on the packaging, and guess the flavor! You could win an amazing Honeybalm gift pack!",
+        "revsvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"115\" height=\"17\" viewbox=\"0 0 115 17\" fill=\"none\"><path d=\"M105.094 0.56244C105.469 -0.18756 106.531 -0.15631 106.875 0.56244L108.937 4.71869L113.5 5.37494C114.312 5.49994 114.625 6.49994 114.031 7.09369L110.75 10.3124L111.531 14.8437C111.656 15.6562 110.781 16.2812 110.062 15.9062L106 13.7499L101.906 15.9062C101.187 16.2812 100.312 15.6562 100.437 14.8437L101.219 10.3124L97.9373 7.09369C97.3435 6.49994 97.656 5.49994 98.4685 5.37494L103.062 4.71869L105.094 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M80.8435 0.56244C81.2185 -0.18756 82.281 -0.15631 82.6248 0.56244L84.6873 4.71869L89.2498 5.37494C90.0623 5.49994 90.3748 6.49994 89.781 7.09369L86.4998 10.3124L87.281 14.8437C87.406 15.6562 86.531 16.2812 85.8123 15.9062L81.7498 13.7499L77.656 15.9062C76.9373 16.2812 76.0623 15.6562 76.1873 14.8437L76.9685 10.3124L73.6873 7.09369C73.0935 6.49994 73.406 5.49994 74.2185 5.37494L78.8123 4.71869L80.8435 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M56.5935 0.56244C56.9685 -0.18756 58.031 -0.15631 58.3748 0.56244L60.4373 4.71869L64.9998 5.37494C65.8123 5.49994 66.1248 6.49994 65.531 7.09369L62.2498 10.3124L63.031 14.8437C63.156 15.6562 62.281 16.2812 61.5623 15.9062L57.4998 13.7499L53.406 15.9062C52.6873 16.2812 51.8123 15.6562 51.9373 14.8437L52.7185 10.3124L49.4373 7.09369C48.8435 6.49994 49.156 5.49994 49.9685 5.37494L54.5623 4.71869L56.5935 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M32.3435 0.56244C32.7185 -0.18756 33.781 -0.15631 34.1248 0.56244L36.1873 4.71869L40.7498 5.37494C41.5623 5.49994 41.8748 6.49994 41.281 7.09369L37.9998 10.3124L38.781 14.8437C38.906 15.6562 38.031 16.2812 37.3123 15.9062L33.2498 13.7499L29.156 15.9062C28.4373 16.2812 27.5623 15.6562 27.6873 14.8437L28.4685 10.3124L25.1873 7.09369C24.5935 6.49994 24.906 5.49994 25.7185 5.37494L30.3123 4.71869L32.3435 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M8.09354 0.56244C8.46854 -0.18756 9.53104 -0.15631 9.87479 0.56244L11.9373 4.71869L16.4998 5.37494C17.3123 5.49994 17.6248 6.49994 17.031 7.09369L13.7498 10.3124L14.531 14.8437C14.656 15.6562 13.781 16.2812 13.0623 15.9062L8.99979 13.7499L4.90604 15.9062C4.18729 16.2812 3.31229 15.6562 3.43729 14.8437L4.21854 10.3124L0.937285 7.09369C0.343535 6.49994 0.656035 5.49994 1.46854 5.37494L6.06229 4.71869L8.09354 0.56244Z\" fill=\"#FFEEB8\"></path></svg>",
+        "revtext": "2 reviews",
+        "title": "",
+        "product": "hb-mystery-balm",
+        "crop": "",
+        "image_shape": "default",
+        "media_mobile_width": "w-full",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "enable_video_looping": true,
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_tRqgxy",
+    "contact_us_rYtqtU",
+    "featured_product2_V4YiDH"
+  ]
+}

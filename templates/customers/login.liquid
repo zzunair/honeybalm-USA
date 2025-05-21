@@ -1,0 +1,291 @@
+{% assign text1 = 'Login to your Honeybalm account' %}
+{% assign text2 = 'Sign up for free. Earn Honeycombs. Receive exclusive products.' %}
+{% assign pt1 = 'Get <b>100</b> Honeycombs as a gift' %}
+{% assign pt2 = 'Get <b>10</b> Honeycombs on every $1' %}
+{% assign pt3 = 'Redeem for unique products & items' %}
+{% assign btn = 'Login' %}
+{% assign orr = 'Or' %}
+{% assign text3 = 'Do you want an account?' %}
+{% assign text4 = 'Get all the benefits directly!' %}
+{% assign btn2 = 'Create an account' %}
+
+
+
+<style>
+  .csm-login{
+    padding: 0px;
+    display: flex;
+  }
+  .login-ltl {
+    width: 50%;
+  }
+  .login-rtl {
+    width: 50%;
+    display: flex;
+  }
+  .rtl-top-wrap {
+    padding: 50px 0px;
+    max-width: 360px;
+    margin: auto;
+  }
+  .rtl-top ul {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .csm-login-btn{
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+  }
+  .csm-login-btn svg{
+    margin-bottom: -3px;
+  }
+  .rtl-line:before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: var(--fade-border);
+    position: absolute;
+    left: 0;
+    top: 55%;
+  }
+  .rtl-line {
+    text-align: center;
+    margin: 16px 0px;
+    position: relative;
+  }
+  .rtl-line span {
+    background: white;
+    position: relative;
+    padding: 0px 8px;
+  }
+  .btm-card {
+    background: var(--honey-light);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+  }
+  .btm-card a span {
+    justify-content: center;
+  }
+  .btm-card a{
+    margin-top: 24px;
+    display: block;
+  }
+  .login-ltl img {
+    width: 100%;
+  }
+  @media only screen and (max-width: 990px) {
+    .csm-login {
+        flex-direction: column;
+    }
+    .login-rtl {
+        width: 100%;
+    }
+    .login-ltl {
+        width: 100%;
+    }
+    .login-ltl img {
+        width: 100%;
+    }
+    .rtl-top-wrap {
+        padding: 25px 20px;
+        max-width: unset;
+    }
+    .login-rtl .max-w-md {
+        max-width: 100% !important;
+    }
+  }
+  @media only screen and (min-width: 1900px) {
+    .rtl-top-wrap {
+        max-width: 70%;
+        width: 100%;
+    }
+    .login-rtl .max-w-md {
+        max-width: 100% !important;
+    }
+  }
+  @media only screen and (min-width: 1600px) and (max-width: 1900px) {
+    .rtl-top-wrap {
+        max-width: 460px;
+        width: 100%;
+    }
+    .login-rtl .max-w-md {
+        max-width: 460px !important;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .login-ltl img {
+        width: 100%;
+        max-height: 270px;
+        object-fit: cover;
+        object-position: top;
+    }
+  }
+</style>
+
+<div class="csm-login section-content py-section-vertical-spacing px-section" x-data="ThemeSection_login()" x-init="init()" data-color-scheme="primary">
+  <div class="login-ltl">
+    <picture>
+      <source media="(min-width:990px)" srcset="{{ 'login_dsk.png' | file_img_url: '1000x' }}">
+      <!-- <source media="(max-width:989px)" srcset="{ { 'login_mbl.png' | file_img_url: '500x' }}"> -->
+      <img src="{{ 'login_dsk.png' | file_img_url: '1000x' }}" alt="img">
+    </picture>
+  </div>
+  <div class="login-rtl">
+    <div class="rtl-top-wrap">
+      <div class="rtl-top max-w-md mx-auto card-container">
+        <div class="heading4 strong">{{ text1 }}</div>
+        <div class="base-sm">{{ text2 }}</div>
+        <ul class="base-sm">
+          <li>
+            <svg style="display: inline-block;" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/></svg>&nbsp;
+            {{ pt1 }}
+          </li>
+          <li>
+            <svg style="display: inline-block;" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/></svg>&nbsp;
+            {{ pt2 }}
+          </li>
+          <li>
+            <svg style="display: inline-block;" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5938 0.625C13.75 0.46875 14 0.46875 14.125 0.625L15.0312 1.5C15.1562 1.65625 15.1562 1.90625 15.0312 2.03125L5.65625 11.4062C5.5 11.5625 5.28125 11.5625 5.125 11.4062L0.9375 7.25C0.8125 7.09375 0.8125 6.84375 0.9375 6.71875L1.84375 5.8125C1.96875 5.6875 2.21875 5.6875 2.375 5.8125L5.375 8.84375L13.5938 0.625Z" fill="black"/></svg>&nbsp;
+            {{ pt3 }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="max-w-md mx-auto card-container" :class="{'hidden': state !== 'recover'}" x-cloak data-state="recover">
+        <div class="card p-5 lg:p-10 text-center mx-auto relative z-shape-divider">
+          <h2 class="heading3 strong mb-2.5" data-should-focus tabindex="-1">{{ 'customer.recover_password.title' | t }}</h2>
+    
+          {% form 'recover_customer_password' %}
+            {% if form.errors %}
+              <div class="mt-5" tabindex="-1" data-login-error>{{ form.errors | default_errors }}</div>
+            {% endif %}
+    
+            {% if form.posted_successfully? %}
+              <p data-recover-success>{{ 'customer.recover_password.success' | t }}</p>
+              {% assign success_msg = 'customer.recover_password.success' | t %}
+            {% else %}
+              <p>{{ 'customer.recover_password.subtext' | t }}</p>
+              <label for="RecoverEmail" class="mt-5 mb-1 block font-secondary text-sm text-left base">
+                {{ 'customer.recover_password.email' | t }}
+              </label>
+              <input type="email"
+                    class="w-full bg-transparent border-text-width border-primary-border"
+                    name="email"
+                    id="RecoverEmail"
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocapitalize="off">
+              <div class="mt-5 text-center">
+                <button type="submit" class="block push-btn w-full theme-button">
+                  <span class="push-btn-surface w-full outline-btn justify-center">{{ 'customer.recover_password.submit' | t }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                    <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+                  </svg>
+                  </span>
+                </button>
+                <button class="mt-5 text-primary-accent-1 text-sm base" type="button" @click="state = 'login'">
+                  {{ 'customer.recover_password.cancel' | t }}
+                </button>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+        <div class="card-border"></div>
+      </div>
+      <div class="max-w-md mx-auto card-container" :class="{'hidden': state !== 'login'}" data-state="login">
+        <div class="card text-center mx-auto relative z-shape-divider">
+          {% if success_msg %}
+             <p> {{ success_msg }} </p>
+          {% endif %}
+          {% form 'customer_login', data-login-focus: true, tabindex: '-1' %}
+            <!-- <div class="lg:flex items-center justify-between">
+              <h2 class="heading2 strong mb-2.5" tabindex="-1" data-should-focus>{ { 'customer.login.title' | t }}</h2>
+              <a class="font-secondary  text-sm base underline" href="{ { routes.account_register_url }}">{ { 'layout.customer.create_account' | t }}</a>
+            </div> -->
+    
+            {% if form.errors %}
+              <div class="mt-5" tabindex="-1" data-login-error>{{ form.errors | default_errors }}</div>
+            {% endif %}
+    
+            <label class="mt-5 mb-1 block font-secondary text-sm text-left base" for="CustomerEmail" class="label-hidden">
+              {{ 'customer.login.email' | t }}
+            </label>
+            <input type="email"
+                  name="customer[email]"
+                  id="CustomerEmail"
+                  class="w-full {% if form.errors contains 'email' %}border-scheme-accent-1{% endif %}"
+                  spellcheck="false"
+                  autocomplete="email"
+                  autocapitalize="off"
+                  {% unless form.errors %}autofocus{% endunless %}>
+    
+            {% if form.password_needed %}
+              <label class="mt-5 mb-1 block font-secondary text-sm text-left base" for="CustomerPassword" class="label-hidden">
+                {{ 'customer.login.password' | t }}
+              </label>
+              <input type="password"
+                    name="customer[password]"
+                    id="CustomerPassword"
+                    autocomplete="password"
+                    class="w-full {% if form.errors contains 'password' %}border-scheme-accent-1{% endif %}">
+            {% endif %}
+    
+            <div class="mt-5">
+              <button type="submit" class="push-btn w-full theme-button">
+                <span class="push-btn-surface w-full csm-login-btn justify-center">{{ btn }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                    <path fill="white" d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+    
+            <div class="mt-2 text-center">
+              <!-- <a class="block text-sm base" href="{ { routes.root_url }}">{ { 'customer.login.cancel' | t }}</a> -->
+              {% if form.password_needed %}
+                <button @click="state = 'recover'" type="button" class="mt-2.5 inline-block">
+                  <span class="text-sm base underline">{{ 'customer.login.forgot_password' | t }}</span>
+                </button>
+              {% endif %}
+            </div>
+          {% endform %}
+        </div>
+        <div class="card-border"></div>
+      </div>
+    
+
+    
+      {% if shop.checkout.guest_login %}
+        <div class="mt-8">
+          <h2 class="text-center mb-2">{{ 'customer.login.guest_title' | t }}</h2>
+    
+          {% form 'guest_login' %}
+            <button type="submit" class="push-btn w-full theme-button">
+              <span class="push-btn-surface w-full">{{ 'customer.login.guest_continue' | t }}</span>
+            </button>
+          {% endform %}
+        </div>
+      {%- endif -%}
+      <div class="rtl-btm">
+        <div class="rtl-line"><span>{{ orr }}</span></div>
+        <div class="btm-card">
+          <div class="heading4 strong">{{ text3 }}</div>
+          <div class="base">{{ text4 }}</div>
+          <a href="{{ routes.account_register_url }}">
+            <span class="push-btn-surface outline-btn">{{ btn2 }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'login.js' | asset_url }}" type="module"></script>

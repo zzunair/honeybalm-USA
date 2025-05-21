@@ -1,0 +1,133 @@
+{% if template contains 'product' %}
+<style>
+  .sticky-atc-wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    z-index: 999;
+    display: none;
+    justify-content: space-between;
+    padding: 24px;
+}
+  .sticky-atc-title > h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  .sticky-rts {
+    min-width: 470px;
+}
+  .sticky-atc-title .pdp-off.base-sm.normal:empty {
+    display: none;
+}
+  /* .sticky-atc-price {
+    display: flex;
+    gap: 5px;
+    align-items: flex-end;
+}
+  .sticky-atc-cprice {
+    text-decoration: line-through;
+} */
+  .sticky-lts {
+    display: flex;
+    align-items: center;
+}
+  .section-footer > footer {
+    padding-bottom: 130px !important;
+}
+@media only screen and (max-width: 990px) {
+  .sticky-lts {
+    display: none;
+  }
+  .sticky-rts {
+    width: 100%;
+    min-width: unset;
+  }
+  .sticky-atc-wrap{
+    padding: 20px;
+  }
+}
+</style>
+{% assign vdiscount = '' %}
+{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+  {% assign discount2 = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100 | divided_by: product.selected_or_first_available_variant.compare_at_price | round %}
+  {% assign vdiscount = discount2 | append: '% off' %}
+{% endif %}
+<div class="sticky-atc-wrap">
+  <div class="sticky-lts">
+    <div class="sticky-atc-title">
+      <h2 class="heading2 strong text-left">
+        {{ product.title }}
+        <div class="pdp-off base-sm normal">{{ vdiscount }}</div>
+      </h2>
+    </div>
+    <!-- <div class="sticky-atc-price">
+      <div class="sticky-atc-cprice base">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+      <div class="sticky-atc-aprice heading4 strong">{{ product.selected_or_first_available_variant.price | money }}</div>
+    </div> -->
+  </div>
+  
+  <div class="sticky-rts">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    <button
+      class="
+        mb-1 add-to-cart-btn {% if product.available %}push-btn theme-button{% else %}btn text-sm lg:text-base after:hidden bg-scheme-secondary-background text-scheme-text{% endif %} theme-button w-full
+        {% unless current_variant.available %}cursor-not-allowed{% endunless %}
+      "
+      type="submit"
+      :class="{ 'cursor-not-allowed': !currentVariantAvailable }"
+      :disabled="!currentVariantAvailable"
+      :aria-label="addToCartText"
+      {% unless current_variant.available %}
+        disabled="disabled"
+      {% endunless %}
+    >
+      <span class="push-btn-surface w-full">
+        <span x-text="addToCartText">
+          {%- if current_variant.available -%}
+            Add to bag
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </span>
+        <span
+          x-show="currentVariantAvailable"
+          x-html="formatMoney(current_price)"
+           class="pr-atc"
+        >
+          {{- current_variant.price | money -}}
+        </span>
+      </span>
+    </button>
+    <div class="shipping-text base normal">Free shipping from $25.99!</div>
+  </div>
+</div>
+<script>
+  document.querySelector('.sticky-rts .add-to-cart-btn').addEventListener('click', function(){
+    document.querySelector('.product-block-buy-buttons form button').click();
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    window.addEventListener('scroll', function() {
+      var addToCartButton = document.querySelector('.product-block-buy-buttons form button');
+      var specialDiv = document.querySelector('.sticky-atc-wrap');
+      var buttonRect = addToCartButton.getBoundingClientRect();
+      if(window.innerWidth > 990){
+        if (buttonRect.top > 0) {
+          specialDiv.style.display = 'none'; // Show the special div
+        } else {
+          specialDiv.style.display = 'flex'; // Hide the special div
+        }
+      }else{
+        if (buttonRect.top < window.innerHeight && buttonRect.bottom >= 0) {
+          specialDiv.style.display = 'none'; // Show the special div
+        } else {
+          specialDiv.style.display = 'flex'; // Hide the special div
+        }
+      }
+    });
+  });
+  
+</script>
+{% endif %}

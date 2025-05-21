@@ -1,0 +1,137 @@
+<style>
+.com-table-wrap.{{ section.id }} .com-table .com-row:nth-child(even) {
+    background: {{ section.settings.clr1 }};
+}
+.com-table-wrap.{{ section.id }} .com-colsm.dark{
+  background: {{ section.settings.clr2 }};
+  height: 80px;
+}
+@media only screen and (max-width: 990px) {
+  .com-table-wrap.{{ section.id }} .com-colsm.dark{
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    height: auto;
+  }
+}
+</style>
+<div class="com-table-wrap {{ section.id }}">
+  <div class="container">
+    <div class="com-table">
+      <div class="com-row">
+        <div class="com-collg heading2 strong">{{ section.settings.hdng }}</div>
+        <div class="com-colsm dark head"><img src="{{ section.settings.img | img_url: '200x' }}" /></div>
+        <div class="com-colsm base strong">{{ section.settings.otext }}</div>
+      </div>
+
+      {% for block in section.blocks %}
+      <div class="com-row">
+        <div class="com-collg">
+          <div class="com-cwrap">
+            <img src="{{ block.settings.limg | img_url: '100x' }}" />
+            <div class="com-con-wrap">
+              <div class="base strong">{{ block.settings.lhdng }}</div>
+              <div class="base-sm normal">{{ block.settings.ltxt }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="com-colsm dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+            <path d="M13.0938 0.625C13.25 0.46875 13.5 0.46875 13.625 0.625L14.5312 1.5C14.6562 1.65625 14.6562 1.90625 14.5312 2.03125L5.15625 11.4062C5 11.5625 4.78125 11.5625 4.625 11.4062L0.4375 7.25C0.3125 7.09375 0.3125 6.84375 0.4375 6.71875L1.34375 5.8125C1.46875 5.6875 1.71875 5.6875 1.875 5.8125L4.875 8.84375L13.0938 0.625Z" fill="black"/>
+          </svg>
+        </div>
+        <div class="com-colsm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+            <path d="M6.96875 6L10.3438 9.375C10.5312 9.5625 10.5312 9.90625 10.3438 10.0938L9.5625 10.875C9.375 11.0625 9.03125 11.0625 8.84375 10.875L5.5 7.5L2.125 10.875C1.9375 11.0625 1.59375 11.0625 1.40625 10.875L0.625 10.0938C0.4375 9.90625 0.4375 9.5625 0.625 9.375L4 6L0.625 2.65625C0.4375 2.46875 0.4375 2.125 0.625 1.9375L1.40625 1.15625C1.59375 0.96875 1.9375 0.96875 2.125 1.15625L5.5 4.53125L8.84375 1.15625C9.03125 0.96875 9.375 0.96875 9.5625 1.15625L10.3438 1.9375C10.5312 2.125 10.5312 2.46875 10.3438 2.65625L6.96875 6Z" fill="black"/>
+          </svg>
+        </div>
+      </div>
+      {% endfor %}
+
+    <div class="com-row">
+        <div class="com-collg">
+          <div class="com-cwrap">
+            <img src="https://www.honeybalm.nl/cdn/shop/files/Propolis_100x.webp?v=1712233953" />
+            <div class="com-con-wrap">
+              <div class="base strong">Propolis</div>
+              <div class="base-sm normal">To hydrate your lips.</div>
+            </div>
+          </div>
+        </div>
+        <div class="com-colsm dark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+            <path d="M13.0938 0.625C13.25 0.46875 13.5 0.46875 13.625 0.625L14.5312 1.5C14.6562 1.65625 14.6562 1.90625 14.5312 2.03125L5.15625 11.4062C5 11.5625 4.78125 11.5625 4.625 11.4062L0.4375 7.25C0.3125 7.09375 0.3125 6.84375 0.4375 6.71875L1.34375 5.8125C1.46875 5.6875 1.71875 5.6875 1.875 5.8125L4.875 8.84375L13.0938 0.625Z" fill="black"/>
+          </svg>
+        </div>
+        <div class="com-colsm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+            <path d="M6.96875 6L10.3438 9.375C10.5312 9.5625 10.5312 9.90625 10.3438 10.0938L9.5625 10.875C9.375 11.0625 9.03125 11.0625 8.84375 10.875L5.5 7.5L2.125 10.875C1.9375 11.0625 1.59375 11.0625 1.40625 10.875L0.625 10.0938C0.4375 9.90625 0.4375 9.5625 0.625 9.375L4 6L0.625 2.65625C0.4375 2.46875 0.4375 2.125 0.625 1.9375L1.40625 1.15625C1.59375 0.96875 1.9375 0.96875 2.125 1.15625L5.5 4.53125L8.84375 1.15625C9.03125 0.96875 9.375 0.96875 9.5625 1.15625L10.3438 1.9375C10.5312 2.125 10.5312 2.46875 10.3438 2.65625L6.96875 6Z" fill="black"/>
+          </svg>
+        </div>
+      </div>
+              
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Compare Table",
+    "settings": [
+      {
+        "type": "color",
+        "id": "clr1",
+        "label": "Color 1"
+      },
+      {
+        "type": "color",
+        "id": "clr2",
+        "label": "Color 2"
+      },
+      {
+        "type": "text",
+        "id": "hdng",
+        "label": "Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Balm Image"
+      },
+      {
+        "type": "text",
+        "id": "otext",
+        "label": "Other balm text"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "limg",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "lhdng",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "ltxt",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Compare Table",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

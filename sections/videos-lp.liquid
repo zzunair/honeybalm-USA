@@ -1,0 +1,157 @@
+<div class="section-content lp-videos-wrap relative py-section-vertical-spacing">
+  <div class="container">
+    <div class="lp-videos-title heading2 strong">{{ section.settings.title }}</div>
+
+    <div
+      {% if section.blocks.size > 0 %}
+      id="slideshow-{{ section.id }}"
+      class="splide relative z-10"
+      {% endif %}
+      >
+        <div class="splide__track splide__track--overflow-visible">
+          <div class="splide__list">
+            {% for block in section.blocks %}
+                <div class="splide__slide">
+                  <video poster="{{ block.settings.vid.preview_image | img_url: '600x' }}">
+                    <source src="{{ block.settings.vid.sources[1].url }}" type="video/mp4">
+                  </video>
+                  <div class="play-vid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="43" viewBox="0 0 36 43" fill="none">
+                      <path d="M33.125 17.7969C35.5469 19.2812 35.5469 22.7969 33.125 24.2812L5.625 40.5312C3.125 42.0156 0 40.2188 0 37.25V4.75C0 1.54688 3.35938 0.21875 5.625 1.54688L33.125 17.7969Z" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="splide__arrows">
+          <button class="hidden splide__arrow splide__arrow--prev push-btn" aria-label="Go to last slide" aria-controls="slideshow-template--22537684418896__ingredients_AibTHt-track">
+            <span class="sr-only">Previous slide</span>
+            <span class="align-bottom p-2">
+              <span class="block w-5 h-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path d="M15.5 19L8.5 12L15.5 5" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </span>
+          </button><button class="splide__arrow splide__arrow--next push-btn" aria-label="Next slide" aria-controls="slideshow-template--22537684418896__ingredients_AibTHt-track">
+            <span class="sr-only">Next slide</span>
+            <!-- <span class="align-bottom p-2">
+              <span class="block w-5 h-5"> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                  <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+                </svg>
+              <!-- </span>
+            </span> -->
+          </button>
+        </div>
+        <script class="slideshow-options" type="application/json">
+          {
+            "mediaQuery": "min",
+            "arrows": true,
+            "pagination": false,
+            "rewind": true,
+            "autoWidth": true,
+            "gap": "1.25rem",
+            "focus": "left",
+            "type": "slide",
+            "flickMaxPages": 1,
+            "flickPower": 400,
+            "perMove": 1,
+            "autoScroll": {
+              "autoStart": false,
+              "speed": {{ section.settings.autoscroll_mode | plus: 0 | json }}
+            },
+            "padding": {
+              "left": "1.25rem",
+              "right": "1.25rem"
+            },
+            "breakpoints": {
+              "990": {
+                "destroy": "true"
+              }
+            }
+          }
+        </script>
+      </div>
+    
+    {%- if section.settings.btnlnk != blank and section.settings.btntxt != '' -%}
+      <div class="lpvidbtn-wrap">
+        <a href="{{ section.settings.btnlnk }}" class="inline-block push-btn">
+          <span class="push-btn-surface btn-arrow">{{ section.settings.btntxt }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+              <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+      {%- endif -%}
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var vids = document.querySelectorAll('.lp-videos-wrap video, .lp-videos-wrap .play-vid');
+    for(var i = 0; i <= vids.length; i++){
+      vids[i].addEventListener('click', function(){
+        var video = this.closest('.splide__slide').querySelector('video');
+        if (video.paused) {
+          video.play();
+          this.closest('.splide__slide').querySelector('.play-vid').style.display = 'none';
+        } else {
+          video.pause();
+          this.closest('.splide__slide').querySelector('.play-vid').style.display = 'block';
+        }
+      });
+    }
+    // var playbtns = document.querySelectorAll('.lp-videos-wrap .play-vid');
+    // for(var i = 0; i <= playbtns.length; i++){
+    //   playbtns[i].addEventListener('click', function(){
+    //     var video = this.closest('video');
+    //       video.play();
+    //       this.style.display = 'none';
+    //   });
+    // }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Videos LP",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btnlnk",
+        "label": "Button Link"
+      }
+    ],
+    "blocks": [
+        {
+          "type": "video",
+          "name": "video",
+          "limit": 4,
+          "settings": [
+            {
+              "type": "video",
+              "id": "vid",
+              "label": "Video"
+            }
+          ]
+        }
+      ],
+    "presets": [
+      {
+        "name": "Videos LP"
+      }
+    ]
+  }
+{% endschema %}

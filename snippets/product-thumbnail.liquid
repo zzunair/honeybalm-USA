@@ -1,0 +1,110 @@
+{%- liquid
+  assign shape_id = thumbnails_id
+  if section.settings.thumbnail_shape == 'blob'
+    assign shape_id = thumbnails_id | append: '-' | append: index
+  endif
+-%}
+<li class="product-thumbnail-list-item {% if media.id == featured_media.id %}product-thumbnail-list-item--active{% endif %} relative {% if section.settings.thumbnails_position == 'left' %}splide__slide{% endif %} {% if settings.media_shadow_direction contains 'left' %} pt-media-shadow-half{% else %}pb-media-shadow-half{% endif %} {% if settings.media_shadow_direction contains 'left' %}lg:pl-media-shadow-half{% else %}pr-media-shadow-half{% endif %}"
+  data-media-id="{{ media.id }}"
+  :class="{ 'product-thumbnail-list-item--active' : {{ media.id }} === current_media_id }"
+  {% if index == 0 %}
+    x-ref="firstThumbnail"
+    data-first-thumbnail
+  {% endif %}
+  {% if forloop.last %}
+    x-ref="lastThumbnail"
+    data-last-thumbnail
+  {% endif %}>
+  <a
+    role="button"
+    class="block media-thumbnail"
+    href="{{ media | image_url }}"
+    @click.prevent="current_media_id = {{ media.id }}"
+    @keydown.space="current_media_id = {{ media.id }}"
+    @keydown.enter="current_media_id = {{ media.id }}"
+  >
+    <div class="media--small relative">
+      {% if media.media_type != 'image' %}
+        <div class="z-20 absolute top-1 right-1 w-6 h-6 bg-scheme-card border border-scheme-text border-opacity-5 grid place-content-center">
+          <div class="opacity-70">
+            {% if media.media_type == 'model' %}
+              {% render 'icon-model' %}
+            {% elsif media.media_type contains 'video' %}
+              {% render 'icon-video' %}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      
+      {%- liquid
+        assign loading = 'lazy'
+        if section.index <= 3
+          assign loading = 'eager'
+        endif
+      -%}
+
+      {%- render 'media-image',
+        media: media,
+        shape_id: shape_id,
+        shape: section.settings.thumbnail_shape,
+        crop: section.settings.thumbnail_crop,
+        is_card: section.settings.hide_media_shadow,
+        container_id: section.id,
+        index: index,
+        loading: loading
+      -%}
+    </div>
+  </a>
+</li>
+{% assign vid_index = 2 %}
+{% if template.suffix == 'spf_all_flavours' %}
+  {% assign vid_index = 1 %}
+{% endif %}
+{% if index == vid_index %}
+  {% if template.suffix contains 'honey' or template.suffix contains 'strawberry' or template.suffix contains 'chocolate' or template.suffix contains 'mint' or template.suffix contains 'coconut' or template.suffix contains 'vanilla' or template.suffix contains 'cherry' or template.suffix contains 'watermelon' or template.suffix contains 'pumpkin' or template.suffix contains 'mystery' or template.suffix contains 'candy-cane' or template.suffix contains 'caramelized-pear' or template.suffix contains 'all_flavour' %}
+
+    <li class="product-thumbnail-list-item {% if media.id == featured_media.id %}product-thumbnail-list-item--active{% endif %} relative {% if section.settings.thumbnails_position == 'left' %}splide__slide{% endif %} {% if settings.media_shadow_direction contains 'left' %} pt-media-shadow-half{% else %}pb-media-shadow-half{% endif %} {% if settings.media_shadow_direction contains 'left' %}lg:pl-media-shadow-half{% else %}pr-media-shadow-half{% endif %}"
+  data-media-id="{{ media.id }}"
+  :class="{ 'product-thumbnail-list-item--active' : {{ media.id }}2 === current_media_id }"
+  {% if index == 0 %}
+    x-ref="firstThumbnail"
+    data-first-thumbnail
+  {% endif %}
+  {% if forloop.last %}
+    x-ref="lastThumbnail"
+    data-last-thumbnail
+  {% endif %}>
+    <a
+      role="button"
+      class="block media-thumbnail"
+      href="{{ media | image_url }}"
+      @click.prevent="current_media_id = {{ media.id }}2"
+      @keydown.space="current_media_id = {{ media.id }}2"
+      @keydown.enter="current_media_id = {{ media.id }}2"
+    >
+      <div class="media--small relative">
+        <video autoplay loop muted playsinline webkit-playsinline>
+          <source 
+          {% if template.suffix contains 'honey-ls' %}src="{{ 'Honeybalm - Final.mp4' | file_url }}"{% else %}
+          {% if template.suffix contains 'honey' %}src="{{ 'cgi honey1.mp4' | file_url }}"{% endif %}
+          {% endif %}
+          {% if template.suffix contains 'strawberry' %}src="{{ 'cgi strawberry1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'chocolate' %}src="{{ 'cgi chocolate1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'mint' %}src="{{ 'cgi mint1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'coconut' %}src="{{ 'cgi coconut1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'vanilla' %}src="{{ 'cgi vanilla1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'cherry' %}src="{{ 'cgi cherry1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'watermelon' %}src="{{ 'Watermelon 1080p low.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'pumpkin' %}src="{{ 'cgi pumpkin.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'mystery' %}src="{{ 'Mystery Balm v4_1.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'candy-cane' %}src="{{ 'candy can low q.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'caramelized-pear' %}src="{{ 'lw-caramelized-pear.mp4' | file_url }}"{% endif %}
+          {% if template.suffix contains 'all_flavour' %}src="{{ 'cgi allflavourpack1.mp4' | file_url }}"{% endif %}
+          type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </a>
+  </li>
+  {% endif %}
+{% endif %}

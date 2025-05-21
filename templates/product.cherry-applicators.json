@@ -1,0 +1,546 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_label": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "drop_down",
+            "hide_option_labels": true,
+            "enable_color_swatches": false
+          }
+        },
+        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": true,
+            "enable_payment_button": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "truncate_description": false,
+            "text_align": "text-left"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "quantity_selector",
+        "variant_picker",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289"
+      ],
+      "custom_css": [
+        ".pdp-off.base.normal {display: none;}",
+        ".ing-tab-wrap {display: none;}"
+      ],
+      "settings": {
+        "p1": "hba-honey-applicators",
+        "p2": "classic-pack-1",
+        "p3": "totebag",
+        "clr": "#ffcece",
+        "stars_clr": "#ff7b7b",
+        "text": "Never run out of applicators again!",
+        "revsvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"115\" height=\"17\" viewbox=\"0 0 115 17\" fill=\"none\"><path d=\"M105.094 0.56244C105.469 -0.18756 106.531 -0.15631 106.875 0.56244L108.937 4.71869L113.5 5.37494C114.312 5.49994 114.625 6.49994 114.031 7.09369L110.75 10.3124L111.531 14.8437C111.656 15.6562 110.781 16.2812 110.062 15.9062L106 13.7499L101.906 15.9062C101.187 16.2812 100.312 15.6562 100.437 14.8437L101.219 10.3124L97.9373 7.09369C97.3435 6.49994 97.656 5.49994 98.4685 5.37494L103.062 4.71869L105.094 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M80.8435 0.56244C81.2185 -0.18756 82.281 -0.15631 82.6248 0.56244L84.6873 4.71869L89.2498 5.37494C90.0623 5.49994 90.3748 6.49994 89.781 7.09369L86.4998 10.3124L87.281 14.8437C87.406 15.6562 86.531 16.2812 85.8123 15.9062L81.7498 13.7499L77.656 15.9062C76.9373 16.2812 76.0623 15.6562 76.1873 14.8437L76.9685 10.3124L73.6873 7.09369C73.0935 6.49994 73.406 5.49994 74.2185 5.37494L78.8123 4.71869L80.8435 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M56.5935 0.56244C56.9685 -0.18756 58.031 -0.15631 58.3748 0.56244L60.4373 4.71869L64.9998 5.37494C65.8123 5.49994 66.1248 6.49994 65.531 7.09369L62.2498 10.3124L63.031 14.8437C63.156 15.6562 62.281 16.2812 61.5623 15.9062L57.4998 13.7499L53.406 15.9062C52.6873 16.2812 51.8123 15.6562 51.9373 14.8437L52.7185 10.3124L49.4373 7.09369C48.8435 6.49994 49.156 5.49994 49.9685 5.37494L54.5623 4.71869L56.5935 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M32.3435 0.56244C32.7185 -0.18756 33.781 -0.15631 34.1248 0.56244L36.1873 4.71869L40.7498 5.37494C41.5623 5.49994 41.8748 6.49994 41.281 7.09369L37.9998 10.3124L38.781 14.8437C38.906 15.6562 38.031 16.2812 37.3123 15.9062L33.2498 13.7499L29.156 15.9062C28.4373 16.2812 27.5623 15.6562 27.6873 14.8437L28.4685 10.3124L25.1873 7.09369C24.5935 6.49994 24.906 5.49994 25.7185 5.37494L30.3123 4.71869L32.3435 0.56244Z\" fill=\"#FFEEB8\"></path><path d=\"M8.09354 0.56244C8.46854 -0.18756 9.53104 -0.15631 9.87479 0.56244L11.9373 4.71869L16.4998 5.37494C17.3123 5.49994 17.6248 6.49994 17.031 7.09369L13.7498 10.3124L14.531 14.8437C14.656 15.6562 13.781 16.2812 13.0623 15.9062L8.99979 13.7499L4.90604 15.9062C4.18729 16.2812 3.31229 15.6562 3.43729 14.8437L4.21854 10.3124L0.937285 7.09369C0.343535 6.49994 0.656035 5.49994 1.46854 5.37494L6.06229 4.71869L8.09354 0.56244Z\" fill=\"#FFEEB8\"></path></svg>",
+        "revtext": "32 reviews",
+        "choosetext": "Choose your flavor:",
+        "prdct1": "/products/hba-honey-applicators",
+        "name1": "Honey",
+        "logo1": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Honey_Applicator.webp?v=1717101514\">",
+        "prdct2": "/products/hba-strawberry-applicators",
+        "name2": "Strawberry",
+        "logo2": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Strawberry_Applicator.webp?v=1717101508\">",
+        "prdct3": "/products/hba-Mint-applicators",
+        "name3": "Mint",
+        "logo3": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Mint_Applicator.webp?v=1717101511\">",
+        "prdct4": "/products/hba-cherry-applicators",
+        "name4": "Cherry",
+        "logo4": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Cherry_Applicator.webp?v=1717101505\">",
+        "prdct5": "/products/hba-coconut-applicators",
+        "name5": "Coconut",
+        "logo5": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Coconut_Applicator.webp?v=1717101517\">",
+        "prdct6": "/products/hba-vanilla-applicators",
+        "name6": "Vanilla",
+        "logo6": "<img src=\"https://cdn.shopify.com/s/files/1/0769/2589/4979/files/PDP_images_Vanilla_Applicator.webp?v=1717101520\">",
+        "prdct7": "",
+        "name7": "",
+        "logo7": "",
+        "prdct8": "",
+        "name8": "",
+        "logo8": "",
+        "prdct9": "",
+        "name9": "",
+        "logo9": "",
+        "prdct10": "",
+        "name10": "",
+        "logo10": "",
+        "shipping": "Free shipping from £23.95!",
+        "ingbg": "rgba(0,0,0,0)",
+        "ingh": "",
+        "ingt": "<p>Beeswax, ozokerite, cera microcristallina, cocos nucifera (coconut) extract, cocos nucifera (coconut) oil, simmondsia chinensis (jojoba) seed oil, olea europaea (olive) fruit oil, tocopherol( vitamin e), butyrospermum parkii (shea) fruit, bht, cetyl ethylhexanoate, caprylic/capric triglyceride, bis-diglyceryl polyacyladipate-2, ethylhexyl stearate, tridecyl trimellitate, theobroma cacao (cocoa) seed butter, limnanthes alba (meadowfoam) seed oil, camellia japonica seed oil, fragrance</p>",
+        "crop": "",
+        "image_shape": "default",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "show_slideshow_arrows_on_desktop": false,
+        "enable_image_zoom": false,
+        "enable_video_looping": false,
+        "autoplay_videos_on_desktop": false,
+        "media_mobile_width": "w-full",
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": true,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "compare_table_piHebM": {
+      "type": "compare-table",
+      "blocks": {
+        "block_CwtkNA": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Animal_test_free.webp",
+            "lhdng": "Animal test free",
+            "ltxt": "Our products are 100% animal cruelty-free."
+          }
+        },
+        "block_bCCk7d": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Natural_ingredients.webp",
+            "lhdng": "Natural ingredients",
+            "ltxt": "We pride ourselves on all the natural ingredients we use."
+          }
+        },
+        "block_cD4DgC": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Beeswax.webp",
+            "lhdng": "Affordable",
+            "ltxt": "We make our products as affordable as possible, even more so with our bundles."
+          }
+        },
+        "block_btqnBP": {
+          "type": "block",
+          "settings": {
+            "limg": "shopify://shop_images/Vitamin_E.webp",
+            "lhdng": "Vitamin E",
+            "ltxt": "We add tocopherol to our product, which is a technical term for vitamin E."
+          }
+        }
+      },
+      "block_order": [
+        "block_CwtkNA",
+        "block_bCCk7d",
+        "block_cD4DgC",
+        "block_btqnBP"
+      ],
+      "disabled": true,
+      "settings": {
+        "clr1": "#fffaf0",
+        "clr2": "#f9edd7",
+        "hdng": "The benefits of Honeybalm",
+        "img": "shopify://shop_images/Vector_4.png",
+        "otext": "Other balms"
+      }
+    },
+    "build_bundle_8nfhRG": {
+      "type": "build-bundle",
+      "blocks": {
+        "block_qADVAa": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Honey lip balm",
+            "ptext": "The original. Smooth like heaven.",
+            "prdct": "hb-honey"
+          }
+        },
+        "block_MfbBzG": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Strawberry lip balm",
+            "ptext": "A sweet, fruity treat for your lips.",
+            "prdct": "hb-strawberry"
+          }
+        },
+        "block_rFWeUq": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Cherry lip balm",
+            "ptext": "Slightly tinted, with a cherry kiss.",
+            "prdct": "hb-cherry"
+          }
+        },
+        "block_MbAi7n": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Chocolate lip balm",
+            "ptext": "Dive into a luscious chocolate fantasy.",
+            "prdct": "hb-chocolate"
+          }
+        },
+        "block_i8VDfb": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Coconut lip balm",
+            "ptext": "Who needs a Pina Colada?!",
+            "prdct": "hb-coconut"
+          }
+        },
+        "block_fCkHwi": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Vanilla lip balm",
+            "ptext": "Smooth your lips with creamy vanilla.",
+            "prdct": "hb-vanilla"
+          }
+        },
+        "block_HpUXMt": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Mint lip balm",
+            "ptext": "Chill your lips with an icy minty sensation.",
+            "prdct": "hb-mint"
+          }
+        },
+        "block_watermelon45": {
+          "type": "block",
+          "settings": {
+            "ptitle": "Watermelon lip balm",
+            "ptext": "With watermelon extracts & propolis",
+            "prdct": "hb-watermelon"
+          }
+        },
+        "shape_divider_mALAVx": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "below",
+            "target_section_color_scheme": "secondary",
+            "style": "large-waves_1200x84",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        },
+        "shape_divider_H6hPEr": {
+          "type": "shape_divider",
+          "settings": {
+            "target_section": "above",
+            "target_section_color_scheme": "secondary",
+            "style": "large-waves_1200x84",
+            "flip_horizontal": false,
+            "enable_animation": false,
+            "animation_direction": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_qADVAa",
+        "block_MfbBzG",
+        "block_rFWeUq",
+        "block_MbAi7n",
+        "block_i8VDfb",
+        "block_fCkHwi",
+        "block_HpUXMt",
+        "block_watermelon45",
+        "shape_divider_mALAVx",
+        "shape_divider_H6hPEr"
+      ],
+      "disabled": true,
+      "settings": {
+        "btmtxt": "Free shipping from £23.95!",
+        "clr": "#ff7b7b",
+        "def": "3-pack",
+        "title": "Build your own bundle and save!",
+        "text": "Choose your pack:",
+        "col": "packs"
+      }
+    },
+    "ingredients_AibTHt": {
+      "type": "Ingredients",
+      "blocks": {
+        "column_UK8zBM": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Propolis.webp",
+            "title": "Propolis",
+            "text": "<p>Propolis is a natural remedy for treating wounds and skin problems. It is produced by bees and is known for its medicinal properties.</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_ncXm6T": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Beeswax.webp",
+            "title": "Beeswax",
+            "text": "<p>Our main ingredient is beeswax, produced by our honey bees. Beeswax prevents your lips from feeling dry.</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_fxf6Qz": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Vitamin_E.webp",
+            "title": "Vitamin E",
+            "text": "<p>Our lip balms contain tocoferol, which is a difficult name for cosmetic Vitamin E.</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "column_UK8zBM",
+        "column_ncXm6T",
+        "column_fxf6Qz"
+      ],
+      "disabled": true,
+      "settings": {
+        "lnktxt": "Read more",
+        "lnk": "shopify://products/hb-honey",
+        "display_on_card": false,
+        "slideshow_on_mobile": true,
+        "title": "Some of our special ingredients",
+        "crop": "",
+        "image_shape": "default",
+        "show_index_on_blocks": false,
+        "index_shape": "star_1",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "shape_carousel_b466xC": {
+      "type": "images-carousel-reviews",
+      "blocks": {
+        "image_NcPBqR": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_YhYne4": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_zmg8U6": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_HNahBD": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_y3yXtw": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_D3aLd9": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_QErxBr": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_CCiAtW": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_4NAxtm": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "image_JnLQ8w": {
+          "type": "image",
+          "settings": {
+            "image_shape": "default",
+            "rotate_image": 0,
+            "button_text": "",
+            "url": ""
+          }
+        },
+        "reviews_KjJU3K": {
+          "type": "reviews",
+          "settings": {
+            "name": "Isabella W",
+            "rev": "Honeybalm is pure magic! The smooth texture and natural honey aroma are irresistible. My lips are never been this soft and smooth. Love it! 🤞"
+          }
+        },
+        "reviews_NWkMqY": {
+          "type": "reviews",
+          "settings": {
+            "name": "Amelia B",
+            "rev": "Honeybalm is pure heaven in a pot! It's my new go-to lip balm, and I can't recommend it enough!"
+          }
+        },
+        "reviews_eRxzCX": {
+          "type": "reviews",
+          "settings": {
+            "name": "Olivia P",
+            "rev": "Love it! Bought 5 and I also have the strawberry. Great gifts! Have another order also!"
+          }
+        }
+      },
+      "block_order": [
+        "image_NcPBqR",
+        "image_YhYne4",
+        "image_zmg8U6",
+        "image_HNahBD",
+        "image_y3yXtw",
+        "image_D3aLd9",
+        "image_QErxBr",
+        "image_CCiAtW",
+        "image_4NAxtm",
+        "image_JnLQ8w",
+        "reviews_KjJU3K",
+        "reviews_NWkMqY",
+        "reviews_eRxzCX"
+      ],
+      "disabled": true,
+      "settings": {
+        "clr": "#ff9d9d",
+        "rtitle": "Some <span class=\"new-spirit-md\">shiny</span> reviews we got",
+        "txt": "Read our many reviews we received from our amazing community, and feel free to place a review yourself!",
+        "btntxt": "See all reviews",
+        "btnlnk": "/",
+        "title": "",
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 10,
+        "autoscroll_mode": "0",
+        "crop": "aspect-w-1 aspect-h-1",
+        "button_style": "push-btn-surface",
+        "show_buttons_on_mobile": false,
+        "only_show_button_on_hover": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "17201187245aca5b8c": {
+      "type": "apps",
+      "settings": {
+        "apply_vertical_spacing": true,
+        "apply_horizontal_spacing": true,
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "1650891804363a2769": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Subscribe and get some <span class=\"new-spirit-md\">lip care</span> secrets",
+        "richtext": "",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "compare_table_piHebM",
+    "build_bundle_8nfhRG",
+    "ingredients_AibTHt",
+    "shape_carousel_b466xC",
+    "17201187245aca5b8c",
+    "1650891804363a2769"
+  ]
+}

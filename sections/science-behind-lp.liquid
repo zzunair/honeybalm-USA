@@ -1,0 +1,74 @@
+<div class="section-content science-behind-lp relative py-section-vertical-spacing">
+  <div class="container">
+    <div class="sbtitle heading2 strong">{{ section.settings.title }}</div>
+    <div class="sb-img-wrap">
+      <div class="sb-img">
+        <img class="hidden lg:block" src="{{ section.settings.img1dsk | img_url: '800x' }}" />
+        <img class="lg:hidden" src="{{ section.settings.img1mbl | img_url: '800x' }}" />
+      </div>
+      <div class="sb-img">
+        <img class="hidden lg:block" src="{{ section.settings.img2dsk | img_url: '800x' }}" />
+        <img class="lg:hidden" src="{{ section.settings.img2mbl | img_url: '800x' }}" />
+      </div>
+    </div>
+    {%- if section.settings.btnlnk != blank and section.settings.btntxt != '' -%}
+      <div class="sbbtn-wrap">
+        <a href="{{ section.settings.btnlnk }}" class="inline-block push-btn">
+          <span class="push-btn-surface btn-arrow">{{ section.settings.btntxt }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+              <path d="M7.3125 1.21875C7.4375 1.0625 7.6875 1.0625 7.84375 1.21875L14.375 7.75C14.5312 7.90625 14.5312 8.125 14.375 8.28125L7.84375 14.8125C7.6875 14.9688 7.4375 14.9688 7.3125 14.8125L6.6875 14.2188C6.53125 14.0625 6.53125 13.8125 6.6875 13.6875L11.5312 8.8125H0.875C0.65625 8.8125 0.5 8.65625 0.5 8.4375V7.5625C0.5 7.375 0.65625 7.1875 0.875 7.1875H11.5312L6.6875 2.34375C6.53125 2.21875 6.53125 1.96875 6.6875 1.8125L7.3125 1.21875Z" fill="black"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+      {%- endif -%}
+  </div>
+</div>
+      
+{% schema %}
+  {
+    "name": "Science behind lp",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "img1dsk",
+        "label": "Image 1 Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "img1mbl",
+        "label": "Image 1 Mobile"
+      },
+      {
+        "type": "image_picker",
+        "id": "img2dsk",
+        "label": "Image 2 Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "img2mbl",
+        "label": "Image 2 Mobile"
+      },
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btnlnk",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Science behind lp"
+      }
+    ]
+  }
+{% endschema %}

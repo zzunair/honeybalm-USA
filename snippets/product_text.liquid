@@ -1,0 +1,24 @@
+<div class="cc_text base-sm">
+{% if product.handle == 'try-out-box' %}
+    Honey, Cherry, Vanilla, Coconut, Strawberry, Mint, Chocolate and Watermelon 
+{% elsif product.handle == 'spf-try-out-box' %}
+    Honey, Cherry, Coconut and Strawberry  
+{% elsif product.handle == 'red-fruits-pack' %}
+    Strawberry, Cherry and Watermelon    
+{% elsif product.handle == 'favourites-pack' %}
+    Honey, Watermelon, Strawberry, Cherry and Vanilla    
+{% elsif product.handle == 'classic-pack-1' %}
+    Honey, Cherry, Strawberry and Chocolate
+{% elsif product.handle == 'valentine-pack' %}
+    Strawberry Lip Scrub, Cherry and Watermelon
+{% elsif product.handle == 'mothers-day-pack' %}
+    Honey, Strawberry and Rose Cardamom
+{% elsif product.handle contains 'applicator' %}
+    For optimal dosage
+{% elsif product.handle contains 'scrub' %}
+    Lip Scrub for extremely soft lips
+
+{% elsif product.handle contains 'applicators' %}
+    Never run out of applicators again! 
+{% endif %}
+</div>

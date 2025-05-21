@@ -1,0 +1,79 @@
+<div class="logo_text_splide_outerwrap lp">
+  <div class="logo_text_splide_wrap container">
+    <div class="title heading4">{{ section.settings.title }}</div>
+    <div id="slideshow-{{ section.id }}" class="logo_text_wrap splide">
+      <div class="splide__track">
+          <ul class="splide__list  w-full">
+            {% for block in section.blocks %}
+            <li class="logo_text splide__slide base-sm normal">
+              <div class="logo_img_wrap">
+                <img src="{{ block.settings.img | img_url: '150x' }}" />
+              </div>
+                <div class="base normal">{{ block.settings.text }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <script class="slideshow-options" type="application/json">
+        {
+          "mediaQuery": "max",
+          "arrows": false,
+          "pagination": false,
+          "perPage": 4,
+          "breakpoints": {
+            "990": {
+              "autoScroll": true,
+              "pagination": false,
+              "perPage": 2,
+              "type": "loop",
+              "perMove": 1,
+              "autoplay": false,
+              "interval": 3000
+            }
+          }
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
+  <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+  {{ 'modules-slideshow.bundle.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+  {
+    "name": "Logo Text Slider LP",
+    "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+    ],
+    "blocks": [
+      {
+        "name": "block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Logo"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Slide Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo Text Slider LP",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

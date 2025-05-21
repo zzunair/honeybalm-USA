@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menus_kyjGj6": {
+          "type": "menus",
+          "settings": {
+            "show_menu_headings": true,
+            "linklist_1": "shop",
+            "linklist_2": "orders",
+            "linklist_3": "contact"
+          }
+        }
+      },
+      "block_order": [
+        "menus_kyjGj6"
+      ],
+      "settings": {
+        "fb": "https://www.facebook.com/people/Honeybalm-USA/61564453554747/",
+        "insta": "https://www.instagram.com/honeybalm/",
+        "tiktok": "https://www.tiktok.com/@honeybalmcom?_t=ZN-8vAJbLhMe9e&_r=1",
+        "logo": "shopify://shop_images/Honeybalm_logo_footer.svg",
+        "logo_max_width": 190,
+        "show_payment_icons": true,
+        "show_country_selector": true,
+        "show_locale_selector": true,
+        "color_scheme": "tertiary",
+        "use_gradient_background": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

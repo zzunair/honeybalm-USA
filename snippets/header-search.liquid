@@ -1,0 +1,67 @@
+  <!-- <form x-ref="searchForm" action="{{ routes.search_url }}" method="get" role="search" class="csm-search-form"> -->
+  <div class="csm-search-form">
+    <div x-ref="searchFieldComponent" class="relative py-2">
+      <input
+        id="header-search"
+        type="search"
+        name="q"
+        autocomplete="off"
+        value=""
+        class="header-search-input pl-9 py-2 placeholder:text-scheme-text font-secondary w-full border-0 shadow-none bg-transparent"
+        placeholder="Search for flavor…"
+      >
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 p-1 ls-search" aria-label="{{ 'general.search.submit' | t }}">
+        <span class="inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none"> 
+            <path d="M15.875 14.6562C16.0312 14.8125 16.0312 15.0625 15.875 15.1875L15.1562 15.9062C15.0312 16.0625 14.7812 16.0625 14.625 15.9062L10.8438 12.125C10.7812 12.0312 10.75 11.9375 10.75 11.8438V11.4375C9.59375 12.4062 8.125 13 6.5 13C2.90625 13 0 10.0938 0 6.5C0 2.9375 2.90625 0 6.5 0C10.0625 0 13 2.9375 13 6.5C13 8.125 12.375 9.625 11.4062 10.75H11.8125C11.9062 10.75 12 10.8125 12.0938 10.875L15.875 14.6562ZM6.5 11.5C9.25 11.5 11.5 9.28125 11.5 6.5C11.5 3.75 9.25 1.5 6.5 1.5C3.71875 1.5 1.5 3.75 1.5 6.5C1.5 9.28125 3.71875 11.5 6.5 11.5Z" fill="black"/>
+          </svg>  
+        </span>
+      </button>
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 p-1 ls-clear">
+        <span class="inline-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M7.46875 6L10.8438 9.375C11.0312 9.5625 11.0312 9.90625 10.8438 10.0938L10.0625 10.875C9.875 11.0625 9.53125 11.0625 9.34375 10.875L6 7.5L2.625 10.875C2.4375 11.0625 2.09375 11.0625 1.90625 10.875L1.125 10.0938C0.9375 9.90625 0.9375 9.5625 1.125 9.375L4.5 6L1.125 2.65625C0.9375 2.46875 0.9375 2.125 1.125 1.9375L1.90625 1.15625C2.09375 0.96875 2.4375 0.96875 2.625 1.15625L6 4.53125L9.34375 1.15625C9.53125 0.96875 9.875 0.96875 10.0625 1.15625L10.8438 1.9375C11.0312 2.125 11.0312 2.46875 10.8438 2.65625L7.46875 6Z" fill="black"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div class="live-search-wrap">
+      <div class="ls-for-wrap heading4 strong">Searching for ‘<span></span>’</div>
+      <ul class="live-search-list">
+        {% for pr in collections['search-products'].products %}
+        <li search="{{ pr.title | downcase | replace: 'honeybalm ', '' }}">
+          <a href="{{ pr.url }}"></a>
+          <div class="lsearch-img"><img src="{{ pr.featured_image.src | img_url: '200x' }}"></div>
+          <div class="lsearch-content">
+            <div class="ls-title heading4 strong">{{ pr.title | replace: 'Honeybalm', '' }}</div>
+            <div class="ls-content base normal">{% if pr.title contains 'Applicator' %}Accessories{% elsif pr.title contains 'Totebag' or pr.title contains 'Packaging' %}Accessories{% elsif pr.title contains 'Scrub' %}Lip scrub{% else %}Lip balm{% endif %}</div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <!-- </form> -->
+  <script>
+    document.querySelector('.csm-search-form #header-search').addEventListener('keyup', function(){console.log('this', this.value);
+      if(this.value == ''){
+        document.querySelector('.csm-search-form').classList.remove('active');
+      }else{
+        document.querySelector('.csm-search-form').classList.add('active');
+        document.querySelector('.live-search-wrap .ls-for-wrap span').innerHTML = this.value;
+        var val = this.value.toLowerCase();
+        var lis = document.querySelectorAll('.live-search-list li');
+        for(var i=0; i < lis.length; i++){
+          if(lis[i].getAttribute('search').indexOf(val) > -1){
+            lis[i].style.display = 'flex';
+          }else{
+            lis[i].style.display = 'none';
+          }
+        }
+      }
+    });
+    document.querySelector('.csm-search-form .ls-clear').addEventListener('click', function(){
+       document.querySelector('.csm-search-form #header-search').value = '';
+      document.querySelector('.csm-search-form').classList.remove('active');
+    });
+  </script> 
